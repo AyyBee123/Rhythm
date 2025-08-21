@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlfn1yh41pr7o"]
+
+[ext_resource type="Texture2D" uid="uid://b1gy43vokkbgk" path="res://Sprites/Main/Center.png" id="1_1r6ip"]
+[ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/key_listener.gd" id="2_qw60k"]
+[ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="3_qw60k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lixft"]
+atlas = ExtResource("1_1r6ip")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qw60k"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lixft")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Core" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_qw60k")
+animation = &"Idle"
+autoplay = "Idle"
+script = ExtResource("2_qw60k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Line Up" type="Line2D" parent="."]
+position = Vector2(0, 11.3916)
+scale = Vector2(1, 1.06294)
+points = PackedVector2Array(0, -180, 0, -39)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Down" type="Line2D" parent="."]
+position = Vector2(0, 1.18301)
+scale = Vector2(1, 0.993464)
+points = PackedVector2Array(0, 180, 0, 29)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Left" type="Line2D" parent="."]
+position = Vector2(1.10309, 0)
+scale = Vector2(1.00344, 1)
+points = PackedVector2Array(-320, 0, -31, 0)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Right" type="Line2D" parent="."]
+position = Vector2(1.09556, 0)
+scale = Vector2(0.996587, 1)
+points = PackedVector2Array(320, 0, 29, 0)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Up" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -40)
+texture = ExtResource("3_qw60k")
+
+[node name="Down" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 40)
+rotation = 3.14159
+texture = ExtResource("3_qw60k")
+
+[node name="Left" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-40, 0)
+rotation = 4.71239
+texture = ExtResource("3_qw60k")
+
+[node name="Right" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(40, 0)
+rotation = 1.5708
+texture = ExtResource("3_qw60k")

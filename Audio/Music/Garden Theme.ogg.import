@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://uqqrlkbo5u1e"
+path="res://.godot/imported/Garden Theme.ogg-4d4a98f852b9f4c1fbf3d473c392b1f8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Garden Theme.ogg"
+dest_files=["res://.godot/imported/Garden Theme.ogg-4d4a98f852b9f4c1fbf3d473c392b1f8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

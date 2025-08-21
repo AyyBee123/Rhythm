@@ -1,5 +1,39 @@
-[gd_scene format=3 uid="uid://dwg5k2cqva6wn"]
+[gd_scene load_steps=5 format=3 uid="uid://dwg5k2cqva6wn"]
 
-[node name="Test Level" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="1_7t06c"]
+[ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_b07c4"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_2ytpj"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_db73o"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Base Level" type="Node2D"]
+script = ExtResource("1_b07c4")
+up_value = 57
+down_value = 60
+left_value = 62
+right_value = 67
+arrow_texture = "uid://dbwcuetuxkxao"
+file = "res://Audio/Midi/Hall Theme.mid"
+music_file = "uid://dwlhxlf4vnop6"
+
+[node name="MidiPlayer" parent="." instance=ExtResource("2_2ytpj")]
+unique_name_in_owner = true
+file = ""
+
+[node name="Core" parent="." instance=ExtResource("1_7t06c")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -314.0
+offset_top = -174.0
+offset_right = -113.0
+offset_bottom = -134.0
+theme_override_fonts/font = ExtResource("4_db73o")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]

@@ -1,0 +1,35 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://wbj0boqv37y6"
+path="res://.godot/imported/Description Font.ttf-49d95e1a3e1a6d08c319df897051af76.fontdata"
+
+[deps]
+
+source_file="res://Fonts/Description Font.ttf"
+dest_files=["res://.godot/imported/Description Font.ttf-49d95e1a3e1a6d08c319df897051af76.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
