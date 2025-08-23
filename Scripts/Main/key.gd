@@ -8,20 +8,20 @@ var perfect: bool = false
 var good: bool = false
 var ok: bool = false
 
-func _unhandled_input(event):
-	if event.is_action(input_value):
-		if event.is_action_pressed(input_value):
-			if current_note:
-				if perfect: # perfect hit
-					Score.update_points(Score.TimingJudgement.PERFECT)
-				elif good: # good hit
-					Score.update_points(Score.TimingJudgement.GOOD)
-				elif ok: # ok hit
-					Score.update_points(Score.TimingJudgement.OK)
-				
-				current_note.get_parent().destroy()
-			else: # not hitting a note
-				Score.update_points(Score.TimingJudgement.BAD)
+func _input(event):
+	if Input.is_action_just_pressed(input_value):
+		play("Pressed")
+		if current_note:
+			if perfect: # perfect hit
+				Score.update_points(Score.TimingJudgement.PERFECT)
+			elif good: # good hit
+				Score.update_points(Score.TimingJudgement.GOOD)
+			elif ok: # ok hit
+				Score.update_points(Score.TimingJudgement.OK)
+			
+			current_note.get_parent().destroy()
+		else: # not hitting a note
+			Score.update_points(Score.TimingJudgement.BAD)
 
 func _on_ok_area_area_entered(area):
 	if current_note:
@@ -58,3 +58,7 @@ func key_destroyed():
 		current_note.get_parent().destroyed.connect(key_destroyed)
 	elif current_note:
 		current_note = null
+
+func _on_animation_finished():
+	if animation == "Pressed":
+		play("Unpressed")

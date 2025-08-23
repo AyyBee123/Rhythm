@@ -13,7 +13,6 @@ script = ExtResource("2_tw6hx")
 
 [node name="Hold Line Position" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -11)
 
 [node name="Note Area" type="Area2D" parent="."]
 collision_layer = 2

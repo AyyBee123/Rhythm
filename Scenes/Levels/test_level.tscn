@@ -39,7 +39,6 @@ offset_right = -118.0
 offset_bottom = -36.0
 
 [node name="Combo Text" type="Label" parent="GridContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -60,8 +59,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Countdown Timer" type="Timer" parent="."]
+[node name="Beat Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="Song End Timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
-[connection signal="timeout" from="Countdown Timer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="Beat Timer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="Song End Timer" to="." method="_on_song_end_timer_timeout"]

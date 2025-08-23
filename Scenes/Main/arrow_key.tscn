@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://7naud46sk4ru"]
+[gd_scene load_steps=8 format=3 uid="uid://7naud46sk4ru"]
 
+[ext_resource type="Texture2D" uid="uid://4bd0sh8uy0rj" path="res://Sprites/Main/Arrow Hit Point Pressed.png" id="1_m4qfk"]
 [ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="1_sj3n1"]
 [ext_resource type="Script" uid="uid://dgask5nqguv2r" path="res://Scripts/Main/key.gd" id="2_m4qfk"]
 
@@ -7,11 +8,11 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_sj3n1")
+"texture": ExtResource("1_m4qfk")
 }],
 "loop": false,
 "name": &"Pressed",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -33,7 +34,7 @@ size = Vector2(6, 6)
 
 [node name="Arrow Key" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_a4luy")
-animation = &"Pressed"
+animation = &"Unpressed"
 autoplay = "Unpressed"
 script = ExtResource("2_m4qfk")
 
@@ -58,6 +59,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect Area"]
 shape = SubResource("RectangleShape2D_wduar")
 
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="OK Area" to="." method="_on_ok_area_area_entered"]
 [connection signal="area_exited" from="OK Area" to="." method="_on_ok_area_area_exited"]
 [connection signal="area_entered" from="Good Area" to="." method="_on_good_area_area_entered"]

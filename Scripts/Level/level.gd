@@ -59,7 +59,9 @@ var sec_per_beat: float
 var conductor_time := 0.0
 var song_start_time := 0.0
 var song_started := false
+var song_ended := false
 var next_note_spawn_time: float
+var practice_mode := false
 
 func _ready() -> void:
 	notes = NotesData.load_json(file.get_basename() + "_notes.json") # Array of note dictionaries
@@ -70,12 +72,16 @@ func _ready() -> void:
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
-	%"Countdown Timer".wait_time = sec_per_beat
-	%"Countdown Timer".start()
+	%"Beat Timer".wait_time = sec_per_beat
+	%"Beat Timer".start()
 	SignalBus.take_damage.connect(take_damage)
 	# Load the data
 
 func _process(delta) -> void:
+	if song_started and not song_ended and not %AudioStreamPlayer.playing: # song ended
+		song_ended = true
+		$"Song End Timer".start()
+	
 	if not song_started:
 		# Countdown time (negative song time)
 		conductor_time += delta
@@ -89,7 +95,6 @@ func _process(delta) -> void:
 	var travel_time = TIMING_OFFSET
 	
 	if conductor_time >= next_note_spawn_time - travel_time and note_index < notes.size():
-		#print(next_note_spawn_time - travel_time)
 		spawn_arrow(notes[note_index])
 	
 	current_beat = conductor_time / sec_per_beat
@@ -120,15 +125,17 @@ func take_damage() -> void:
 func _on_countdown_timer_timeout():
 	beats_before_start -= 1
 	if beats_before_start > 0:
+		pass
 		#show_countdown_number(beats_before_start) # 3, 2, 1
-		%"Countdown Timer".start()
 	elif beats_before_start == 0:
+		pass
 		#show_go()                                 # GO!
-		%"Countdown Timer".start()
 	elif beats_before_start == -1:
-		%AudioStreamPlayer.play() # Song starts here
+		%AudioStreamPlayer.play() # song starts here
 		song_start_time = conductor_time # align conductor time
 		song_started = true
-		%"Countdown Timer".start()
 	else:
-		%"Countdown Timer".stop()
+		%"Beat Timer".stop()
+
+func _on_song_end_timer_timeout():
+	print("Victory!")
