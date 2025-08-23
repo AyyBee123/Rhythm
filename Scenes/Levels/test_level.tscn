@@ -32,6 +32,34 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -314.0
+offset_top = -120.0
+offset_right = -118.0
+offset_bottom = -36.0
+
+[node name="Combo Text" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_db73o")
+theme_override_font_sizes/font_size = 32
+text = "Combo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Combo" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_db73o")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Countdown Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true

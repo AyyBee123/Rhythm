@@ -95,6 +95,7 @@ func _process(delta) -> void:
 	current_beat = conductor_time / sec_per_beat
 	
 	%Score.text = str(Score.displayed_points)
+	%Combo.text = str(Score.combo)
 
 func spawn_arrow(arrow):
 	var note_data = arrows[int(arrow["key"])]
