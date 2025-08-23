@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="1_7t06c"]
 [ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_b07c4"]
-[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_2ytpj"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_db73o"]
+[ext_resource type="AudioStream" uid="uid://dwlhxlf4vnop6" path="res://Audio/Music/Hall Theme.ogg" id="5_k8g1k"]
 
 [node name="Base Level" type="Node2D"]
 script = ExtResource("1_b07c4")
@@ -11,18 +11,14 @@ up_value = 57
 down_value = 60
 left_value = 62
 right_value = 67
-arrow_texture = "uid://dbwcuetuxkxao"
-file = "res://Audio/Midi/Hall Theme.mid"
-music_file = "uid://dwlhxlf4vnop6"
-
-[node name="MidiPlayer" parent="." instance=ExtResource("2_2ytpj")]
-unique_name_in_owner = true
-file = ""
+file = "res://Audio/Midi/hall_theme.mid"
 
 [node name="Core" parent="." instance=ExtResource("1_7t06c")]
+unique_name_in_owner = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+stream = ExtResource("5_k8g1k")
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true
@@ -36,4 +32,8 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
+[node name="Countdown Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="Countdown Timer" to="." method="_on_countdown_timer_timeout"]

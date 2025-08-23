@@ -8,111 +8,126 @@ extends Node2D
 
 @export var FALLING_SPEED_SCALE: float = 0.5
 
-@export_file("*.png", "*.jpg", "*.jpeg") var arrow_texture: String = ""
 @export_file("*.mid") var file: String = "" # midi file path
-@export_file("*.ogg") var music_file: String = "" # music file path
 
-@onready var notes: Dictionary = {
+@onready var arrows: Dictionary = {
 	up_value: {
 		"key": "up", # key matches the key name in the project settings
 		"rotation": 0, # default rotation of the arrow is pointing up
-		"position": Vector2(0, -1), # the normalized position the arrow spawns in
-		"queue": []
+		"position": Vector2(0, -1) # the normalized position the arrow spawns in
 	},
 	down_value: {
 		"key": "down",
 		"rotation": PI,
-		"position": Vector2(0, 1),
-		"queue": []
+		"position": Vector2(0, 1)
 	},
 	left_value: {
 		"key": "left",
 		"rotation": 3 * PI/2,
-		"position": Vector2(-1, 0),
-		"queue": []
+		"position": Vector2(-1, 0)
 	},
 	right_value: {
 		"key": "right",
 		"rotation": PI/2,
-		"position": Vector2(1, 0),
-		"queue": []
+		"position": Vector2(1, 0)
 	}
 }
 
-@onready var core = $Core
+@onready var core = %Core
 @onready var score = %Score
 
 const ARROW = preload("uid://bpxatk686jj0s")
 
 const NOTE_OFFSET := 340
-const KEY_OFFSET := 40
+const KEY_OFFSET := 48
 const DAMAGE := 2
-var TIMING_OFFSET := 1.0 / FALLING_SPEED_SCALE
+var TIMING_OFFSET := 2.0
 
-var delta_sum := 0.0
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
+var note_index := 0 # the index of the next note to be played
+var notes := [] # Your loaded notes JSON
+
+var bpm: float
+var current_beat := 0.0
+var current_step := 0.0 # = current_beat x 4
+var song_duration: float # in seconds
+var beat_offset: float
+var song_offset: float = 0.1 # in seconds
+var beats_before_start = 4  # "3, 2, 1, GO!"
+var sec_per_beat: float
+
+var conductor_time := 0.0
+var song_start_time := 0.0
+var song_started := false
+var next_note_spawn_time: float
 
 func _ready() -> void:
-	%AudioStreamPlayer.stream = load(music_file)
-	%MidiPlayer.file = file
-	%MidiPlayer.play()
+	notes = NotesData.load_json(file.get_basename() + "_notes.json") # Array of note dictionaries
+	if notes.size() > 0:
+		bpm = notes[0]["tempo"]
+		song_duration = notes[0]["song_duration"]
+		next_note_spawn_time = notes[0]["start_time"]
+	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
+	sec_per_beat = 60.0 / bpm
+	conductor_time = -(beats_before_start + 1) * sec_per_beat
+	%"Countdown Timer".wait_time = sec_per_beat
+	%"Countdown Timer".start()
 	SignalBus.take_damage.connect(take_damage)
+	# Load the data
 
 func _process(delta) -> void:
-	_check_input()
-	_check_missed_notes()
-	
-	delta_sum += delta
-	
-	if delta_sum >= TIMING_OFFSET and not played:
-		played = true
-		%AudioStreamPlayer.play()
-	
-	%Score.text = str(Highscore.displayed_points)
-
-func _check_input() -> void:
-	for note_data in notes.values():
-		if Input.is_action_just_pressed(note_data["key"]):
-			_check_note_hit(note_data)
-
-func _check_note_hit(note_data: Dictionary) -> void:
-	if not note_data["queue"].is_empty():
-		var next_note: Node2D = note_data["queue"].front()
-		if next_note.test_hit(delta_sum):
-			note_data["queue"].pop_front().hit(delta_sum)
-		else:
-			# too early
-			take_damage()
-			Highscore.update_points(Highscore.TimingJudgement.WHAT)
+	if not song_started:
+		# Countdown time (negative song time)
+		conductor_time += delta
 	else:
-		# no notes in the queue
-		take_damage()
-		Highscore.update_points(Highscore.TimingJudgement.WHAT)
+		# Actual music time, synced with AudioStreamPlayer
+		var playback_time = %AudioStreamPlayer.get_playback_position() \
+			+ AudioServer.get_time_since_last_mix() \
+			- AudioServer.get_output_latency()
+		conductor_time = playback_time + song_start_time
+	
+	var travel_time = TIMING_OFFSET
+	
+	if conductor_time >= next_note_spawn_time - travel_time and note_index < notes.size():
+		#print(next_note_spawn_time - travel_time)
+		spawn_arrow(notes[note_index])
+	
+	current_beat = conductor_time / sec_per_beat
+	
+	%Score.text = str(Score.displayed_points)
 
-func _check_missed_notes() -> void:
-	for note_data in notes.values():
-		if not note_data["queue"].is_empty():
-			if note_data["queue"].front().test_miss(delta_sum):
-				note_data["queue"].pop_front().miss()
+func spawn_arrow(arrow):
+	var note_data = arrows[int(arrow["key"])]
+	var note = ARROW.instantiate()
+	note.global_position = note_data["position"] * (NOTE_OFFSET + KEY_OFFSET)
+	note.direction = -note_data["position"]
+	note.rotation = note_data["rotation"]
+	note.key = note_data["key"]
+	note.speed = NOTE_OFFSET * FALLING_SPEED_SCALE
+	#note.expected_time = delta_sum + TIMING_OFFSET
+	note.is_hold_note = notes[note_index]["hold"]
+	note.hold_duration = notes[note_index]["duration"]
+	note.core = core
+	add_child(note)
+	note_index += 1
+	if note_index < notes.size():
+		next_note_spawn_time = notes[note_index]["start_time"]
 
 func take_damage() -> void:
 	print("ouch")
 
-func _on_midi_player_midi_event(channel: Variant, event: Variant) -> void:
-	if event.type == SMF.MIDIEventType.note_on:
-		if OS.has_feature("editor"):
-			print(event.note)
-		
-		var note_data = notes.get(event.note)
-		if note_data:
-			var note = ARROW.instantiate()
-			note.global_position = note_data["position"] * (NOTE_OFFSET + KEY_OFFSET)
-			note.direction = -note_data["position"]
-			note.rotation = note_data["rotation"]
-			note.key = note_data["key"]
-			note.texture = load(arrow_texture)
-			note.speed = NOTE_OFFSET * FALLING_SPEED_SCALE
-			note.expected_time = delta_sum + TIMING_OFFSET
-			note.core = core
-			note_data["queue"].push_back(note)
-			add_child(note)
+func _on_countdown_timer_timeout():
+	beats_before_start -= 1
+	if beats_before_start > 0:
+		#show_countdown_number(beats_before_start) # 3, 2, 1
+		%"Countdown Timer".start()
+	elif beats_before_start == 0:
+		#show_go()                                 # GO!
+		%"Countdown Timer".start()
+	elif beats_before_start == -1:
+		%AudioStreamPlayer.play() # Song starts here
+		song_start_time = conductor_time # align conductor time
+		song_started = true
+		%"Countdown Timer".start()
+	else:
+		%"Countdown Timer".stop()

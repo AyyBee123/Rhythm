@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://7naud46sk4ru"]
+
+[ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="1_sj3n1"]
+[ext_resource type="Script" uid="uid://dgask5nqguv2r" path="res://Scripts/Main/key.gd" id="2_m4qfk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4luy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sj3n1")
+}],
+"loop": false,
+"name": &"Pressed",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sj3n1")
+}],
+"loop": true,
+"name": &"Unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj3n1"]
+size = Vector2(6, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qfk"]
+size = Vector2(6, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wduar"]
+size = Vector2(6, 6)
+
+[node name="Arrow Key" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_a4luy")
+animation = &"Pressed"
+autoplay = "Unpressed"
+script = ExtResource("2_m4qfk")
+
+[node name="OK Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OK Area"]
+shape = SubResource("RectangleShape2D_sj3n1")
+
+[node name="Good Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Good Area"]
+shape = SubResource("RectangleShape2D_m4qfk")
+
+[node name="Perfect Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect Area"]
+shape = SubResource("RectangleShape2D_wduar")
+
+[connection signal="area_entered" from="OK Area" to="." method="_on_ok_area_area_entered"]
+[connection signal="area_exited" from="OK Area" to="." method="_on_ok_area_area_exited"]
+[connection signal="area_entered" from="Good Area" to="." method="_on_good_area_area_entered"]
+[connection signal="area_exited" from="Good Area" to="." method="_on_good_area_area_exited"]
+[connection signal="area_entered" from="Perfect Area" to="." method="_on_perfect_area_area_entered"]
+[connection signal="area_exited" from="Perfect Area" to="." method="_on_perfect_area_area_exited"]

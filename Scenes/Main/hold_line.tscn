@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxbeljxnd4150"]
+
+[ext_resource type="Texture2D" uid="uid://cj35rxa6pwmey" path="res://Sprites/Main/Hold Note Line.png" id="1_yrba5"]
+[ext_resource type="Script" uid="uid://l5eddgm0ewag" path="res://Scripts/Main/hold_line.gd" id="2_55u78"]
+
+[node name="Hold Line" type="Sprite2D"]
+texture = ExtResource("1_yrba5")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_55u78")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcbyemcje33v8"
-path="res://.godot/imported/icon.png-7f71c46195796023d786f07146eb6c8b.ctex"
+uid="uid://cj35rxa6pwmey"
+path="res://.godot/imported/Hold Note Line.png-0746d41a4a8ae85269b13a7dd38155d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/midi/icon.png"
-dest_files=["res://.godot/imported/icon.png-7f71c46195796023d786f07146eb6c8b.ctex"]
+source_file="res://Sprites/Main/Hold Note Line.png"
+dest_files=["res://.godot/imported/Hold Note Line.png-0746d41a4a8ae85269b13a7dd38155d7.ctex"]
 
 [params]
 

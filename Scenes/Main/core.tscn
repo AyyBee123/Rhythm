@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=7 format=3 uid="uid://dlfn1yh41pr7o"]
 
 [ext_resource type="Texture2D" uid="uid://b1gy43vokkbgk" path="res://Sprites/Main/Center.png" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/key_listener.gd" id="2_qw60k"]
-[ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="3_qw60k"]
+[ext_resource type="PackedScene" uid="uid://7naud46sk4ru" path="res://Scenes/Main/arrow_key.tscn" id="3_xj0vw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lixft"]
 atlas = ExtResource("1_1r6ip")
@@ -24,6 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj0vw"]
+radius = 24.0
+
 [node name="Core" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_qw60k")
 animation = &"Idle"
@@ -35,50 +38,56 @@ script = ExtResource("2_qw60k")
 [node name="Line Up" type="Line2D" parent="."]
 position = Vector2(0, 11.3916)
 scale = Vector2(1, 1.06294)
-points = PackedVector2Array(0, -180, 0, -39)
+points = PackedVector2Array(0, -180, 0, -44.5854)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Down" type="Line2D" parent="."]
 position = Vector2(0, 1.18301)
 scale = Vector2(1, 0.993464)
-points = PackedVector2Array(0, 180, 0, 29)
+points = PackedVector2Array(0, 180, 0, 35.0461)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Left" type="Line2D" parent="."]
 position = Vector2(1.10309, 0)
 scale = Vector2(1.00344, 1)
-points = PackedVector2Array(-320, 0, -31, 0)
+points = PackedVector2Array(-320, 0, -36.9759, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Right" type="Line2D" parent="."]
 position = Vector2(1.09556, 0)
 scale = Vector2(0.996587, 1)
-points = PackedVector2Array(320, 0, 29, 0)
+points = PackedVector2Array(320, 0, 35.024, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
-[node name="Up" type="Sprite2D" parent="."]
+[node name="Up" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(0, -40)
-texture = ExtResource("3_qw60k")
+position = Vector2(0, -48)
+input_value = "up"
 
-[node name="Down" type="Sprite2D" parent="."]
+[node name="Down" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(0, 40)
+position = Vector2(0, 48)
 rotation = 3.14159
-texture = ExtResource("3_qw60k")
+input_value = "down"
 
-[node name="Left" type="Sprite2D" parent="."]
+[node name="Left" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(-40, 0)
+position = Vector2(-48, 0)
 rotation = 4.71239
-texture = ExtResource("3_qw60k")
+input_value = "left"
 
-[node name="Right" type="Sprite2D" parent="."]
+[node name="Right" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(40, 0)
+position = Vector2(48, 0)
 rotation = 1.5708
-texture = ExtResource("3_qw60k")
+input_value = "right"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_xj0vw")

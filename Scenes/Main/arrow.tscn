@@ -1,8 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpxatk686jj0s"]
+[gd_scene load_steps=4 format=3 uid="uid://bpxatk686jj0s"]
 
 [ext_resource type="Texture2D" uid="uid://dbwcuetuxkxao" path="res://Sprites/Main/Arrow.png" id="1_ix1m2"]
 [ext_resource type="Script" uid="uid://dcg43ypkyeqbd" path="res://Scripts/Main/arrow.gd" id="2_tw6hx"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aba5j"]
+size = Vector2(6, 6)
+
 [node name="Arrow" type="Sprite2D"]
+z_index = 5
 texture = ExtResource("1_ix1m2")
 script = ExtResource("2_tw6hx")
+
+[node name="Hold Line Position" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -11)
+
+[node name="Note Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note Area"]
+shape = SubResource("RectangleShape2D_aba5j")
+
+[connection signal="area_entered" from="Note Area" to="." method="_on_note_area_area_entered"]

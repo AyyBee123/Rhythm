@@ -2,7 +2,7 @@ extends Node
 
 var points = 0
 var displayed_points = 0
-enum TimingJudgement { MISS, WHAT, OK, GOOD, PERFECT }
+enum TimingJudgement { MISS, BAD, OK, GOOD, PERFECT }
 
 func _process(delta: float) -> void:
 	update_displayed_points()
@@ -11,7 +11,7 @@ func update_points(type: TimingJudgement):
 	match(type):
 		TimingJudgement.MISS:
 			points += 0
-		TimingJudgement.WHAT:
+		TimingJudgement.BAD:
 			points += 0
 		TimingJudgement.OK:
 			points += 10
