@@ -1,8 +1,10 @@
 extends AnimatedSprite2D
 
+@export var on_beat_frame := 3 # the frame that syncs with the music's beat
+
 @onready var level = get_tree().current_scene
 
-const HIT_TEXT = preload("res://Scenes/Main/hit_text.tscn")
+const HIT_TEXT = preload("uid://b8ldvl62w53uf")
 
 func _ready():
 	%Up.position = Vector2.UP * level.KEY_OFFSET
@@ -11,6 +13,11 @@ func _ready():
 	%Right.position = Vector2.RIGHT * level.KEY_OFFSET
 	
 	SignalBus.note_hit.connect(spawn_text)
+
+func _process(delta):
+	var frames = sprite_frames.get_frame_count("Idle")
+	var _frame = int(fposmod(level.current_beat * frames + (frames - on_beat_frame), frames))
+	frame = _frame
 
 func spawn_text(text: String):
 	var hit = HIT_TEXT.instantiate()

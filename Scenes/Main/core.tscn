@@ -1,12 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=10 format=3 uid="uid://dlfn1yh41pr7o"]
 
-[ext_resource type="Texture2D" uid="uid://b1gy43vokkbgk" path="res://Sprites/Main/Center.png" id="1_1r6ip"]
+[ext_resource type="Texture2D" uid="uid://dmf7qwtv4aqym" path="res://Sprites/Main/Core.png" id="1_xj0vw"]
 [ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/key_listener.gd" id="2_qw60k"]
 [ext_resource type="PackedScene" uid="uid://7naud46sk4ru" path="res://Scenes/Main/arrow_key.tscn" id="3_xj0vw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lixft"]
-atlas = ExtResource("1_1r6ip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcvkb"]
+atlas = ExtResource("1_xj0vw")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bybk7"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57kve"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yydm"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qw60k"]
 animations = [{
@@ -17,11 +29,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lixft")
+"texture": SubResource("AtlasTexture_pcvkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bybk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57kve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yydm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57kve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bybk7")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xj0vw"]
@@ -31,6 +58,7 @@ radius = 24.0
 sprite_frames = SubResource("SpriteFrames_qw60k")
 animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.0159904
 script = ExtResource("2_qw60k")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwg5k2cqva6wn"]
+[gd_scene load_steps=8 format=3 uid="uid://dwg5k2cqva6wn"]
 
 [ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="1_7t06c"]
 [ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_b07c4"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dwlhxlf4vnop6" path="res://Audio/Music/Hall Theme.ogg" id="5_k8g1k"]
 [ext_resource type="AudioStream" uid="uid://72wua5mxt6ea" path="res://Audio/SFX/Countdown Snare.ogg" id="5_x4x4f"]
 [ext_resource type="AudioStream" uid="uid://bc0p0kj7wnnm2" path="res://Audio/SFX/GO Snare.ogg" id="6_l7ek2"]
+[ext_resource type="Script" uid="uid://dd1day6am8d4l" path="res://Scripts/UI/pause_menu.gd" id="7_x4x4f"]
 
 [node name="Base Level" type="Node2D"]
 script = ExtResource("1_b07c4")
@@ -13,7 +14,7 @@ up_value = 57
 down_value = 60
 left_value = 62
 right_value = 67
-file = "res://Audio/Midi/hall_theme.mid"
+file = "res://Audio/Midi/hall_theme_notes.json"
 
 [node name="Core" parent="." instance=ExtResource("1_7t06c")]
 unique_name_in_owner = true
@@ -65,10 +66,6 @@ vertical_alignment = 1
 [node name="Beat Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="Song End Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="Countdown Sound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_x4x4f")
@@ -79,5 +76,8 @@ unique_name_in_owner = true
 stream = ExtResource("6_l7ek2")
 volume_db = -4.0
 
+[node name="Pause Handler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("7_x4x4f")
+
 [connection signal="timeout" from="Beat Timer" to="." method="_on_countdown_timer_timeout"]
-[connection signal="timeout" from="Song End Timer" to="." method="_on_song_end_timer_timeout"]

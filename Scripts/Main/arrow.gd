@@ -11,7 +11,7 @@ var expected_time: float = 0.0
 var hold_duration: float
 var is_hold_note: bool
 
-const HOLD_LINE = preload("res://Scenes/Main/hold_line.tscn")
+const HOLD_LINE = preload("uid://dxbeljxnd4150")
 
 const TIME_TOLERANCE := {
 	"PERFECT": 0.02,

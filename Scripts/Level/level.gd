@@ -8,7 +8,7 @@ extends Node2D
 
 @export var FALLING_SPEED_SCALE: float = 0.5
 
-@export_file("*.mid") var file: String = "" # midi file path
+@export_file("*.json") var file: String = "" # json notes file path
 
 @onready var arrows: Dictionary = {
 	up_value: {
@@ -65,7 +65,7 @@ var next_note_spawn_time: float
 var practice_mode := false
 
 func _ready() -> void:
-	notes = NotesData.load_json(file.get_basename() + "_notes.json") # Array of note dictionaries
+	notes = NotesData.load_json(file) # Array of note dictionaries
 	if notes.size() > 0:
 		bpm = notes[0]["tempo"]
 		song_duration = notes[0]["song_duration"]
@@ -81,17 +81,20 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if song_started and not song_ended and not %AudioStreamPlayer.playing: # song ended
 		song_ended = true
-		$"Song End Timer".start()
+		after_victory()
 	
 	if not song_started:
-		# Countdown time (negative song time)
+		# countdown time (negative song time)
 		conductor_time += delta
-	else:
+	elif song_started and not song_ended:
 		# Actual music time, synced with AudioStreamPlayer
 		var playback_time = %AudioStreamPlayer.get_playback_position() \
-			+ AudioServer.get_time_since_last_mix() \
-			- AudioServer.get_output_latency()
+				+ AudioServer.get_time_since_last_mix() \
+				- AudioServer.get_output_latency()
 		conductor_time = playback_time + song_start_time
+	else:
+		# go back to delta time (for objects that sync with the beat)
+		conductor_time += delta
 	
 	var travel_time = TIMING_OFFSET
 	
@@ -104,6 +107,13 @@ func _process(delta) -> void:
 	%Combo.text = str(Score.combo)
 
 func spawn_arrow(arrow):
+	if not arrows.has(int(arrow["key"])):
+		note_index += 1
+		if note_index < notes.size():
+			next_note_spawn_time = notes[note_index]["start_time"]
+			bpm = notes[note_index]["tempo"]
+			sec_per_beat = 60.0 / bpm
+		return
 	var note_data = arrows[int(arrow["key"])]
 	var note = ARROW.instantiate()
 	note.global_position = note_data["position"] * (NOTE_OFFSET + KEY_OFFSET)
@@ -119,6 +129,8 @@ func spawn_arrow(arrow):
 	note_index += 1
 	if note_index < notes.size():
 		next_note_spawn_time = notes[note_index]["start_time"]
+		bpm = notes[note_index]["tempo"]
+		sec_per_beat = 60.0 / bpm
 
 func take_damage() -> void:
 	print("ouch")
@@ -150,5 +162,5 @@ func show_go():
 	add_child(text)
 	%"Go Sound".play()
 
-func _on_song_end_timer_timeout():
+func after_victory():
 	print("Victory!")

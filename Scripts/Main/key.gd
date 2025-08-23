@@ -10,7 +10,7 @@ var perfect: bool = false
 var good: bool = false
 var ok: bool = false
 
-func _input(event):
+func _unhandled_input(event):
 	if not level.song_started or level.song_ended:
 		return
 	if Input.is_action_just_pressed(input_value):
