@@ -63,10 +63,6 @@ for i, track in enumerate(midi_file.tracks):
 # Sort notes by start_time
 notes.sort(key=lambda note: note['start_time'])
 
-# Add total song duration to each note dictionary
-for note in notes:
-    note["song_duration"] = max_time
-
 # Save JSON using MIDI filename as prefix
 base_name = os.path.splitext(os.path.basename(midi_filename))[0]
 with open(f"{base_name}_notes.json", "w") as f:

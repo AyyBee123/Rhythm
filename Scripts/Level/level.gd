@@ -66,9 +66,9 @@ var practice_mode := false
 
 func _ready() -> void:
 	notes = NotesData.load_json(file) # Array of note dictionaries
+	song_duration = %AudioStreamPlayer.stream.get_length()
 	if notes.size() > 0:
 		bpm = notes[0]["tempo"]
-		song_duration = notes[0]["song_duration"]
 		next_note_spawn_time = notes[0]["start_time"]
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
