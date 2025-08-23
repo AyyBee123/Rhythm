@@ -22,7 +22,6 @@ func _input(event):
 				Score.update_points(Score.TimingJudgement.GOOD)
 			elif ok: # ok hit
 				Score.update_points(Score.TimingJudgement.OK)
-			
 			current_note.get_parent().destroy()
 		else: # not hitting a note
 			Score.update_points(Score.TimingJudgement.BAD)

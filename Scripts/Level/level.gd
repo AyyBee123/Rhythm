@@ -40,7 +40,7 @@ const ARROW = preload("uid://bpxatk686jj0s")
 const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 
 const NOTE_OFFSET := 340
-const KEY_OFFSET := 48
+const KEY_OFFSET := 40
 const DAMAGE := 2
 var TIMING_OFFSET := 2.0
 

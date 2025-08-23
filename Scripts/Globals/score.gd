@@ -26,26 +26,31 @@ func _process(delta: float) -> void:
 func update_points(type: TimingJudgement):
 	match type:
 		TimingJudgement.MISS:
+			Game.audio_manager.miss.play()
 			SignalBus.note_hit.emit("Miss")
 			points += 0
 			combo = 0
 			miss_count += 1
 		TimingJudgement.BAD:
+			Game.audio_manager.miss.play()
 			SignalBus.note_hit.emit("Bad")
 			points += 0
 			combo = 0
 			bad_count += 1
 		TimingJudgement.OK:
+			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Okay")
 			points += 10
 			combo += 1
 			ok_count += 1
 		TimingJudgement.GOOD:
+			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Good")
 			points += 12
 			combo += 1
 			good_count += 1
 		TimingJudgement.PERFECT:
+			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Perfect")
 			points += 15
 			combo += 1
