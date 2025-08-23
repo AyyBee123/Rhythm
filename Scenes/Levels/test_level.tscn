@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwg5k2cqva6wn"]
+[gd_scene load_steps=7 format=3 uid="uid://dwg5k2cqva6wn"]
 
 [ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="1_7t06c"]
 [ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_b07c4"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_db73o"]
 [ext_resource type="AudioStream" uid="uid://dwlhxlf4vnop6" path="res://Audio/Music/Hall Theme.ogg" id="5_k8g1k"]
+[ext_resource type="AudioStream" uid="uid://72wua5mxt6ea" path="res://Audio/SFX/Countdown Snare.ogg" id="5_x4x4f"]
+[ext_resource type="AudioStream" uid="uid://bc0p0kj7wnnm2" path="res://Audio/SFX/GO Snare.ogg" id="6_l7ek2"]
 
 [node name="Base Level" type="Node2D"]
 script = ExtResource("1_b07c4")
@@ -19,6 +21,7 @@ unique_name_in_owner = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_k8g1k")
+bus = &"Music"
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true
@@ -65,6 +68,16 @@ unique_name_in_owner = true
 [node name="Song End Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Countdown Sound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_x4x4f")
+volume_db = -4.0
+
+[node name="Go Sound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_l7ek2")
+volume_db = -4.0
 
 [connection signal="timeout" from="Beat Timer" to="." method="_on_countdown_timer_timeout"]
 [connection signal="timeout" from="Song End Timer" to="." method="_on_song_end_timer_timeout"]

@@ -2,6 +2,8 @@ extends AnimatedSprite2D
 
 @export var input_value: String
 
+@onready var level = get_tree().current_scene
+
 var current_note: Node2D = null
 var queue: Array # if a note enters while there is another note already in the key, add it here
 var perfect: bool = false
@@ -9,6 +11,8 @@ var good: bool = false
 var ok: bool = false
 
 func _input(event):
+	if not level.song_started or level.song_ended:
+		return
 	if Input.is_action_just_pressed(input_value):
 		play("Pressed")
 		if current_note:

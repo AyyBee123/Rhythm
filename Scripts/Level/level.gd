@@ -37,6 +37,7 @@ extends Node2D
 @onready var score = %Score
 
 const ARROW = preload("uid://bpxatk686jj0s")
+const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 
 const NOTE_OFFSET := 340
 const KEY_OFFSET := 48
@@ -125,17 +126,29 @@ func take_damage() -> void:
 func _on_countdown_timer_timeout():
 	beats_before_start -= 1
 	if beats_before_start > 0:
-		pass
-		#show_countdown_number(beats_before_start) # 3, 2, 1
+		show_countdown_number(beats_before_start) # 3, 2, 1
 	elif beats_before_start == 0:
-		pass
-		#show_go()                                 # GO!
+		show_go() # GO!
 	elif beats_before_start == -1:
 		%AudioStreamPlayer.play() # song starts here
 		song_start_time = conductor_time # align conductor time
 		song_started = true
 	else:
 		%"Beat Timer".stop()
+
+func show_countdown_number(num):
+	var text = COUNTDOWN_TEXT.instantiate()
+	text.lifetime = sec_per_beat / 2
+	text.get_node("%Text").text = str(num)
+	add_child(text)
+	%"Countdown Sound".play()
+
+func show_go():
+	var text = COUNTDOWN_TEXT.instantiate()
+	text.lifetime = sec_per_beat / 2
+	text.get_node("%Text").text = str("GO!")
+	add_child(text)
+	%"Go Sound".play()
 
 func _on_song_end_timer_timeout():
 	print("Victory!")
