@@ -51,7 +51,7 @@ func update_points(type: TimingJudgement):
 	match type:
 		TimingJudgement.MISS:
 			SignalBus.note_hit.emit("Miss")
-			SignalBus.take_damage.emit()
+			SignalBus.health_changed.emit(-4)
 			combo = 0
 			miss_count += 1
 			full_combo = false
@@ -59,7 +59,7 @@ func update_points(type: TimingJudgement):
 		TimingJudgement.BAD:
 			Game.audio_manager.miss.play()
 			SignalBus.note_hit.emit("Bad")
-			SignalBus.take_damage.emit()
+			SignalBus.health_changed.emit(-4)
 			combo = 0
 			bad_count += 1
 			full_combo = false
@@ -75,6 +75,7 @@ func update_points(type: TimingJudgement):
 		TimingJudgement.GOOD:
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Good")
+			SignalBus.health_changed.emit(1)
 			points += 12 * combo_multi
 			combo += 1
 			good_count += 1
@@ -83,6 +84,7 @@ func update_points(type: TimingJudgement):
 		TimingJudgement.PERFECT:
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Perfect")
+			SignalBus.health_changed.emit(2)
 			points += 15 * combo_multi
 			combo += 1
 			perfect_count += 1

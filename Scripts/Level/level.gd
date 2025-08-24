@@ -42,13 +42,11 @@ const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 const NOTE_OFFSET := 200
 const KEY_OFFSET := 40
 const DAMAGE := 2
-const MAX_HEALTH := 100
 var TIMING_OFFSET := 2.0
 
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
 var note_index := 0 # the index of the next note to be played
 var notes := [] # Your loaded notes JSON
-var health := MAX_HEALTH
 
 var bpm: float
 var current_beat := 0.0
@@ -91,7 +89,6 @@ func _ready() -> void:
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
-	SignalBus.take_damage.connect(take_damage)
 
 func _process(delta) -> void:
 	if song_started and not song_ended and not %AudioStreamPlayer.playing: # song ended
@@ -151,14 +148,6 @@ func spawn_arrow(arrow):
 		next_note_spawn_time = notes[note_index]["start_time"]
 		bpm = notes[note_index]["tempo"]
 		sec_per_beat = 60.0 / bpm
-
-func change_health(amount):
-	health += amount
-	health = clamp(health, 0, MAX_HEALTH)
-	print(amount)
-
-func take_damage() -> void:
-	%Core.change_color()
 
 func _on_countdown_timer_timeout():
 	beats_before_start -= 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=14 format=3 uid="uid://dlfn1yh41pr7o"]
 
 [ext_resource type="Shader" uid="uid://6c261ogdqyjn" path="res://Shaders/color_tint.gdshader" id="1_pcvkb"]
 [ext_resource type="Texture2D" uid="uid://dmf7qwtv4aqym" path="res://Sprites/Main/Core.png" id="1_xj0vw"]
-[ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/key_listener.gd" id="2_qw60k"]
+[ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/core.gd" id="2_qw60k"]
 [ext_resource type="PackedScene" uid="uid://7naud46sk4ru" path="res://Scenes/Main/arrow_key.tscn" id="3_xj0vw"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_bybk7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bybk7"]
 shader = ExtResource("1_pcvkb")
@@ -64,24 +65,29 @@ animation = &"Idle"
 autoplay = "Idle"
 script = ExtResource("2_qw60k")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Line Up" type="Line2D" parent="."]
+unique_name_in_owner = true
 points = PackedVector2Array(0, -180, 0, -36)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Down" type="Line2D" parent="."]
+unique_name_in_owner = true
 points = PackedVector2Array(0, 180, 0, 36)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Left" type="Line2D" parent="."]
+unique_name_in_owner = true
 points = PackedVector2Array(-180, 0, -36, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Right" type="Line2D" parent="."]
+unique_name_in_owner = true
 points = PackedVector2Array(180, 0, 36, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
@@ -110,7 +116,31 @@ rotation = 1.5708
 input_value = "right"
 
 [node name="Hitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_xj0vw")
+
+[node name="Health" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.091
+anchor_top = 0.69
+anchor_right = 0.955
+anchor_bottom = 1.238
+offset_left = -22.004
+offset_top = -20.98
+offset_right = -22.02
+offset_bottom = -20.996
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("5_bybk7")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
