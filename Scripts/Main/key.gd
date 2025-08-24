@@ -18,6 +18,9 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed(input_value):
 		%AnimatedSprite2D.play("Pressed")
 		if current_note:
+			current_note.get_parent().key = input_value
+			current_note.get_parent().button = self
+			
 			if perfect: # perfect hit
 				Score.update_points(Score.TimingJudgement.PERFECT)
 				current_note.get_parent().points_earned = Score.TimingJudgement.PERFECT
@@ -27,6 +30,7 @@ func _unhandled_input(event):
 			elif good: # good hit
 				Score.update_points(Score.TimingJudgement.GOOD)
 				current_note.get_parent().points_earned = Score.TimingJudgement.GOOD
+			
 			var fade = ARROW_FADE.instantiate()
 			fade.global_position = global_position
 			fade.rotation = rotation

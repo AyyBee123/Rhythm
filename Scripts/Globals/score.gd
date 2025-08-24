@@ -1,6 +1,8 @@
 extends Node
 
-var points := 0
+var points := 0:
+	set(value):
+		points = max(value, 0)
 var displayed_points := 0
 var combo := 0
 var hit_count := 0
@@ -61,7 +63,6 @@ func update_points(type: TimingJudgement):
 			points += 50 * combo_multi
 			combo += 1
 			good_count += 1
-			hit_count += 1
 			update_combo_multipier()
 		TimingJudgement.GREAT:
 			Game.audio_manager.hit.play()
@@ -70,7 +71,6 @@ func update_points(type: TimingJudgement):
 			points += 75 * combo_multi
 			combo += 1
 			great_count += 1
-			hit_count += 1
 			update_combo_multipier()
 		TimingJudgement.PERFECT:
 			Game.audio_manager.hit.play()
@@ -79,10 +79,27 @@ func update_points(type: TimingJudgement):
 			points += 100 * combo_multi
 			combo += 1
 			perfect_count += 1
-			hit_count += 1
 			update_combo_multipier()
 
+func update_hold_note_points(type: TimingJudgement):
+	match type:
+		TimingJudgement.PERFECT:
+			SignalBus.note_hit.emit("Perfect")
+			SignalBus.health_changed.emit(1)
+			points += 100 * combo_multi
+			combo += 1
+			perfect_count += 1
+			update_combo_multipier()
+		TimingJudgement.MISS:
+			SignalBus.note_hit.emit("Miss")
+			SignalBus.health_changed.emit(-2)
+			combo = 0
+			miss_count += 1
+			full_combo = false
+			decrease_combo_multiplier()
+
 func update_combo_multipier():
+	hit_count += 1
 	if combo_multi == COMBO_MULTIPLIERS[-1]: # max combo reached
 		return
 	var index = COMBO_MULTIPLIERS.find(combo_multi)

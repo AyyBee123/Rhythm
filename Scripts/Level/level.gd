@@ -6,7 +6,7 @@ extends Node2D
 @export var left_value: int
 @export var right_value: int
 
-@export var FALLING_SPEED_SCALE: float = 0.5
+@export var FALLING_SPEED_SCALE: float = 1.0
 
 @export_file("*.json") var file: String = "" # json notes file path
 
@@ -42,6 +42,7 @@ const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 const NOTE_OFFSET := 200
 const KEY_OFFSET := 40
 const DAMAGE := 2
+const HALF_STEP := 0.5
 var TIMING_OFFSET := 2.0
 
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
@@ -51,7 +52,6 @@ var notes := [] # Your loaded notes JSON
 var bpm: float
 var current_beat := 0.0
 var last_beat := 0
-var current_step := 0.0 # = current_beat x 4
 var song_duration: float # in seconds
 var beat_offset: float
 var song_offset: float = 0.1 # in seconds
