@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://cl3i8h0qebsxl"]
+
+[ext_resource type="Texture2D" uid="uid://4bd0sh8uy0rj" path="res://Sprites/Main/Arrow Hit Point Pressed.png" id="1_mt0g0"]
+[ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="2_7qmtv"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mt0g0")
+}],
+"loop": false,
+"name": &"Pressed",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7qmtv")
+}],
+"loop": true,
+"name": &"Unpressed",
+"speed": 5.0
+}]

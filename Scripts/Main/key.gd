@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Node2D
 
 @export var input_value: String
 
@@ -16,7 +16,7 @@ func _unhandled_input(event):
 	if not level.song_started or level.song_ended:
 		return
 	if Input.is_action_just_pressed(input_value):
-		play("Pressed")
+		%AnimatedSprite2D.play("Pressed")
 		if current_note:
 			if perfect: # perfect hit
 				Score.update_points(Score.TimingJudgement.PERFECT)
@@ -30,6 +30,7 @@ func _unhandled_input(event):
 			var fade = ARROW_FADE.instantiate()
 			fade.global_position = global_position
 			fade.rotation = rotation
+			%AnimationPlayer.play("Pulse")
 			get_tree().current_scene.add_child(fade)
 			current_note.get_parent().destroy()
 		else: # not hitting a note
@@ -72,5 +73,5 @@ func key_destroyed():
 		current_note = null
 
 func _on_animation_finished():
-	if animation == "Pressed":
-		play("Unpressed")
+	if %AnimatedSprite2D.animation == "Pressed":
+		%AnimatedSprite2D.play("Unpressed")

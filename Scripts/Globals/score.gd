@@ -28,18 +28,8 @@ enum TimingJudgement {
 	PERFECT
 }
 
-enum Ranks {
-	P,
-	SS,
-	S,
-	A,
-	B,
-	C,
-	D
-}
-
-const COMBO_MULTIPLIERS = [1, 2, 4, 8]
-const COMBO_THRESHOLDS = [0, 2, 4, 8]
+const COMBO_MULTIPLIERS = [1, 2, 3, 4, 5]
+const COMBO_THRESHOLDS = [0, 2, 6, 8, 15]
 
 func _ready():
 	SignalBus.arrow_destroyed.connect(get_accuracy_points)
@@ -60,6 +50,7 @@ func update_points(type: TimingJudgement):
 			Game.audio_manager.miss.play()
 			SignalBus.note_hit.emit("Bad")
 			SignalBus.health_changed.emit(-4)
+			points -= 10
 			combo = 0
 			bad_count += 1
 			full_combo = false
@@ -67,7 +58,7 @@ func update_points(type: TimingJudgement):
 		TimingJudgement.GOOD:
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Good")
-			points += 5 * combo_multi
+			points += 50 * combo_multi
 			combo += 1
 			good_count += 1
 			hit_count += 1
@@ -76,7 +67,7 @@ func update_points(type: TimingJudgement):
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Great")
 			SignalBus.health_changed.emit(1)
-			points += 8 * combo_multi
+			points += 75 * combo_multi
 			combo += 1
 			great_count += 1
 			hit_count += 1
@@ -85,7 +76,7 @@ func update_points(type: TimingJudgement):
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Perfect")
 			SignalBus.health_changed.emit(2)
-			points += 10 * combo_multi
+			points += 100 * combo_multi
 			combo += 1
 			perfect_count += 1
 			hit_count += 1

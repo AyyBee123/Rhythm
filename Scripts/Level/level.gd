@@ -50,6 +50,7 @@ var notes := [] # Your loaded notes JSON
 
 var bpm: float
 var current_beat := 0.0
+var last_beat := 0
 var current_step := 0.0 # = current_beat x 4
 var song_duration: float # in seconds
 var beat_offset: float
@@ -87,6 +88,8 @@ func _ready() -> void:
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
+	current_beat = conductor_time / sec_per_beat
+	last_beat = int(current_beat) + 1 # +1 to prevent a pulse at the very start of the level
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
 
@@ -114,6 +117,10 @@ func _process(delta) -> void:
 		spawn_arrow(notes[note_index])
 	
 	current_beat = conductor_time / sec_per_beat
+	
+	if int(current_beat) != last_beat: # for anything that "pulses" to the beat
+		last_beat = int(current_beat)
+		SignalBus.pulse.emit()
 	
 	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
 	%Combo.text = Utils.format_number_with_commas(Score.combo)

@@ -18,6 +18,6 @@ func _process(delta):
 	
 	# Always center the region vertically
 	var region_pos = Vector2(0, (full_height - region_height) / 2.0)
-	var region_size = Vector2(tex_size.x, region_height)
+	var region_size = Vector2(region_height, tex_size.y)
 	
 	region_rect = Rect2(region_pos, region_size)

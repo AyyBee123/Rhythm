@@ -1,49 +1,70 @@
-[gd_scene load_steps=8 format=3 uid="uid://7naud46sk4ru"]
+[gd_scene load_steps=9 format=3 uid="uid://7naud46sk4ru"]
 
-[ext_resource type="Texture2D" uid="uid://4bd0sh8uy0rj" path="res://Sprites/Main/Arrow Hit Point Pressed.png" id="1_m4qfk"]
-[ext_resource type="Texture2D" uid="uid://cyemseql41f45" path="res://Sprites/Main/Arrow Hit Point.png" id="1_sj3n1"]
 [ext_resource type="Script" uid="uid://dgask5nqguv2r" path="res://Scripts/Main/key.gd" id="2_m4qfk"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a4luy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_m4qfk")
-}],
-"loop": false,
-"name": &"Pressed",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_sj3n1")
-}],
-"loop": true,
-"name": &"Unpressed",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cl3i8h0qebsxl" path="res://Animations/arrow_key.tres" id="2_sj3n1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj3n1"]
-size = Vector2(6, 22)
+size = Vector2(6, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qfk"]
-size = Vector2(6, 14)
+size = Vector2(6, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wduar"]
-size = Vector2(6, 6)
+size = Vector2(6, 8)
 
-[node name="Arrow Key" type="AnimatedSprite2D"]
+[sub_resource type="Animation" id="Animation_m4qfk"]
+resource_name = "Pulse"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wduar"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exm27"]
+_data = {
+&"Pulse": SubResource("Animation_m4qfk"),
+&"RESET": SubResource("Animation_wduar")
+}
+
+[node name="Arrow Key" type="Node2D"]
 z_index = 1
-sprite_frames = SubResource("SpriteFrames_a4luy")
+script = ExtResource("2_m4qfk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_sj3n1")
 animation = &"Unpressed"
 autoplay = "Unpressed"
-script = ExtResource("2_m4qfk")
 
 [node name="Good Area" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Good Area"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_sj3n1")
 
 [node name="Great Area" type="Area2D" parent="."]
@@ -51,6 +72,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Great Area"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_m4qfk")
 
 [node name="Perfect Area" type="Area2D" parent="."]
@@ -58,6 +80,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect Area"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_wduar")
 
 [node name="Line Up" type="Line2D" parent="."]
@@ -67,7 +90,13 @@ points = PackedVector2Array(0, -256, 0, 12)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
-[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_exm27")
+}
+autoplay = "RESET"
+
 [connection signal="area_entered" from="Good Area" to="." method="_on_good_area_area_entered"]
 [connection signal="area_exited" from="Good Area" to="." method="_on_good_area_area_exited"]
 [connection signal="area_entered" from="Great Area" to="." method="_on_great_area_area_entered"]
