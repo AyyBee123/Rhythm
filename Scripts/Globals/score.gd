@@ -67,7 +67,7 @@ func update_points(type: TimingJudgement):
 		TimingJudgement.OK:
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Okay")
-			points += 10 * combo_multi
+			points += 5 * combo_multi
 			combo += 1
 			ok_count += 1
 			hit_count += 1
@@ -76,7 +76,7 @@ func update_points(type: TimingJudgement):
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Good")
 			SignalBus.health_changed.emit(1)
-			points += 12 * combo_multi
+			points += 8 * combo_multi
 			combo += 1
 			good_count += 1
 			hit_count += 1
@@ -85,7 +85,7 @@ func update_points(type: TimingJudgement):
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Perfect")
 			SignalBus.health_changed.emit(2)
-			points += 15 * combo_multi
+			points += 10 * combo_multi
 			combo += 1
 			perfect_count += 1
 			hit_count += 1
