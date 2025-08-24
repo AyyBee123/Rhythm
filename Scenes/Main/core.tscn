@@ -70,48 +70,48 @@ unique_name_in_owner = true
 
 [node name="Line Up" type="Line2D" parent="."]
 unique_name_in_owner = true
-points = PackedVector2Array(0, -180, 0, -36)
+points = PackedVector2Array(0, -180, 0, -30)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Down" type="Line2D" parent="."]
 unique_name_in_owner = true
-points = PackedVector2Array(0, 180, 0, 36)
+points = PackedVector2Array(0, 180, 0, 30)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Left" type="Line2D" parent="."]
 unique_name_in_owner = true
-points = PackedVector2Array(-180, 0, -36, 0)
+points = PackedVector2Array(-180, 0, -30, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Right" type="Line2D" parent="."]
 unique_name_in_owner = true
-points = PackedVector2Array(180, 0, 36, 0)
+points = PackedVector2Array(180, 0, 30, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Up" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(0, -48)
+position = Vector2(0, -40)
 input_value = "up"
 
 [node name="Down" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(0, 48)
+position = Vector2(0, 40)
 rotation = 3.14159
 input_value = "down"
 
 [node name="Left" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(-48, 0)
+position = Vector2(-40, 0)
 rotation = 4.71239
 input_value = "left"
 
 [node name="Right" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
-position = Vector2(48, 0)
+position = Vector2(40, 0)
 rotation = 1.5708
 input_value = "right"
 
@@ -124,15 +124,17 @@ shape = SubResource("CircleShape2D_xj0vw")
 
 [node name="Health" type="Label" parent="."]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.091
-anchor_top = 0.69
-anchor_right = 0.955
-anchor_bottom = 1.238
-offset_left = -22.004
-offset_top = -20.98
-offset_right = -22.02
-offset_bottom = -20.996
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -13.0
+offset_right = -9.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1

@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="1_0678r"]
 
 [node name="Countdown Text" type="Node2D"]
+z_index = 7
 script = ExtResource("1_8q42b")
 
 [node name="Text" type="Label" parent="."]
