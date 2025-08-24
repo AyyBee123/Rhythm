@@ -9,8 +9,8 @@ const ARROW_FADE = preload("uid://bmoi138j7c3te")
 var current_note: Node2D = null
 var queue: Array # if a note enters while there is another note already in the key, add it here
 var perfect: bool = false
+var great: bool = false
 var good: bool = false
-var ok: bool = false
 
 func _unhandled_input(event):
 	if not level.song_started or level.song_ended:
@@ -21,12 +21,12 @@ func _unhandled_input(event):
 			if perfect: # perfect hit
 				Score.update_points(Score.TimingJudgement.PERFECT)
 				current_note.get_parent().points_earned = Score.TimingJudgement.PERFECT
+			elif great: # great hit
+				Score.update_points(Score.TimingJudgement.GREAT)
+				current_note.get_parent().points_earned = Score.TimingJudgement.GREAT
 			elif good: # good hit
 				Score.update_points(Score.TimingJudgement.GOOD)
 				current_note.get_parent().points_earned = Score.TimingJudgement.GOOD
-			elif ok: # ok hit
-				Score.update_points(Score.TimingJudgement.OK)
-				current_note.get_parent().points_earned = Score.TimingJudgement.OK
 			var fade = ARROW_FADE.instantiate()
 			fade.global_position = global_position
 			fade.rotation = rotation
@@ -35,28 +35,28 @@ func _unhandled_input(event):
 		else: # not hitting a note
 			Score.update_points(Score.TimingJudgement.BAD)
 
-func _on_ok_area_area_entered(area):
+func _on_good_area_area_entered(area):
 	if current_note:
 		queue.append(area)
 		return
-	ok = true
+	good = true
 	current_note = area
 	current_note.get_parent().destroyed.connect(key_destroyed)
 
-func _on_ok_area_area_exited(area):
+func _on_good_area_area_exited(area):
 	if queue.size() > 0:
 		current_note = queue.pop_front()
 		current_note.get_parent().destroyed.connect(key_destroyed)
 		return
 	
-	ok = false
+	good = false
 	current_note = null
 
-func _on_good_area_area_entered(area):
-	good = true
+func _on_great_area_area_entered(area):
+	great = true
 
-func _on_good_area_area_exited(area):
-	good = false
+func _on_great_area_area_exited(area):
+	great = false
 
 func _on_perfect_area_area_entered(area):
 	perfect = true

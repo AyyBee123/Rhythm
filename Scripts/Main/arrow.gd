@@ -14,12 +14,6 @@ var is_hold_note: bool
 
 const HOLD_LINE = preload("uid://dxbeljxnd4150")
 
-const TIME_TOLERANCE := {
-	"PERFECT": 0.02,
-	"GOOD": 0.05,
-	"OK": 0.08
-}
-
 func _ready():
 	if is_hold_note:
 		var line = HOLD_LINE.instantiate()

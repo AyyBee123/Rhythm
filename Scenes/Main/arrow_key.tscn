@@ -39,18 +39,18 @@ animation = &"Unpressed"
 autoplay = "Unpressed"
 script = ExtResource("2_m4qfk")
 
-[node name="OK Area" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OK Area"]
-shape = SubResource("RectangleShape2D_sj3n1")
-
 [node name="Good Area" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Good Area"]
+shape = SubResource("RectangleShape2D_sj3n1")
+
+[node name="Great Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Great Area"]
 shape = SubResource("RectangleShape2D_m4qfk")
 
 [node name="Perfect Area" type="Area2D" parent="."]
@@ -60,10 +60,17 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect Area"]
 shape = SubResource("RectangleShape2D_wduar")
 
+[node name="Line Up" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+points = PackedVector2Array(0, -256, 0, 12)
+width = 2.5
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="area_entered" from="OK Area" to="." method="_on_ok_area_area_entered"]
-[connection signal="area_exited" from="OK Area" to="." method="_on_ok_area_area_exited"]
 [connection signal="area_entered" from="Good Area" to="." method="_on_good_area_area_entered"]
 [connection signal="area_exited" from="Good Area" to="." method="_on_good_area_area_exited"]
+[connection signal="area_entered" from="Great Area" to="." method="_on_great_area_area_entered"]
+[connection signal="area_exited" from="Great Area" to="." method="_on_great_area_area_exited"]
 [connection signal="area_entered" from="Perfect Area" to="." method="_on_perfect_area_area_entered"]
 [connection signal="area_exited" from="Perfect Area" to="." method="_on_perfect_area_area_exited"]

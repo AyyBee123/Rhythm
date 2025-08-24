@@ -15,16 +15,16 @@ var full_combo := true
 
 # counts the amount of hit types (and misses)
 var perfect_count := 0
+var great_count := 0
 var good_count := 0
-var ok_count := 0
 var bad_count := 0
 var miss_count := 0
 
 enum TimingJudgement {
 	MISS,
 	BAD,
-	OK,
 	GOOD,
+	GREAT,
 	PERFECT
 }
 
@@ -64,21 +64,21 @@ func update_points(type: TimingJudgement):
 			bad_count += 1
 			full_combo = false
 			decrease_combo_multiplier()
-		TimingJudgement.OK:
-			Game.audio_manager.hit.play()
-			SignalBus.note_hit.emit("Okay")
-			points += 5 * combo_multi
-			combo += 1
-			ok_count += 1
-			hit_count += 1
-			update_combo_multipier()
 		TimingJudgement.GOOD:
 			Game.audio_manager.hit.play()
 			SignalBus.note_hit.emit("Good")
+			points += 5 * combo_multi
+			combo += 1
+			good_count += 1
+			hit_count += 1
+			update_combo_multipier()
+		TimingJudgement.GREAT:
+			Game.audio_manager.hit.play()
+			SignalBus.note_hit.emit("Great")
 			SignalBus.health_changed.emit(1)
 			points += 8 * combo_multi
 			combo += 1
-			good_count += 1
+			great_count += 1
 			hit_count += 1
 			update_combo_multipier()
 		TimingJudgement.PERFECT:
@@ -119,10 +119,7 @@ func get_accuracy() -> float:
 
 func get_rank() -> String:
 	if accuracy >= 95.0:
-		if full_combo:
-			return "P"
-		else:
-			return "SS"
+		return "SS"
 	elif accuracy >= 90.0:
 		return "S"
 	elif accuracy >= 80.0:
@@ -134,7 +131,28 @@ func get_rank() -> String:
 	elif accuracy >= 50.0:
 		return "D"
 	else:
-		return "E"
+		return "L"
+
+func get_final_rank():
+	# "PP" and "P" are not displayed in the level, but will be the final rank if achieved by the end of the level
+	if accuracy >= 100.0 and full_combo:
+		return "PP"
+	elif full_combo:
+		return "P"
+	if accuracy >= 95.0:
+		return "SS"
+	elif accuracy >= 90.0:
+		return "S"
+	elif accuracy >= 80.0:
+		return "A"
+	elif accuracy >= 70.0:
+		return "B"
+	elif accuracy >= 60.0:
+		return "C"
+	elif accuracy >= 50.0:
+		return "D"
+	else:
+		return "L"
 
 ## updates the points dynamically, in a step-by-step manner, rather than instantly
 func update_displayed_points() -> void:

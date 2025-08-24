@@ -21,9 +21,9 @@ func set_color():
 	match %Text.text:
 		"Perfect":
 			modulate = "43cfeb"
-		"Good":
+		"Great":
 			modulate = "29e849"
-		"Okay":
+		"Good":
 			modulate = "e4b719"
 		"Bad":
 			modulate = "b81414"
