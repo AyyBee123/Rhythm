@@ -76,6 +76,6 @@ func key_destroyed():
 	elif current_note:
 		current_note = null
 
-func _on_animation_finished():
+func _on_animated_sprite_2d_animation_finished():
 	if %AnimatedSprite2D.animation == "Pressed":
 		%AnimatedSprite2D.play("Unpressed")

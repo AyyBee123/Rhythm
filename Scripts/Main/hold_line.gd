@@ -20,20 +20,18 @@ var direction: Vector2
 func _ready():
 	# (base_size_in_px) x (whatever) x (pixels_per_beat) x (hold_duration_in_beats)
 	%Sprite.size.y = BASE_SIZE * 3.6 * (level.FALLING_SPEED_SCALE / level.sec_per_beat) * (hold_duration / level.sec_per_beat)
-	FINAL_SIZE = %Sprite.size.y
 
 func _process(delta):
-	if not is_held:
+	if not is_held: # basically following the arrow as it goes towards the key
 		position += direction * speed * delta
-	elif button:
+	elif button: # the arrow was hit by the key
 		global_position = button.global_position
 		%Sprite.size.y -= speed * delta
-		hold_time += delta
 		
 		if %Sprite.size.y <= 8:
 			Score.update_hold_note_points(Score.TimingJudgement.PERFECT)
 			queue_free()
-	if not is_instance_valid(arrow) and not is_held:
+	if not is_instance_valid(arrow) and not is_held: # the arrow was missed
 		Score.update_hold_note_points(Score.TimingJudgement.MISS)
 		queue_free()
 
@@ -46,4 +44,4 @@ func _unhandled_input(event):
 			Score.update_hold_note_points(Score.TimingJudgement.PERFECT)
 		else:
 			Score.update_hold_note_points(Score.TimingJudgement.MISS)
-		queue_free() # for now
+		queue_free()

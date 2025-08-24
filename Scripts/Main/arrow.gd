@@ -1,7 +1,6 @@
 extends Sprite2D
 
 signal destroyed
-signal hold_line_triggered
 
 var speed: float = 100.0
 var direction: Vector2
@@ -27,7 +26,6 @@ func _ready():
 		line.rotation = rotation
 		line.key = key
 		line.hold_duration = hold_duration
-		hold_line_triggered.connect(line.hold)
 		get_tree().current_scene.add_child(line)
 
 func _process(delta):
@@ -39,7 +37,7 @@ func destroy():
 	if is_hold_note:
 		if points_earned > 0: # hit
 			hold_line.button = button
-			hold_line_triggered.emit()
+			hold_line.hold()
 	queue_free()
 
 func _on_note_area_area_entered(area):
