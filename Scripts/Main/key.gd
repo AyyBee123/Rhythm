@@ -4,6 +4,8 @@ extends AnimatedSprite2D
 
 @onready var level = get_tree().current_scene
 
+const ARROW_FADE = preload("uid://bmoi138j7c3te")
+
 var current_note: Node2D = null
 var queue: Array # if a note enters while there is another note already in the key, add it here
 var perfect: bool = false
@@ -18,10 +20,17 @@ func _unhandled_input(event):
 		if current_note:
 			if perfect: # perfect hit
 				Score.update_points(Score.TimingJudgement.PERFECT)
+				current_note.get_parent().points_earned = Score.TimingJudgement.PERFECT
 			elif good: # good hit
 				Score.update_points(Score.TimingJudgement.GOOD)
+				current_note.get_parent().points_earned = Score.TimingJudgement.GOOD
 			elif ok: # ok hit
 				Score.update_points(Score.TimingJudgement.OK)
+				current_note.get_parent().points_earned = Score.TimingJudgement.OK
+			var fade = ARROW_FADE.instantiate()
+			fade.global_position = global_position
+			fade.rotation = rotation
+			get_tree().current_scene.add_child(fade)
 			current_note.get_parent().destroy()
 		else: # not hitting a note
 			Score.update_points(Score.TimingJudgement.BAD)

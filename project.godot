@@ -21,6 +21,7 @@ Game="*res://Scenes/Globals/game.tscn"
 Score="*res://Scripts/Globals/score.gd"
 SignalBus="*res://Scripts/Globals/signal_bus.gd"
 NotesData="*res://Scripts/Globals/notes_data.gd"
+Utils="*res://Scripts/Globals/utils.gd"
 
 [display]
 
@@ -35,6 +36,7 @@ folder_colors={
 "res://Fonts/": "gray",
 "res://Scenes/": "pink",
 "res://Scripts/": "blue",
+"res://Shaders/": "purple",
 "res://Sprites/": "yellow"
 }
 

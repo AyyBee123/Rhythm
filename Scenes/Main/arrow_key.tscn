@@ -33,6 +33,7 @@ size = Vector2(6, 14)
 size = Vector2(6, 6)
 
 [node name="Arrow Key" type="AnimatedSprite2D"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_a4luy")
 animation = &"Unpressed"
 autoplay = "Unpressed"

@@ -39,14 +39,16 @@ extends Node2D
 const ARROW = preload("uid://bpxatk686jj0s")
 const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 
-const NOTE_OFFSET := 340
+const NOTE_OFFSET := 200
 const KEY_OFFSET := 40
 const DAMAGE := 2
+const MAX_HEALTH := 100
 var TIMING_OFFSET := 2.0
 
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
 var note_index := 0 # the index of the next note to be played
 var notes := [] # Your loaded notes JSON
+var health := MAX_HEALTH
 
 var bpm: float
 var current_beat := 0.0
@@ -64,6 +66,20 @@ var song_ended := false
 var next_note_spawn_time: float
 var practice_mode := false
 
+var song_time_minutes: int: 
+	get:
+		return clamp(conductor_time, 0, song_duration) as int / 60
+var song_time_seconds: int:
+	get:
+		return clamp(conductor_time, 0, song_duration) as int % 60
+
+var song_duration_minutes: int:
+	get:
+		return song_duration as int / 60
+var song_duration_seconds: int:
+	get:
+		return song_duration as int % 60
+
 func _ready() -> void:
 	notes = NotesData.load_json(file) # Array of note dictionaries
 	song_duration = %AudioStreamPlayer.stream.get_length()
@@ -76,7 +92,6 @@ func _ready() -> void:
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
 	SignalBus.take_damage.connect(take_damage)
-	# Load the data
 
 func _process(delta) -> void:
 	if song_started and not song_ended and not %AudioStreamPlayer.playing: # song ended
@@ -103,8 +118,14 @@ func _process(delta) -> void:
 	
 	current_beat = conductor_time / sec_per_beat
 	
-	%Score.text = str(Score.displayed_points)
-	%Combo.text = str(Score.combo)
+	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
+	%Combo.text = Utils.format_number_with_commas(Score.combo)
+	%"Combo Multiplier".text = "x" + str(Score.combo_multi)
+	%Accuracy.text = str(roundi(Score.accuracy)) + "%"
+	%Rank.text = Score.rank
+	%"Song Duration".text = "%01d:%02d" % [song_time_minutes, song_time_seconds] + " / " \
+			+ "%01d:%02d" % [song_duration_minutes, song_duration_seconds]
+	%"Song Progress Bar".value = conductor_time / song_duration * %"Song Progress Bar".max_value
 
 func spawn_arrow(arrow):
 	if not arrows.has(int(arrow["key"])):
@@ -121,7 +142,6 @@ func spawn_arrow(arrow):
 	note.rotation = note_data["rotation"]
 	note.key = note_data["key"]
 	note.speed = NOTE_OFFSET * FALLING_SPEED_SCALE
-	#note.expected_time = delta_sum + TIMING_OFFSET
 	note.is_hold_note = notes[note_index]["hold"]
 	note.hold_duration = notes[note_index]["duration"]
 	note.core = core
@@ -132,8 +152,13 @@ func spawn_arrow(arrow):
 		bpm = notes[note_index]["tempo"]
 		sec_per_beat = 60.0 / bpm
 
+func change_health(amount):
+	health += amount
+	health = clamp(health, 0, MAX_HEALTH)
+	print(amount)
+
 func take_damage() -> void:
-	print("ouch")
+	%Core.change_color()
 
 func _on_countdown_timer_timeout():
 	beats_before_start -= 1
@@ -142,9 +167,9 @@ func _on_countdown_timer_timeout():
 	elif beats_before_start == 0:
 		show_go() # GO!
 	elif beats_before_start == -1:
+		song_started = true
 		%AudioStreamPlayer.play() # song starts here
 		song_start_time = conductor_time # align conductor time
-		song_started = true
 	else:
 		%"Beat Timer".stop()
 

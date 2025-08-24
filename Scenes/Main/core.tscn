@@ -1,33 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=13 format=3 uid="uid://dlfn1yh41pr7o"]
 
+[ext_resource type="Shader" uid="uid://6c261ogdqyjn" path="res://Shaders/color_tint.gdshader" id="1_pcvkb"]
 [ext_resource type="Texture2D" uid="uid://dmf7qwtv4aqym" path="res://Sprites/Main/Core.png" id="1_xj0vw"]
 [ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/key_listener.gd" id="2_qw60k"]
 [ext_resource type="PackedScene" uid="uid://7naud46sk4ru" path="res://Scenes/Main/arrow_key.tscn" id="3_xj0vw"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bybk7"]
+shader = ExtResource("1_pcvkb")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/tint_factor = 0.0
+shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj0vw"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(0, 0, 44, 42)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcvkb"]
 atlas = ExtResource("1_xj0vw")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(44, 0, 44, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bybk7"]
 atlas = ExtResource("1_xj0vw")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(88, 0, 44, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57kve"]
 atlas = ExtResource("1_xj0vw")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(132, 0, 44, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yydm"]
 atlas = ExtResource("1_xj0vw")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(176, 0, 44, 42)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qw60k"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"Damaged",
-"speed": 5.0
-}, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj0vw")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pcvkb")
 }, {
@@ -39,12 +48,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8yydm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57kve")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bybk7")
 }],
 "loop": true,
 "name": &"Idle",
@@ -55,39 +58,31 @@ animations = [{
 radius = 24.0
 
 [node name="Core" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_bybk7")
 sprite_frames = SubResource("SpriteFrames_qw60k")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.0159904
 script = ExtResource("2_qw60k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Line Up" type="Line2D" parent="."]
-position = Vector2(0, 11.3916)
-scale = Vector2(1, 1.06294)
-points = PackedVector2Array(0, -180, 0, -44.5854)
+points = PackedVector2Array(0, -180, 0, -36)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Down" type="Line2D" parent="."]
-position = Vector2(0, 1.18301)
-scale = Vector2(1, 0.993464)
-points = PackedVector2Array(0, 180, 0, 35.0461)
+points = PackedVector2Array(0, 180, 0, 36)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Left" type="Line2D" parent="."]
-position = Vector2(1.10309, 0)
-scale = Vector2(1.00344, 1)
-points = PackedVector2Array(-320, 0, -36.9759, 0)
+points = PackedVector2Array(-180, 0, -36, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Line Right" type="Line2D" parent="."]
-position = Vector2(1.09556, 0)
-scale = Vector2(0.996587, 1)
-points = PackedVector2Array(320, 0, 35.024, 0)
+points = PackedVector2Array(180, 0, 36, 0)
 width = 1.0
 default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
