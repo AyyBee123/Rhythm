@@ -21,6 +21,7 @@ var great_count := 0
 var good_count := 0
 var bad_count := 0
 var miss_count := 0
+var hit_ratio := 0.0
 
 enum TimingJudgement {
 	MISS,
@@ -101,12 +102,14 @@ func update_hold_note_points(type: TimingJudgement):
 func update_combo_multipier():
 	hit_count += 1
 	if combo_multi == COMBO_MULTIPLIERS[-1]: # max combo reached
+		hit_ratio = 100.0
 		return
 	var index = COMBO_MULTIPLIERS.find(combo_multi)
 	var hit_threshold = COMBO_THRESHOLDS[index + 1] # get the next threshold needed to reach the next combo multiplier tier
 	if hit_count >= hit_threshold:
 		hit_count = 0 # reset hits needed to reach next combo multiplier tier
 		combo_multi = COMBO_MULTIPLIERS[index + 1] # increase combo multiplier by one step
+	hit_ratio = float(hit_count) / hit_threshold * 100
 
 func decrease_combo_multiplier():
 	if combo_multi == COMBO_MULTIPLIERS[0]: # already at minimum combo

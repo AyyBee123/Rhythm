@@ -124,7 +124,8 @@ func _process(delta) -> void:
 	
 	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
 	%Combo.text = Utils.format_number_with_commas(Score.combo)
-	%"Combo Multiplier".text = "x" + str(Score.combo_multi)
+	%"Combo Multiplier".text = str(Score.combo_multi)
+	%"Combo Multiplier Progress".value = Score.hit_ratio
 	%Accuracy.text = str(roundi(Score.accuracy)) + "%"
 	%Rank.text = Score.rank
 	%"Song Duration".text = "%01d:%02d" % [song_time_minutes, song_time_seconds] + " / " \

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwg5k2cqva6wn"]
+[gd_scene load_steps=12 format=3 uid="uid://dwg5k2cqva6wn"]
 
 [ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_jbixu"]
 [ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="2_rxcld"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://bc0p0kj7wnnm2" path="res://Audio/SFX/GO Snare.ogg" id="5_c5s4o"]
 [ext_resource type="Script" uid="uid://dd1day6am8d4l" path="res://Scripts/UI/pause_menu.gd" id="6_kogc4"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="7_on2c6"]
+[ext_resource type="Texture2D" uid="uid://fgl1ig2xjg0m" path="res://Sprites/Misc/Combo Multiplier Progress Bar.png" id="8_j3yal"]
 [ext_resource type="Texture2D" uid="uid://cfa8crxcwqn4x" path="res://Sprites/Misc/Song Progress Bar.png" id="8_vn0m0"]
+[ext_resource type="Texture2D" uid="uid://dg5s11robd6b4" path="res://Sprites/Misc/Combo Multiplier Progress.png" id="9_r0lyn"]
 [ext_resource type="Texture2D" uid="uid://bp5g27k3ut7u" path="res://Sprites/Misc/Song Progress.png" id="9_r52a4"]
 
 [node name="Base Level" type="Node2D"]
@@ -117,16 +119,44 @@ custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Combo Multiplier" type="Label" parent="Info/LeftColorRect/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Info/LeftColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/LeftColorRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/LeftColorRect/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="x" type="Label" parent="Info/LeftColorRect/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_on2c6")
+theme_override_font_sizes/font_size = 16
+text = "x"
+horizontal_alignment = 1
+
+[node name="Combo Multiplier" type="Label" parent="Info/LeftColorRect/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("7_on2c6")
 theme_override_font_sizes/font_size = 32
-text = "x1"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Combo Multiplier Progress" type="TextureProgressBar" parent="Info/LeftColorRect/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_j3yal")
+texture_progress = ExtResource("9_r0lyn")
+texture_progress_offset = Vector2(2, 2)
 
 [node name="ColorRect" type="ColorRect" parent="Info/LeftColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2)

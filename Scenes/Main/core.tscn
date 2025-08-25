@@ -67,7 +67,6 @@ script = ExtResource("2_qw60k")
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
-zoom = Vector2(1.008, 1.008)
 
 [node name="Up" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
