@@ -3,6 +3,8 @@ extends Node2D
 @onready var sprite = %Sprite
 @onready var level = get_tree().current_scene
 
+const ARROW_LIGHT = preload("res://Scenes/Misc/arrow_light.tscn")
+
 const BASE_SIZE = 16
 
 var FINAL_SIZE: float
@@ -36,6 +38,7 @@ func _process(delta):
 		queue_free()
 
 func hold():
+	add_child(ARROW_LIGHT.instantiate())
 	is_held = true
 
 func _unhandled_input(event):

@@ -165,6 +165,27 @@ func get_final_rank():
 	else:
 		return "L"
 
+## if the level is reloaded or in main menu
+func reset_score():
+	points = 0
+	displayed_points = 0
+	combo = 0
+	hit_count = 0
+	combo_multi = 1
+	current_total_points = 0
+	current_rank = 0
+	current_accuracy_points = 0.0
+	max_accuracy_points = 0.0
+	accuracy = 100.0
+	rank = "SS"
+	full_combo = true
+	perfect_count = 0
+	great_count = 0
+	good_count = 0
+	bad_count = 0
+	miss_count = 0
+	hit_ratio = 0.0
+
 ## updates the points dynamically, in a step-by-step manner, rather than instantly
 func update_displayed_points() -> void:
 	var difference = abs(points - displayed_points)

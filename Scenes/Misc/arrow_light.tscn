@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtpvmpiw2uhrq"]
+
+[ext_resource type="Shader" uid="uid://5lq67yxs6x5m" path="res://Shaders/color_change.gdshader" id="1_hxp4a"]
+[ext_resource type="Texture2D" uid="uid://5x8u6nsb6063" path="res://Sprites/Main/Arrow Light.png" id="1_ong5d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogfyv"]
+shader = ExtResource("1_hxp4a")
+shader_parameter/color = Color(0.380392, 0.913725, 0.470588, 1)
+
+[node name="Arrow Light" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_ogfyv")
+texture = ExtResource("1_ong5d")
