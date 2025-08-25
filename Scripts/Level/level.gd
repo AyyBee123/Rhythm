@@ -62,6 +62,7 @@ var conductor_time := 0.0
 var song_start_time := 0.0
 var song_started := false
 var song_ended := false
+var can_press := false
 var next_note_spawn_time: float
 var practice_mode := false
 
@@ -163,6 +164,7 @@ func _on_countdown_timer_timeout():
 		show_countdown_number(beats_before_start) # 3, 2, 1
 	elif beats_before_start == 0:
 		show_go() # GO!
+		can_press = true
 	elif beats_before_start == -1:
 		song_started = true
 		%AudioStreamPlayer.play() # song starts here

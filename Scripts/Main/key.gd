@@ -13,7 +13,7 @@ var great: bool = false
 var good: bool = false
 
 func _unhandled_input(event):
-	if not level.song_started or level.song_ended:
+	if not level.can_press or level.song_ended:
 		return
 	if Input.is_action_just_pressed(input_value):
 		%AnimatedSprite2D.play("Pressed")
