@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 @export var on_beat_frame := 1 # the frame that syncs with the music's beat
 
+@onready var camera = %Camera
 @onready var level = get_tree().current_scene
 
 const HIT_TEXT = preload("uid://b8ldvl62w53uf")
@@ -10,6 +11,7 @@ const MAX_HEALTH := 100
 
 var health := MAX_HEALTH
 var displayed_health := MAX_HEALTH
+var tween: Tween
 
 func _ready():
 	%Up.position = Vector2.UP * level.KEY_OFFSET

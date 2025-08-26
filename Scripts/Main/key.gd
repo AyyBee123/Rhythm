@@ -11,6 +11,10 @@ var queue: Array # if a note enters while there is another note already in the k
 var perfect: bool = false
 var great: bool = false
 var good: bool = false
+var tween: Tween
+
+func _ready():
+	SignalBus.pulse.connect(pulse)
 
 func _unhandled_input(event):
 	if not level.can_press or level.song_ended:
@@ -39,6 +43,14 @@ func _unhandled_input(event):
 			current_note.get_parent().destroy()
 		else: # not hitting a note
 			Score.update_points(Score.TimingJudgement.BAD)
+
+func pulse(sec_per_beat):
+	if tween and tween.is_running():
+		tween.kill()
+	var time = sec_per_beat / 4
+	tween = create_tween()
+	tween.tween_callback(func(): scale = Vector2.ONE * 1.08)
+	tween.tween_property(self, "scale", Vector2.ONE, time)
 
 func _on_good_area_area_entered(area):
 	if current_note:

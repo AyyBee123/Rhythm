@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=16 format=3 uid="uid://dlfn1yh41pr7o"]
 
 [ext_resource type="Shader" uid="uid://6c261ogdqyjn" path="res://Shaders/color_tint.gdshader" id="1_pcvkb"]
 [ext_resource type="Texture2D" uid="uid://dmf7qwtv4aqym" path="res://Sprites/Main/Core.png" id="1_xj0vw"]
 [ext_resource type="Script" uid="uid://cijcp5t1omkuf" path="res://Scripts/Main/core.gd" id="2_qw60k"]
 [ext_resource type="PackedScene" uid="uid://7naud46sk4ru" path="res://Scenes/Main/arrow_key.tscn" id="3_xj0vw"]
+[ext_resource type="Shader" uid="uid://5lq67yxs6x5m" path="res://Shaders/color_change.gdshader" id="4_57kve"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="5_bybk7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bybk7"]
@@ -55,6 +56,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yydm"]
+shader = ExtResource("4_57kve")
+shader_parameter/color = Color(0.196078, 0.890196, 0.196078, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xj0vw"]
 radius = 24.0
 
@@ -67,6 +72,38 @@ script = ExtResource("2_qw60k")
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Line Up" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_8yydm")
+points = PackedVector2Array(0, -180, 0, -28)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Down" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_8yydm")
+points = PackedVector2Array(0, 180, 0, 28)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Left" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_8yydm")
+points = PackedVector2Array(-320, 0, -28, 0)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
+
+[node name="Line Right" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_8yydm")
+points = PackedVector2Array(320, 0, 28, 0)
+width = 1.0
+default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Up" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
@@ -98,17 +135,21 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_xj0vw")
 
-[node name="Health" type="Label" parent="."]
+[node name="Health Node" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 18)
+
+[node name="Health" type="Label" parent="Health Node"]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -13.0
-offset_right = -7.0
-offset_bottom = 7.0
+offset_left = -15.0
+offset_top = -10.0
+offset_right = 15.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

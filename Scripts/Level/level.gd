@@ -8,7 +8,8 @@ extends Node2D
 
 @export var FALLING_SPEED_SCALE: float = 1.0
 
-@export_file("*.json") var file: String = "" # json notes file path
+@export_range(1, 16) var difficulty: int = 1
+@export_file("*.json") var notes_file: String = "" # json notes file path
 
 @onready var arrows: Dictionary = {
 	up_value: {
@@ -48,6 +49,7 @@ var TIMING_OFFSET := 2.0
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
 var note_index := 0 # the index of the next note to be played
 var notes := [] # Your loaded notes JSON
+var attempts: int # number of times the level was played
 
 var bpm: float
 var current_beat := 0.0
@@ -81,11 +83,10 @@ var song_duration_seconds: int:
 		return song_duration as int % 60
 
 func _ready() -> void:
-	notes = NotesData.load_json(file) # Array of note dictionaries
+	notes = NotesData.load_json(notes_file) # Array of note dictionaries
 	song_duration = %AudioStreamPlayer.stream.get_length()
-	if notes.size() > 0:
-		bpm = notes[0]["tempo"]
-		next_note_spawn_time = notes[0]["start_time"]
+	bpm = notes[0]["tempo"]
+	next_note_spawn_time = notes[0]["start_time"]
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
@@ -95,10 +96,6 @@ func _ready() -> void:
 	%"Beat Timer".start()
 
 func _process(delta) -> void:
-	if song_started and not song_ended and not %AudioStreamPlayer.playing: # song ended
-		song_ended = true
-		after_victory()
-	
 	if not song_started:
 		# countdown time (negative song time)
 		conductor_time += delta
@@ -121,13 +118,13 @@ func _process(delta) -> void:
 	
 	if int(current_beat) != last_beat: # for anything that "pulses" to the beat
 		last_beat = int(current_beat)
-		SignalBus.pulse.emit()
+		SignalBus.pulse.emit(sec_per_beat)
 	
 	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
 	%Combo.text = Utils.format_number_with_commas(Score.combo)
 	%"Combo Multiplier".text = str(Score.combo_multi)
 	%"Combo Multiplier Progress".value = Score.hit_ratio
-	%Accuracy.text = str(roundi(Score.accuracy)) + "%"
+	%Accuracy.text = str(floori(Score.accuracy)) + "%"
 	%Rank.text = Score.rank
 	%"Song Duration".text = "%01d:%02d" % [song_time_minutes, song_time_seconds] + " / " \
 			+ "%01d:%02d" % [song_duration_minutes, song_duration_seconds]
@@ -191,5 +188,6 @@ func show_go():
 	add_child(text)
 	%"Go Sound".play()
 
-func after_victory():
-	print("Victory!")
+func _on_audio_stream_player_finished():
+	song_ended = true
+	Score.save_score(name)

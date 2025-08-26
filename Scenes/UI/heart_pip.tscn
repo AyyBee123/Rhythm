@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckr2thfbbm207"]
+
+[ext_resource type="Texture2D" uid="uid://y5r3a70iclwl" path="res://Sprites/UI/Difficulty Pip.png" id="1_lf55l"]
+[ext_resource type="Script" uid="uid://7sc2t36bs1vx" path="res://Scripts/UI/heart_pip.gd" id="2_2yjx4"]
+
+[node name="Heart Pip" type="Sprite2D"]
+texture = ExtResource("1_lf55l")
+script = ExtResource("2_2yjx4")

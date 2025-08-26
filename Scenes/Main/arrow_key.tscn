@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://7naud46sk4ru"]
+[gd_scene load_steps=9 format=3 uid="uid://7naud46sk4ru"]
 
 [ext_resource type="Script" uid="uid://dgask5nqguv2r" path="res://Scripts/Main/key.gd" id="2_m4qfk"]
 [ext_resource type="SpriteFrames" uid="uid://cl3i8h0qebsxl" path="res://Animations/arrow_key.tres" id="2_sj3n1"]
-[ext_resource type="Shader" uid="uid://5lq67yxs6x5m" path="res://Shaders/color_change.gdshader" id="3_m4qfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj3n1"]
 size = Vector2(6, 23)
@@ -12,10 +11,6 @@ size = Vector2(6, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wduar"]
 size = Vector2(6, 7)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wduar"]
-shader = ExtResource("3_m4qfk")
-shader_parameter/color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [sub_resource type="Animation" id="Animation_m4qfk"]
 resource_name = "Pulse"
@@ -87,14 +82,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect Area"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_wduar")
-
-[node name="Line Up" type="Line2D" parent="."]
-unique_name_in_owner = true
-z_as_relative = false
-material = SubResource("ShaderMaterial_wduar")
-points = PackedVector2Array(0, -256, 0, 12)
-width = 1.0
-default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

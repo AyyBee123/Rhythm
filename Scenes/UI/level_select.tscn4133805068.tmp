@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsmraarf5bk6q"]
+
+[ext_resource type="Script" uid="uid://dddevvqoitopv" path="res://Scripts/UI/level_select.gd" id="1_xqnso"]
+[ext_resource type="Theme" uid="uid://c2knc33q46gol" path="res://Themes/scroll_container.tres" id="2_2wnai"]
+[ext_resource type="Script" uid="uid://ckxft0vjf62hx" path="res://Scripts/UI/scroll_container_ignore_mouse.gd" id="3_2wnai"]
+
+[node name="Level Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqnso")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 320.0
+offset_top = 48.0
+offset_right = 616.0
+offset_bottom = 336.0
+theme_override_constants/separation = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = ExtResource("2_2wnai")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("3_2wnai")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_right = 16
+
+[node name="Level List" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 16

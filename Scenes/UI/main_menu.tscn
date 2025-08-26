@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwdn2qp8l4kit"]
+[gd_scene load_steps=5 format=3 uid="uid://dwdn2qp8l4kit"]
 
 [ext_resource type="Theme" uid="uid://de42v35fbmuwu" path="res://Themes/button.tres" id="1_i2xx2"]
 [ext_resource type="Script" uid="uid://c3bicj0j4flp3" path="res://Scripts/UI/main_menu.gd" id="1_o14dv"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="2_o14dv"]
+[ext_resource type="Script" uid="uid://brpuq5iep5h37" path="res://Scripts/UI/menu_button.gd" id="4_u7lva"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -27,6 +28,7 @@ theme_override_constants/margin_right = 196
 theme_override_constants/margin_bottom = 16
 
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 16
@@ -40,6 +42,7 @@ theme = ExtResource("1_i2xx2")
 theme_override_fonts/font = ExtResource("2_o14dv")
 theme_override_font_sizes/font_size = 16
 text = "Play"
+script = ExtResource("4_u7lva")
 
 [node name="Settings" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
@@ -49,6 +52,7 @@ theme = ExtResource("1_i2xx2")
 theme_override_fonts/font = ExtResource("2_o14dv")
 theme_override_font_sizes/font_size = 16
 text = "Settings"
+script = ExtResource("4_u7lva")
 
 [node name="Quit" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
@@ -58,6 +62,7 @@ theme = ExtResource("1_i2xx2")
 theme_override_fonts/font = ExtResource("2_o14dv")
 theme_override_font_sizes/font_size = 16
 text = "Quit"
+script = ExtResource("4_u7lva")
 
 [connection signal="pressed" from="MarginContainer/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Buttons/Settings" to="." method="_on_settings_pressed"]

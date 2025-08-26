@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbfhl5xhabiw4"]
+[gd_scene load_steps=5 format=3 uid="uid://bbfhl5xhabiw4"]
 
 [ext_resource type="Script" uid="uid://bni2y6to7slc" path="res://Scripts/Globals/audio_manager.gd" id="1_rusht"]
 [ext_resource type="AudioStream" uid="uid://8xy3kt72ymf6" path="res://Audio/SFX/Hit.ogg" id="2_jncxh"]
 [ext_resource type="AudioStream" uid="uid://cjirbx7nflam6" path="res://Audio/SFX/Miss.ogg" id="3_o68qb"]
+[ext_resource type="AudioStream" uid="uid://ca05dhnono5sv" path="res://Audio/SFX/Scroll.mp3" id="4_o68qb"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_rusht")
@@ -15,4 +16,9 @@ bus = &"SFX"
 [node name="Miss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_o68qb")
 pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Scroll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o68qb")
+volume_db = -8.0
 bus = &"SFX"

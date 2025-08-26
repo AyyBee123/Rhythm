@@ -5,6 +5,7 @@ var points := 0:
 		points = max(value, 0)
 var displayed_points := 0
 var combo := 0
+var max_combo := 0
 var hit_count := 0
 var combo_multi := 1
 var current_total_points := 0 # the total amount of points that could be gotten
@@ -101,6 +102,7 @@ func update_hold_note_points(type: TimingJudgement):
 
 func update_combo_multipier():
 	hit_count += 1
+	max_combo = max(max_combo, combo)
 	if combo_multi == COMBO_MULTIPLIERS[-1]: # max combo reached
 		hit_ratio = 100.0
 		return
@@ -144,7 +146,7 @@ func get_rank() -> String:
 	else:
 		return "L"
 
-func get_final_rank():
+func get_final_rank() -> String:
 	# "PP" and "P" are not displayed in the level, but will be the final rank if achieved by the end of the level
 	if accuracy >= 100.0 and full_combo:
 		return "PP"
@@ -164,6 +166,9 @@ func get_final_rank():
 		return "D"
 	else:
 		return "L"
+
+func save_score(song_id: String):
+	Save.save_score(song_id, points, accuracy, get_final_rank(), max_combo, true)
 
 ## if the level is reloaded or in main menu
 func reset_score():

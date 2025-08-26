@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpyg3fkyu0q5"]
+
+[ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_igo84"]
+
+[node name="Hall - Seedovia" instance=ExtResource("1_igo84")]
+difficulty = 3
