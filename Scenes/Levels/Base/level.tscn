@@ -50,11 +50,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 stream = ExtResource("4_the6d")
 volume_db = -4.0
+bus = &"SFX"
 
 [node name="Go Sound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_wxwdl")
 volume_db = -4.0
+bus = &"SFX"
 
 [node name="Pause Handler" type="Node" parent="."]
 process_mode = 3
