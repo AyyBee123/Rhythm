@@ -22,24 +22,23 @@ var should_pulse := true
 func _ready():
 	var files = Utils.get_files(file_path)
 	for file in files:
-		for i in 4:
-			var level = LEVEL_BUTTON.instantiate()
-			level.level = load(file)
-			var scene = level.level.instantiate()
-			level.text = scene.name
-			level.level_name = scene.name
-			level.notes_file = scene.notes_file
-			level.notes = NotesData.load_json(level.notes_file) # array of note dictionaries
-			level.bpm = level.notes[0]["tempo"]
-			level.song = scene.get_node("%AudioStreamPlayer").stream
-			level.song_duration = level.song.get_length()
-			level.song_duration_text = "%01d:%02d" % [level.song_duration as int / 60, level.song_duration as int % 60]
-			level.difficulty = scene.difficulty
-			scene.queue_free()
-			%"Level List".add_child(level)
-			levels.append(level)
-			level.focus_entered.connect(_on_button_focus_entered.bind(level))
-			level.focus_exited.connect(_on_button_focus_exited.bind(level))
+		var level = LEVEL_BUTTON.instantiate()
+		level.level = load(file)
+		var scene = level.level.instantiate()
+		level.text = scene.name
+		level.level_name = scene.name
+		level.notes_file = scene.notes_file
+		level.notes = NotesData.load_json(level.notes_file) # array of note dictionaries
+		level.bpm = level.notes[0]["tempo"]
+		level.song = scene.get_node("%AudioStreamPlayer").stream
+		level.song_duration = level.song.get_length()
+		level.song_duration_text = "%01d:%02d" % [level.song_duration as int / 60, level.song_duration as int % 60]
+		level.difficulty = scene.difficulty
+		scene.queue_free()
+		%"Level List".add_child(level)
+		levels.append(level)
+		level.focus_entered.connect(_on_button_focus_entered.bind(level))
+		level.focus_exited.connect(_on_button_focus_exited.bind(level))
 	
 	# set the top and bottom neighbours for each level button
 	for i in range(levels.size()):
