@@ -56,7 +56,7 @@ bus = &"Music"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 344.0
+offset_left = 341.0
 offset_right = 640.0
 offset_bottom = 224.0
 color = Color(0.118581, 0.118581, 0.118581, 1)
@@ -247,4 +247,12 @@ offset_bottom = 216.0
 [node name="Visualizer" parent="ColorRect" node_paths=PackedStringArray("audio_player") instance=ExtResource("5_1i34c")]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 0.007
+offset_left = -0.0930002
+offset_right = -0.0930002
 audio_player = NodePath("../../PreviewPlayer")
+NUMBER_OF_BARS = 33
+MAX_FREQUENCY = 1500
+bar_width = 7

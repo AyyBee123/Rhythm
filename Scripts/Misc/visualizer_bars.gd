@@ -2,8 +2,10 @@ extends Control
 
 @export var audio_player: AudioStreamPlayer
 
-const NUMBER_OF_BARS = 32 # number of frequency bands
-const MAX_FREQUENCY = 1000 # frequency range
+@export var NUMBER_OF_BARS = 32 # number of frequency bands
+@export var MAX_FREQUENCY = 1000 # frequency range
+@export var bar_width = 8
+@export var bar_separation = 2
 
 var spectrum_instance
 var bars = []
@@ -24,8 +26,8 @@ func create_bars():
 	for i in range(NUMBER_OF_BARS):
 		var bar = ColorRect.new()
 		bar.color = Color("32e332")
-		bar.size = Vector2(8, 50)
-		bar.position = Vector2(i * 10, 0)
+		bar.size = Vector2(bar_width, 50)
+		bar.position = Vector2(i * (bar_width + bar_separation), 0)
 		add_child(bar)
 		bars.append(bar)
 
@@ -39,7 +41,7 @@ func _process(delta):
 		var freq_start = (i * MAX_FREQUENCY) / NUMBER_OF_BARS
 		var freq_end = ((i + 1) * MAX_FREQUENCY) / NUMBER_OF_BARS
 		var magnitude = spectrum_instance.get_magnitude_for_frequency_range(freq_start, freq_end).length()
-		bars[i].size.y = lerp(bars[i].size.y, magnitude * 1000 * 2, 0.2) # smooth animation
+		bars[i].size.y = lerp(bars[i].size.y, magnitude * MAX_FREQUENCY, 0.2) # smooth animation
 		
 		var intensity = (magnitude * 1000) / (max_freq_amp * 1000) if max_freq_amp > 0 else 0.0
 		intensity *= 1000
