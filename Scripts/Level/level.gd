@@ -67,6 +67,7 @@ var song_ended := false
 var can_press := false
 var next_note_spawn_time: float
 var practice_mode := false
+var tween: Tween
 
 var song_time_minutes: int: 
 	get:
@@ -92,6 +93,7 @@ func _ready() -> void:
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
 	current_beat = conductor_time / sec_per_beat
 	last_beat = int(current_beat) + 1 # +1 to prevent a pulse at the very start of the level
+	SignalBus.note_hit.connect(note_hit)
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
 
@@ -123,7 +125,6 @@ func _process(delta) -> void:
 	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
 	%Combo.text = Utils.format_number_with_commas(Score.combo)
 	%"Combo Multiplier".text = str(Score.combo_multi)
-	%"Combo Multiplier Progress".value = Score.hit_ratio
 	%Accuracy.text = str(floori(Score.accuracy)) + "%"
 	%Rank.text = Score.rank
 	%"Song Duration".text = "%01d:%02d" % [song_time_minutes, song_time_seconds] + " / " \
@@ -191,3 +192,16 @@ func show_go():
 func _on_audio_stream_player_finished():
 	song_ended = true
 	Score.save_score(name)
+
+func note_hit(type: String):
+	if type == "Miss" or type == "Bad":
+		return
+	pulse(%"Combo Multiplier")
+
+func pulse(node):
+	if tween and tween.is_running():
+		tween.kill()
+	var time = sec_per_beat / 4
+	tween = create_tween()
+	tween.tween_callback(func(): node.scale = Vector2.ONE * 1.08)
+	tween.tween_property(node, "scale", Vector2.ONE, time)
