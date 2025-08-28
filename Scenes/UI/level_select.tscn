@@ -51,6 +51,7 @@ theme_override_constants/separation = 16
 
 [node name="PreviewPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+bus = &"Music"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
