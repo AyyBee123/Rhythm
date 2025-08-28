@@ -156,7 +156,7 @@ func get_difficulty_color(difficulty: int, max: int = 16) -> Color:
 		{ "pos": 1.0, "col": Color("6f246f") }  # purple
 	]
 	
-	# Find which two stops we're between
+	# find which two stops we're between
 	for i in range(stops.size() - 1):
 		var a = stops[i]
 		var b = stops[i + 1]
