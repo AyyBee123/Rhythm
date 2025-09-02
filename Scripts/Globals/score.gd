@@ -121,7 +121,7 @@ func decrease_combo_multiplier():
 	combo_multi = COMBO_MULTIPLIERS[index - 1] # decrease combo multiplier by one step
 
 func get_accuracy_points(points):
-	max_accuracy_points += Score.TimingJudgement.PERFECT
+	max_accuracy_points += TimingJudgement.PERFECT
 	current_accuracy_points += points
 	get_accuracy()
 
@@ -147,12 +147,10 @@ func get_rank() -> String:
 		return "L"
 
 func get_final_rank() -> String:
-	# "PP" and "P" are not displayed in the level, but will be the final rank if achieved by the end of the level
+	# "P" is not displayed in the level, but will be the final rank if achieved by the end of the level
 	if accuracy >= 100.0 and full_combo:
-		return "PP"
-	elif full_combo:
 		return "P"
-	if accuracy >= 95.0:
+	elif accuracy >= 95.0:
 		return "SS"
 	elif accuracy >= 90.0:
 		return "S"
@@ -168,7 +166,7 @@ func get_final_rank() -> String:
 		return "L"
 
 func save_score(song_id: String):
-	Save.save_score(song_id, points, accuracy, get_final_rank(), max_combo, true)
+	Save.save_score(song_id, points, accuracy, get_final_rank(), max_combo, full_combo, true)
 
 ## if the level is reloaded or in main menu
 func reset_score():

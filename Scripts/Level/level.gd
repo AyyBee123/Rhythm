@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var id: String # id to access stats from the level select and save file
+@export_enum("Easy", "Normal", "Hard") var level_difficulty = 0
+
 # values from the midi file
 @export var up_value: int
 @export var down_value: int
@@ -191,7 +194,7 @@ func show_go():
 
 func _on_audio_stream_player_finished():
 	song_ended = true
-	Score.save_score(name)
+	Score.save_score(id + "_" + str(level_difficulty))
 
 func note_hit(type: String):
 	if type == "Miss" or type == "Bad":

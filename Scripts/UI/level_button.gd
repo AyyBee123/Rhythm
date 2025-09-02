@@ -5,7 +5,8 @@ var notes_file: String
 var initial_focus := false
 
 var notes: Array
-var level_name: String
+var level_id: String
+var level_difficulty: String
 var bpm: int
 var song
 var song_duration: float

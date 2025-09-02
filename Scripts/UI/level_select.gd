@@ -26,7 +26,8 @@ func _ready():
 		level.level = load(file)
 		var scene = level.level.instantiate()
 		level.text = scene.name
-		level.level_name = scene.name
+		level.level_id = scene.id
+		level.level_difficulty = str(scene.level_difficulty)
 		level.notes_file = scene.notes_file
 		level.notes = NotesData.load_json(level.notes_file) # array of note dictionaries
 		level.bpm = level.notes[0]["tempo"]
@@ -89,7 +90,7 @@ func _loop_with_fade(fade_time: float):
 func _on_button_focus_entered(btn):
 	sec_per_beat = 60.0 / btn.bpm
 	%ScrollContainer._center_on(btn)
-	load_score(btn.level_name)
+	load_score(btn.level_id + "_" + btn.level_difficulty)
 	set_preview_values(btn)
 	preview_song(btn.song)
 

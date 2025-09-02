@@ -12,6 +12,8 @@
 
 [node name="Base Level" type="Node2D"]
 script = ExtResource("1_f0afu")
+id = "0"
+level_difficulty = 2
 up_value = 57
 down_value = 60
 left_value = 62
