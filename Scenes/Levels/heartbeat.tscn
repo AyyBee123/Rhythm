@@ -1,17 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1h4detlnreky"]
+[gd_scene load_steps=2 format=3 uid="uid://c1h4detlnreky"]
 
 [ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_xumb2"]
-[ext_resource type="AudioStream" uid="uid://btkqm0k3tj07d" path="res://Audio/Music/Heartbeat.ogg" id="2_pr6cs"]
 
 [node name="Heartbeat" instance=ExtResource("1_xumb2")]
 id = "1"
-up_value = 43
-down_value = 46
-left_value = 48
-right_value = 50
 difficulty = 6
-notes_file = "res://Audio/Notes Data/heartbeat_notes.json"
 preview_time = 2.0
-
-[node name="AudioStreamPlayer" parent="." index="2"]
-stream = ExtResource("2_pr6cs")

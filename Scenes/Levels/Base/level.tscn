@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwg5k2cqva6wn"]
+[gd_scene load_steps=11 format=3 uid="uid://dwg5k2cqva6wn"]
 
 [ext_resource type="Script" uid="uid://jyp4e56slnjb" path="res://Scripts/Level/level.gd" id="1_f0afu"]
 [ext_resource type="PackedScene" uid="uid://dlfn1yh41pr7o" path="res://Scenes/Main/core.tscn" id="2_gxh7o"]
-[ext_resource type="AudioStream" uid="uid://dwlhxlf4vnop6" path="res://Audio/Music/Hall Theme.ogg" id="3_o5mcc"]
+[ext_resource type="AudioStream" uid="uid://btkqm0k3tj07d" path="res://Audio/Music/Heartbeat.ogg" id="3_j7kr0"]
 [ext_resource type="AudioStream" uid="uid://72wua5mxt6ea" path="res://Audio/SFX/Countdown Snare.ogg" id="4_the6d"]
 [ext_resource type="AudioStream" uid="uid://bc0p0kj7wnnm2" path="res://Audio/SFX/GO Snare.ogg" id="5_wxwdl"]
 [ext_resource type="Script" uid="uid://dd1day6am8d4l" path="res://Scripts/UI/pause_menu.gd" id="6_nvxy7"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="7_wv0jj"]
+[ext_resource type="PackedScene" uid="uid://lne03igkaltr" path="res://Scenes/Misc/ai_player.tscn" id="10_j7kr0"]
 [ext_resource type="Texture2D" uid="uid://cfa8crxcwqn4x" path="res://Sprites/Misc/Song Progress Bar.png" id="10_w17d0"]
 [ext_resource type="Texture2D" uid="uid://bp5g27k3ut7u" path="res://Sprites/Misc/Song Progress.png" id="11_a64we"]
 
@@ -14,11 +15,11 @@
 script = ExtResource("1_f0afu")
 id = "0"
 level_difficulty = 2
-up_value = 57
-down_value = 60
-left_value = 62
-right_value = 67
-notes_file = "res://Audio/Notes Data/hall_theme_notes.json"
+up_value = 43
+down_value = 46
+left_value = 48
+right_value = 50
+notes_file = "res://Audio/Notes Data/heartbeat_notes.json"
 
 [node name="Background Color" type="ColorRect" parent="."]
 z_index = -2
@@ -40,7 +41,7 @@ unique_name_in_owner = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("3_o5mcc")
+stream = ExtResource("3_j7kr0")
 bus = &"Music"
 
 [node name="Beat Timer" type="Timer" parent="."]
@@ -223,9 +224,12 @@ theme_override_constants/margin_top = 2
 [node name="Song Progress Bar" type="TextureProgressBar" parent="Info/RightColorRect/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+allow_greater = true
 texture_under = ExtResource("10_w17d0")
 texture_progress = ExtResource("11_a64we")
 texture_progress_offset = Vector2(2, 2)
+
+[node name="AI Player" parent="." instance=ExtResource("10_j7kr0")]
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="timeout" from="Beat Timer" to="." method="_on_countdown_timer_timeout"]

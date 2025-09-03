@@ -40,7 +40,7 @@ func change_health(amount):
 func spawn_text(text: String):
 	var hit = HIT_TEXT.instantiate()
 	hit.get_node("%Text").text = text
-	get_tree().current_scene.add_child(hit)
+	get_tree().current_scene.add_child.call_deferred(hit)
 
 ## set the core's color to red for a brief time when taking damage (bad/miss notes)
 func change_color():

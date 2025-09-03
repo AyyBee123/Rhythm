@@ -21,7 +21,7 @@ var direction: Vector2
 
 func _ready():
 	# (base_size_in_px) x (whatever) x (pixels_per_beat) x (hold_duration_in_beats)
-	%Sprite.size.y = BASE_SIZE * 3.6 * (level.FALLING_SPEED_SCALE / level.sec_per_beat) * (hold_duration / level.sec_per_beat)
+	%Sprite.size.y = BASE_SIZE * 3 * (level.FALLING_SPEED_SCALE / level.sec_per_beat) * (hold_duration / level.sec_per_beat)
 
 func _process(delta):
 	if not is_held: # basically following the arrow as it goes towards the key

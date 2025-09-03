@@ -20,29 +20,32 @@ func _unhandled_input(event):
 	if not level.can_press or level.song_ended:
 		return
 	if Input.is_action_just_pressed(input_value):
-		%AnimatedSprite2D.play("Pressed")
-		if current_note:
-			current_note.get_parent().key = input_value
-			current_note.get_parent().button = self
-			
-			if perfect: # perfect hit
-				Score.update_points(Score.TimingJudgement.PERFECT)
-				current_note.get_parent().points_earned = Score.TimingJudgement.PERFECT
-			elif great: # great hit
-				Score.update_points(Score.TimingJudgement.GREAT)
-				current_note.get_parent().points_earned = Score.TimingJudgement.GREAT
-			elif good: # good hit
-				Score.update_points(Score.TimingJudgement.GOOD)
-				current_note.get_parent().points_earned = Score.TimingJudgement.GOOD
-			
-			var fade = ARROW_FADE.instantiate()
-			fade.global_position = global_position
-			fade.rotation = rotation
-			%AnimationPlayer.play("Pulse")
-			get_tree().current_scene.add_child(fade)
-			current_note.get_parent().destroy()
-		else: # not hitting a note
-			Score.update_points(Score.TimingJudgement.BAD)
+		hit()
+
+func hit():
+	%AnimatedSprite2D.play("Pressed")
+	if current_note:
+		current_note.get_parent().key = input_value
+		current_note.get_parent().button = self
+		
+		if perfect: # perfect hit
+			Score.update_points(Score.TimingJudgement.PERFECT)
+			current_note.get_parent().points_earned = Score.TimingJudgement.PERFECT
+		elif great: # great hit
+			Score.update_points(Score.TimingJudgement.GREAT)
+			current_note.get_parent().points_earned = Score.TimingJudgement.GREAT
+		elif good: # good hit
+			Score.update_points(Score.TimingJudgement.GOOD)
+			current_note.get_parent().points_earned = Score.TimingJudgement.GOOD
+		
+		var fade = ARROW_FADE.instantiate()
+		fade.global_position = global_position
+		fade.rotation = rotation
+		%AnimationPlayer.play("Pulse")
+		get_tree().current_scene.add_child(fade)
+		current_note.get_parent().destroy()
+	else: # not hitting a note
+		Score.update_points(Score.TimingJudgement.BAD)
 
 func pulse(sec_per_beat):
 	if tween and tween.is_running():
