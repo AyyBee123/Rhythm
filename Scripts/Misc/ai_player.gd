@@ -1,5 +1,7 @@
 extends Node
 
+@export var enabled := false
+
 var level
 var core
 
@@ -20,6 +22,8 @@ var judgments := [
 var hit_type
 
 func _ready():
+	if not enabled:
+		return
 	randomize()
 	level = get_tree().current_scene
 	core = level.get_node("%Core")
