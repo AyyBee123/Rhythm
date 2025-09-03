@@ -13,6 +13,7 @@ extends Node2D
 
 @export_range(1, 16) var difficulty: int = 1
 @export_file("*.json") var notes_file: String = "" # json notes file path
+@export var preview_time := 20.0
 
 @onready var arrows: Dictionary = {
 	up_value: {

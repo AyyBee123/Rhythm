@@ -9,7 +9,7 @@ var file_path: String = "res://Scenes/Levels/"
 var levels: Array
 var idx := 0
 var song_tween: Tween
-var preview_start: float = 20.0 # in seconds
+var preview_start := 20.0 # in seconds
 var preview_length := 10.0 # also in seconds
 
 var current_beat: float
@@ -36,6 +36,7 @@ func _ready():
 		level.song_duration = level.song.get_length()
 		level.song_duration_text = "%01d:%02d" % [level.song_duration as int / 60, level.song_duration as int % 60]
 		level.difficulty = scene.difficulty
+		level.preview_start = scene.preview_time
 		scene.queue_free()
 		%"Level List".add_child(level)
 		level.focus_entered.connect(_on_button_focus_entered.bind(level))
@@ -98,6 +99,7 @@ func _on_button_focus_entered(btn):
 	%ScrollContainer._center_on(btn)
 	load_score(btn.level_id + "_" + btn.level_difficulty)
 	set_preview_values(btn)
+	preview_start = btn.preview_start
 	preview_song(btn.song)
 
 func load_score(song_id: String):

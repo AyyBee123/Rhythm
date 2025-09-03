@@ -69,7 +69,6 @@ for midi_filename in midi_files:
                     start_time = active_notes[key]
                     duration = track_time - start_time
                     notes.append({
-                        "track": i,
                         "channel": msg.channel + 1,
                         "key": msg.note,
                         "start_time": start_time,

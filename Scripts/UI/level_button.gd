@@ -12,6 +12,7 @@ var song
 var song_duration: float
 var song_duration_text: String
 var difficulty: int
+var preview_start: float
 
 var focused_once := false
 

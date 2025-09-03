@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_igo84"]
 
 [node name="Hall - Seedovia" instance=ExtResource("1_igo84")]
-id = "1"
+id = "2"
 difficulty = 3
