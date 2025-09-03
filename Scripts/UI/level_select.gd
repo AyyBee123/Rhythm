@@ -6,7 +6,7 @@ const LEVEL_BUTTON = preload("uid://bocn8w7iidy23")
 const HEART_PIP = preload("uid://ckr2thfbbm207")
 
 var file_path: String = "res://Scenes/Levels/"
-var levels: Array[Button] = []
+var levels: Array
 var idx := 0
 var song_tween: Tween
 var preview_start: float = 20.0 # in seconds
@@ -21,6 +21,7 @@ var should_pulse := true
 
 func _ready():
 	var files = Utils.get_files(file_path)
+	
 	for file in files:
 		var level = LEVEL_BUTTON.instantiate()
 		level.level = load(file)
@@ -37,9 +38,14 @@ func _ready():
 		level.difficulty = scene.difficulty
 		scene.queue_free()
 		%"Level List".add_child(level)
-		levels.append(level)
 		level.focus_entered.connect(_on_button_focus_entered.bind(level))
 		level.focus_exited.connect(_on_button_focus_exited.bind(level))
+	
+	# sort list of levels by difficulty
+	levels = %"Level List".get_children()
+	levels.sort_custom(func(a, b): return a.difficulty < b.difficulty)
+	for i in range(levels.size()):
+		%"Level List".move_child(levels[i], i)
 	
 	# set the top and bottom neighbours for each level button
 	for i in range(levels.size()):
