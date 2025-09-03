@@ -57,7 +57,7 @@ var attempts: int # number of times the level was played
 
 var bpm: float
 var current_beat := 0.0
-var last_beat := 0
+var last_beat := -8
 var song_duration: float # in seconds
 var beat_offset: float
 var song_offset: float = 0.1 # in seconds
@@ -95,8 +95,6 @@ func _ready() -> void:
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
-	current_beat = conductor_time / sec_per_beat
-	last_beat = int(current_beat) + 1 # +1 to prevent a pulse at the very start of the level
 	SignalBus.note_hit.connect(note_hit)
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
@@ -123,7 +121,7 @@ func _process(delta) -> void:
 	current_beat = conductor_time / sec_per_beat
 	
 	if int(current_beat) != last_beat: # for anything that "pulses" to the beat
-		last_beat = int(current_beat)
+		last_beat = int(floor(current_beat))
 		SignalBus.pulse.emit(sec_per_beat)
 	
 	%Score.text = Utils.format_number_with_commas(Score.displayed_points)
