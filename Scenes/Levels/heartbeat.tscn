@@ -4,5 +4,5 @@
 
 [node name="Heartbeat" instance=ExtResource("1_xumb2")]
 id = "1"
-difficulty = 6
+difficulty = 5
 preview_time = 2.0

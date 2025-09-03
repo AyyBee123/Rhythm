@@ -5,4 +5,3 @@ class_name ScoreData extends Resource
 @export var max_combo: int = 0
 @export var full_combo: bool = false
 @export var cleared: bool = false
-@export var attempts: int = 0

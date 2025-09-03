@@ -39,7 +39,6 @@ func save_score(song_id: String, score: int, accuracy: float, rank: String, comb
 	entry.max_combo = max(entry.max_combo, combo)
 	entry.full_combo = entry.full_combo or full_combo # if full combo was achieved previously, it stays that way
 	entry.cleared = entry.cleared or cleared # if the level was cleared previously, it stays that way
-	entry.attempts += 1
 
 	# SAVE (note: path first, resource second)
 	var err := ResourceSaver.save(profile, path)
