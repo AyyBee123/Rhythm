@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://btkqm0k3tj07d" path="res://Audio/Music/Heartbeat.ogg" id="3_j7kr0"]
 [ext_resource type="AudioStream" uid="uid://72wua5mxt6ea" path="res://Audio/SFX/Countdown Snare.ogg" id="4_the6d"]
 [ext_resource type="AudioStream" uid="uid://bc0p0kj7wnnm2" path="res://Audio/SFX/GO Snare.ogg" id="5_wxwdl"]
-[ext_resource type="Script" uid="uid://dd1day6am8d4l" path="res://Scripts/UI/pause_menu.gd" id="6_nvxy7"]
+[ext_resource type="Script" uid="uid://dd1day6am8d4l" path="res://Scripts/UI/pause_handler.gd" id="6_nvxy7"]
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="7_wv0jj"]
 [ext_resource type="PackedScene" uid="uid://lne03igkaltr" path="res://Scenes/Misc/ai_player.tscn" id="10_j7kr0"]
 [ext_resource type="Texture2D" uid="uid://cfa8crxcwqn4x" path="res://Sprites/Misc/Song Progress Bar.png" id="10_w17d0"]

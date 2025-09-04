@@ -1,16 +1,22 @@
-extends Node
-
-var level
+extends Control
 
 func _ready():
-	level = get_tree().current_scene
+	var first_button = %Buttons.get_child(0)
+	first_button.initial_focus = true
+	first_button.grab_focus()
+	first_button.initial_focus = false
 
-func _input(event):
-	if not level.song_started or level.song_ended:
-		return
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().paused = not get_tree().paused
-		
-		# spawn pause menu if paused
-		
-		# delete pause menu if unpaused
+func _on_resume_pressed():
+	queue_free()
+
+func _on_retry_pressed():
+	get_tree().reload_current_scene()
+
+func _on_menu_pressed():
+	get_tree().change_scene_to_file("uid://bsmraarf5bk6q")
+
+func _on_difficulty_pressed():
+	pass
+
+func _exit_tree():
+	get_tree().paused = false

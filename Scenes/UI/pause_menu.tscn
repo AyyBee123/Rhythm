@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjlondvol8txh"]
+
+[ext_resource type="Script" uid="uid://b2fk6o6nxk7ee" path="res://Scripts/UI/pause_menu.gd" id="1_oykix"]
+[ext_resource type="Theme" uid="uid://de42v35fbmuwu" path="res://Themes/button.tres" id="2_kdnb7"]
+[ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="3_702e2"]
+[ext_resource type="Script" uid="uid://brpuq5iep5h37" path="res://Scripts/UI/menu_button.gd" id="4_qyryt"]
+
+[node name="Pause Menu" type="Control"]
+process_mode = 3
+z_index = 10
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oykix")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.376471)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -306.0
+offset_top = -172.0
+offset_right = -66.0
+offset_bottom = -92.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("3_702e2")
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -56.0
+offset_right = -64.0
+offset_bottom = 128.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Resume" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(248, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Difficulty")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Retry")
+focus_next = NodePath("../Retry")
+focus_previous = NodePath("../Difficulty")
+theme = ExtResource("2_kdnb7")
+theme_override_fonts/font = ExtResource("3_702e2")
+theme_override_font_sizes/font_size = 16
+text = "Resume"
+script = ExtResource("4_qyryt")
+
+[node name="Retry" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(248, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Menu")
+focus_next = NodePath("../Menu")
+focus_previous = NodePath("../Resume")
+theme = ExtResource("2_kdnb7")
+theme_override_fonts/font = ExtResource("3_702e2")
+theme_override_font_sizes/font_size = 16
+text = "Retry"
+script = ExtResource("4_qyryt")
+
+[node name="Menu" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(248, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Retry")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Difficulty")
+focus_next = NodePath("../Difficulty")
+focus_previous = NodePath("../Retry")
+theme = ExtResource("2_kdnb7")
+theme_override_fonts/font = ExtResource("3_702e2")
+theme_override_font_sizes/font_size = 16
+text = "Level Select"
+script = ExtResource("4_qyryt")
+
+[node name="Difficulty" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(248, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Menu")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Resume")
+focus_next = NodePath("../Resume")
+focus_previous = NodePath("../Menu")
+theme = ExtResource("2_kdnb7")
+theme_override_fonts/font = ExtResource("3_702e2")
+theme_override_font_sizes/font_size = 16
+text = "Change Difficulty"
+script = ExtResource("4_qyryt")
+
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Buttons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Buttons/Difficulty" to="." method="_on_difficulty_pressed"]

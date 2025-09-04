@@ -15,6 +15,8 @@ var tween: Tween
 var dead := false
 
 func _ready():
+	material.set("shader_parameter/tint_factor", 0.0)
+	
 	%Up.position = Vector2.UP * level.KEY_OFFSET
 	%Down.position = Vector2.DOWN * level.KEY_OFFSET
 	%Left.position = Vector2.LEFT * level.KEY_OFFSET
