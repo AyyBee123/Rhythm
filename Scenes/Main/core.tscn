@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlfn1yh41pr7o"]
+[gd_scene load_steps=21 format=3 uid="uid://dlfn1yh41pr7o"]
 
 [ext_resource type="Shader" uid="uid://6c261ogdqyjn" path="res://Shaders/color_tint.gdshader" id="1_pcvkb"]
 [ext_resource type="Texture2D" uid="uid://dmf7qwtv4aqym" path="res://Sprites/Main/Core.png" id="1_xj0vw"]
@@ -12,6 +12,26 @@ shader = ExtResource("1_pcvkb")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/tint_factor = 0.0
 shader_parameter/fade = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1074"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(0, 42, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjmj1"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(44, 42, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nua4"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(88, 42, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s5tc"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(132, 42, 44, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba3tf"]
+atlas = ExtResource("1_xj0vw")
+region = Rect2(176, 42, 44, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xj0vw"]
 atlas = ExtResource("1_xj0vw")
@@ -35,6 +55,29 @@ region = Rect2(176, 0, 44, 42)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qw60k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1074")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjmj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nua4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s5tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba3tf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Death",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xj0vw")
@@ -64,10 +107,12 @@ shader_parameter/color = Color(0.196078, 0.890196, 0.196078, 1)
 radius = 20.0
 
 [node name="Core" type="AnimatedSprite2D"]
+z_index = 8
 material = SubResource("ShaderMaterial_bybk7")
 sprite_frames = SubResource("SpriteFrames_qw60k")
 animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.171252
 script = ExtResource("2_qw60k")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -107,23 +152,27 @@ default_color = Color(0.196078, 0.890196, 0.196078, 1)
 
 [node name="Up" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(0, -40)
 input_value = "up"
 
 [node name="Down" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(0, 40)
 rotation = 3.14159
 input_value = "down"
 
 [node name="Left" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(-40, 0)
 rotation = 4.71239
 input_value = "left"
 
 [node name="Right" parent="." instance=ExtResource("3_xj0vw")]
 unique_name_in_owner = true
+z_as_relative = false
 position = Vector2(40, 0)
 rotation = 1.5708
 input_value = "right"

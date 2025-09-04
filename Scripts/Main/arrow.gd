@@ -27,6 +27,7 @@ func _ready():
 		line.key = key
 		line.hold_duration = hold_duration
 		get_tree().current_scene.add_child(line)
+	SignalBus.defeat.connect(queue_free) # destroy all existing arrows if the player loses
 
 func _process(delta):
 	position += direction * speed * delta

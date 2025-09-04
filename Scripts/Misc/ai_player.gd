@@ -2,6 +2,12 @@ extends Node
 
 @export var enabled := false
 
+@export_range(0, 1) var perfect_chance := 0.92
+@export_range(0, 1) var great_chance := 0.05
+@export_range(0, 1) var good_chance := 0.03
+@export_range(0, 1) var miss_chance := 0.0
+@export_range(0, 1) var bad_chance := 0.75
+
 var level
 var core
 
@@ -10,13 +16,11 @@ var down
 var left
 var right
 
-const BAD_CHANCE = 0.75
-
-var judgments := [
-	{"label": "Perfect", "chance": 0.92},
-	{"label": "Great",   "chance": 0.05},
-	{"label": "Good",    "chance": 0.03},
-	{"label": "Miss",    "chance": 0.0},
+@onready var judgments := [
+	{"label": "Perfect", "chance": perfect_chance},
+	{"label": "Great",   "chance": great_chance},
+	{"label": "Good",    "chance": good_chance},
+	{"label": "Miss",    "chance": miss_chance},
 ]
 
 var hit_type
@@ -123,19 +127,19 @@ func right_good(area):
 
 
 func up_exit(area):
-	if randf() < BAD_CHANCE:
+	if randf() < bad_chance:
 		hit(up, area)
 
 func down_exit(area):
-	if randf() < BAD_CHANCE:
+	if randf() < bad_chance:
 		hit(down, area)
 
 func left_exit(area):
-	if randf() < BAD_CHANCE:
+	if randf() < bad_chance:
 		hit(left, area)
 
 func right_exit(area):
-	if randf() < BAD_CHANCE:
+	if randf() < bad_chance:
 		hit(right, area)
 
 

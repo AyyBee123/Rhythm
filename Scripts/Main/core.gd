@@ -12,6 +12,7 @@ const MAX_HEALTH := 100
 var health := MAX_HEALTH
 var displayed_health := MAX_HEALTH
 var tween: Tween
+var dead := false
 
 func _ready():
 	%Up.position = Vector2.UP * level.KEY_OFFSET
@@ -21,8 +22,11 @@ func _ready():
 	
 	SignalBus.note_hit.connect(spawn_text)
 	SignalBus.health_changed.connect(change_health)
+	SignalBus.defeat.connect(on_defeat)
 
 func _process(delta):
+	if dead:
+		return
 	var frames = sprite_frames.get_frame_count("Idle")
 	var _frame = int(fposmod(level.current_beat * frames + (frames + on_beat_frame), frames))
 	frame = _frame
@@ -35,7 +39,7 @@ func change_health(amount):
 	if amount < 0: # took damage
 		change_color()
 	if health == 0:
-		print("Loser ;p")
+		SignalBus.defeat.emit()
 
 func spawn_text(text: String):
 	var hit = HIT_TEXT.instantiate()
@@ -58,3 +62,9 @@ func update_displayed_health() -> void:
 	elif displayed_health > health:
 		displayed_health = max(displayed_health - step,health)
 	displayed_health = int(displayed_health)
+
+func on_defeat():
+	dead = true
+	Game.audio_manager.death.play()
+	play("Death")
+	%"Health Node".visible = false

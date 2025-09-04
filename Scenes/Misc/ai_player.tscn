@@ -4,4 +4,3 @@
 
 [node name="AI Player" type="Node"]
 script = ExtResource("1_20k8v")
-enabled = true

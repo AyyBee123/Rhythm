@@ -17,7 +17,7 @@ func _ready():
 	SignalBus.pulse.connect(pulse)
 
 func _unhandled_input(event):
-	if not level.can_press or level.song_ended:
+	if not level.can_press or level.song_ended or level.lost:
 		return
 	if Input.is_action_just_pressed(input_value):
 		hit()

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dq8y01lyjhem1" path="res://Scripts/Main/hit_text.gd" id="1_f2kjs"]
 
 [node name="Hit Text" type="Node2D"]
-z_index = 7
+z_index = 9
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_f2kjs")
 

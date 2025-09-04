@@ -38,6 +38,7 @@ color = Color(0.125911, 0.125911, 0.125911, 1)
 
 [node name="Core" parent="." instance=ExtResource("2_gxh7o")]
 unique_name_in_owner = true
+frame_progress = 0.11466
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

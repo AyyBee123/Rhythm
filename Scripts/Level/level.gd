@@ -43,6 +43,7 @@ extends Node2D
 
 const ARROW = preload("uid://bpxatk686jj0s")
 const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
+const DEFEAT_SCREEN = preload("uid://ct0irb1dbg0yo")
 
 const NOTE_OFFSET := 200
 const KEY_OFFSET := 40
@@ -72,6 +73,7 @@ var can_press := false
 var next_note_spawn_time: float
 var practice_mode := false
 var tween: Tween
+var lost := false
 
 var song_time_minutes: int: 
 	get:
@@ -88,6 +90,7 @@ var song_duration_seconds: int:
 		return song_duration as int % 60
 
 func _ready() -> void:
+	Score.reset_score()
 	notes = NotesData.load_json(notes_file) # Array of note dictionaries
 	song_duration = %AudioStreamPlayer.stream.get_length()
 	bpm = notes[0]["tempo"]
@@ -95,9 +98,11 @@ func _ready() -> void:
 	TIMING_OFFSET = 1.0 / FALLING_SPEED_SCALE
 	sec_per_beat = 60.0 / bpm
 	conductor_time = -(beats_before_start + 1) * sec_per_beat
-	SignalBus.note_hit.connect(note_hit)
 	%"Beat Timer".wait_time = sec_per_beat
 	%"Beat Timer".start()
+	
+	SignalBus.note_hit.connect(note_hit)
+	SignalBus.defeat.connect(on_defeat)
 
 func _process(delta) -> void:
 	if not song_started:
@@ -207,3 +212,8 @@ func pulse(node):
 	tween = create_tween()
 	tween.tween_callback(func(): node.scale = Vector2.ONE * 1.08)
 	tween.tween_property(node, "scale", Vector2.ONE, time)
+
+func on_defeat():
+	lost = true
+	%AudioStreamPlayer.stop()
+	add_child(DEFEAT_SCREEN.instantiate())
