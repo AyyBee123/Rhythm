@@ -12,16 +12,16 @@ func format_number_with_commas(n: int) -> String:
 	return result
 
 func get_files(folder_path: String) -> Array:
-	var files := []
+	var files: Array = []
 	
-	var dir := DirAccess.open(folder_path)
+	var dir: DirAccess = DirAccess.open(folder_path)
 	if dir == null:
 		push_error("Failed to open folder: " + folder_path)
 		return files
 	
 	dir.list_dir_begin()
 	while true:
-		var file_name := dir.get_next()
+		var file_name: String = dir.get_next()
 		if file_name == "":
 			break
 		if not dir.current_is_dir():

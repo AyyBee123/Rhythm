@@ -2,7 +2,7 @@ extends Button
 
 var level: PackedScene
 var notes_file: String
-var initial_focus := false
+var initial_focus: bool = false
 
 var notes: Array
 var level_id: String
@@ -14,13 +14,13 @@ var song_duration_text: String
 var difficulty: int
 var preview_start: float
 
-var focused_once := false
+var focused_once: bool = false
 
 var tween: Tween
 var normal_size: Vector2
 var focused_size: Vector2
 
-func _ready():
+func _ready() -> void:
 	normal_size = size
 	focused_size = Vector2(normal_size.x * 1.1, normal_size.y)
 

@@ -13,7 +13,7 @@ extends Node2D
 
 @export_range(1, 16) var difficulty: int = 1
 @export_file("*.json") var notes_file: String = "" # json notes file path
-@export var preview_time := 20.0
+@export var preview_time: float = 20.0
 
 @onready var arrows: Dictionary = {
 	up_value: {
@@ -45,46 +45,46 @@ const ARROW = preload("uid://bpxatk686jj0s")
 const COUNTDOWN_TEXT = preload("uid://dn4kj3f0rfxhx")
 const DEFEAT_SCREEN = preload("uid://ct0irb1dbg0yo")
 
-const NOTE_OFFSET := 200
-const KEY_OFFSET := 40
-const DAMAGE := 2
-const HALF_STEP := 0.5
-var TIMING_OFFSET := 2.0
+const NOTE_OFFSET: int = 200
+const KEY_OFFSET: int = 40
+const DAMAGE: int = 2
+const HALF_STEP: float = 0.5
+var TIMING_OFFSET: float = 2.0
 
 var played: bool = false # check to see if the song has played (to prevent looping the song after it finishes)
-var note_index := 0 # the index of the next note to be played
-var notes := [] # Your loaded notes JSON
+var note_index: int = 0 # the index of the next note to be played
+var notes: Array = [] # loaded notes JSON
 var attempts: int # number of times the level was played
 
 var bpm: float
-var current_beat := 0.0
-var last_beat := -8
+var current_beat: float = 0.0
+var last_beat: int = -8
 var song_duration: float # in seconds
 var beat_offset: float
 var song_offset: float = 0.1 # in seconds
-var beats_before_start = 4  # "3, 2, 1, GO!"
+var beats_before_start: int = 4 # "3, 2, 1, GO!"
 var sec_per_beat: float
 
-var conductor_time := 0.0
-var song_start_time := 0.0
-var song_started := false
-var song_ended := false
-var can_press := false
+var conductor_time: float = 0.0
+var song_start_time: float = 0.0
+var song_started: bool = false
+var song_ended: bool = false
+var can_press: bool = false
 var next_note_spawn_time: float
-var practice_mode := false
+var practice_mode: bool = false
 var tween: Tween
-var lost := false
+var lost: bool = false
 
 var song_time_minutes: int: 
 	get:
-		return clamp(conductor_time, 0, song_duration) as int / 60
+		return (clamp(conductor_time, 0, song_duration) / 60) as int
 var song_time_seconds: int:
 	get:
 		return clamp(conductor_time, 0, song_duration) as int % 60
 
 var song_duration_minutes: int:
 	get:
-		return song_duration as int / 60
+		return (song_duration / 60) as int
 var song_duration_seconds: int:
 	get:
 		return song_duration as int % 60
@@ -138,12 +138,12 @@ func _process(delta) -> void:
 			+ "%01d:%02d" % [song_duration_minutes, song_duration_seconds]
 	%"Song Progress Bar".value = conductor_time / song_duration * %"Song Progress Bar".max_value
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("quick_restart"):
 		Score.reset_score()
 		get_tree().reload_current_scene()
 
-func spawn_arrow(arrow):
+func spawn_arrow(arrow) -> void:
 	if not arrows.has(int(arrow["key"])):
 		note_index += 1
 		if note_index < notes.size():
@@ -168,7 +168,7 @@ func spawn_arrow(arrow):
 		bpm = notes[note_index]["tempo"]
 		sec_per_beat = 60.0 / bpm
 
-func _on_countdown_timer_timeout():
+func _on_countdown_timer_timeout() -> void:
 	beats_before_start -= 1
 	if beats_before_start > 0:
 		show_countdown_number(beats_before_start) # 3, 2, 1
@@ -182,30 +182,30 @@ func _on_countdown_timer_timeout():
 	else:
 		%"Beat Timer".stop()
 
-func show_countdown_number(num):
+func show_countdown_number(num) -> void:
 	var text = COUNTDOWN_TEXT.instantiate()
 	text.lifetime = sec_per_beat / 2
 	text.get_node("%Text").text = str(num)
 	add_child(text)
 	%"Countdown Sound".play()
 
-func show_go():
+func show_go() -> void:
 	var text = COUNTDOWN_TEXT.instantiate()
 	text.lifetime = sec_per_beat / 2
 	text.get_node("%Text").text = str("GO!")
 	add_child(text)
 	%"Go Sound".play()
 
-func _on_audio_stream_player_finished():
+func _on_audio_stream_player_finished() -> void:
 	song_ended = true
 	Score.save_score(id + "_" + str(level_difficulty))
 
-func note_hit(type: String):
+func note_hit(type: String) -> void:
 	if type == "Miss" or type == "Bad":
 		return
 	pulse(%"Combo Multiplier")
 
-func pulse(node):
+func pulse(node) -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	var time = sec_per_beat / 4
@@ -213,7 +213,7 @@ func pulse(node):
 	tween.tween_callback(func(): node.scale = Vector2.ONE * 1.08)
 	tween.tween_property(node, "scale", Vector2.ONE, time)
 
-func on_defeat():
+func on_defeat() -> void:
 	lost = true
 	%AudioStreamPlayer.stop()
 	add_child(DEFEAT_SCREEN.instantiate())

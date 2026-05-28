@@ -1,28 +1,28 @@
 extends Node
 
-var points := 0:
+var points: int = 0:
 	set(value):
 		points = max(value, 0)
-var displayed_points := 0
-var combo := 0
-var max_combo := 0
-var hit_count := 0
-var combo_multi := 1
-var current_total_points := 0 # the total amount of points that could be gotten
-var current_rank := 0
-var current_accuracy_points := 0.0
-var max_accuracy_points := 0.0
-var accuracy := 100.0: get = get_accuracy
-var rank := "SS": get = get_rank
-var full_combo := true
+var displayed_points: int = 0
+var combo: int = 0
+var max_combo: int = 0
+var hit_count: int = 0
+var combo_multi: int = 1
+var current_total_points: int = 0
+var current_rank: int = 0
+var current_accuracy_points: float = 0.0
+var max_accuracy_points: float = 0.0
+var accuracy: float = 100.0: get = get_accuracy
+var rank: String = "SS": get = get_rank
+var full_combo: bool = true
 
 # counts the amount of hit types (and misses)
-var perfect_count := 0
-var great_count := 0
-var good_count := 0
-var bad_count := 0
-var miss_count := 0
-var hit_ratio := 0.0
+var perfect_count: int = 0
+var great_count: int = 0
+var good_count: int = 0
+var bad_count: int = 0
+var miss_count: int = 0
+var hit_ratio: float = 0.0
 
 enum TimingJudgement {
 	MISS,

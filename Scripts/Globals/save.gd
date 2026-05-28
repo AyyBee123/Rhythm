@@ -1,6 +1,6 @@
 extends Node
 
-var path := "user://profile.res"
+var path: String = "user://profile.res"
 var profile: PlayerProfile
 
 var rank_order = {
@@ -41,7 +41,7 @@ func save_score(song_id: String, score: int, accuracy: float, rank: String, comb
 	entry.cleared = entry.cleared or cleared # if the level was cleared previously, it stays that way
 
 	# SAVE (note: path first, resource second)
-	var err := ResourceSaver.save(profile, path)
+	var err: Error = ResourceSaver.save(profile, path)
 	if err != OK:
 		push_error("Failed to save profile.res: %s" % err)
 	
@@ -49,7 +49,6 @@ func save_score(song_id: String, score: int, accuracy: float, rank: String, comb
 		ResourceSaver.save(profile, path.get_basename() + ".tres")
 
 func load_profile() -> PlayerProfile:
-	var path := "user://profile.res"
 	if ResourceLoader.exists(path):
 		return ResourceLoader.load(path) as PlayerProfile
 	return PlayerProfile.new()
