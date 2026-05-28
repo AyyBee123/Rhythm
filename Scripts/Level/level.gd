@@ -104,7 +104,7 @@ func _ready() -> void:
 	SignalBus.note_hit.connect(note_hit)
 	SignalBus.defeat.connect(on_defeat)
 
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	if not song_started:
 		# countdown time (negative song time)
 		conductor_time += delta
@@ -143,7 +143,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Score.reset_score()
 		get_tree().reload_current_scene()
 
-func spawn_arrow(arrow) -> void:
+func spawn_arrow(arrow: Dictionary) -> void:
 	if not arrows.has(int(arrow["key"])):
 		note_index += 1
 		if note_index < notes.size():
@@ -182,7 +182,7 @@ func _on_countdown_timer_timeout() -> void:
 	else:
 		%"Beat Timer".stop()
 
-func show_countdown_number(num) -> void:
+func show_countdown_number(num: int) -> void:
 	var text = COUNTDOWN_TEXT.instantiate()
 	text.lifetime = sec_per_beat / 2
 	text.get_node("%Text").text = str(num)
@@ -205,7 +205,7 @@ func note_hit(type: String) -> void:
 		return
 	pulse(%"Combo Multiplier")
 
-func pulse(node) -> void:
+func pulse(node: Node) -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	var time = sec_per_beat / 4

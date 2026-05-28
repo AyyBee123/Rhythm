@@ -1,13 +1,13 @@
 extends Node2D
 
-var size := 1.0
+var size: float = 1.0
 var tween
 
-func _ready():
+func _ready() -> void:
 	set_color()
 	play_animation()
 
-func play_animation():
+func play_animation() -> void:
 	tween = get_tree().create_tween()
 	tween.tween_callback(func(): scale = Vector2.ONE * 0.5)
 	tween.tween_callback(func(): modulate.a = 0.75)
@@ -17,7 +17,7 @@ func play_animation():
 	tween.parallel().tween_property(self, "modulate:a", 0, 0.2666)
 	tween.tween_callback(queue_free)
 
-func set_color():
+func set_color() -> void:
 	match %Text.text:
 		"Perfect":
 			modulate = "43cfeb"
@@ -30,6 +30,6 @@ func set_color():
 		"Miss":
 			modulate = "6f246f"
 
-func _exit_tree():
+func _exit_tree() -> void:
 	if tween:
 		tween.kill()

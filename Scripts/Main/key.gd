@@ -13,16 +13,16 @@ var great: bool = false
 var good: bool = false
 var tween: Tween
 
-func _ready():
+func _ready() -> void:
 	SignalBus.pulse.connect(pulse)
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if not level.can_press or level.song_ended or level.lost:
 		return
 	if event.is_action_pressed(input_value):
 		hit()
 
-func hit():
+func hit() -> void:
 	%AnimatedSprite2D.play("Pressed")
 	if current_note:
 		current_note.get_parent().key = input_value
@@ -47,7 +47,7 @@ func hit():
 	else: # not hitting a note
 		Score.update_points(Score.TimingJudgement.BAD)
 
-func pulse(sec_per_beat):
+func pulse(sec_per_beat: float) -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	var time = sec_per_beat / 4
@@ -55,7 +55,7 @@ func pulse(sec_per_beat):
 	tween.tween_callback(func(): scale = Vector2.ONE * 1.08)
 	tween.tween_property(self, "scale", Vector2.ONE, time)
 
-func _on_good_area_area_entered(area):
+func _on_good_area_area_entered(area: Area2D) -> void:
 	if current_note:
 		queue.append(area)
 		return
@@ -63,7 +63,7 @@ func _on_good_area_area_entered(area):
 	current_note = area
 	current_note.get_parent().destroyed.connect(key_destroyed)
 
-func _on_good_area_area_exited(area):
+func _on_good_area_area_exited(_area: Area2D) -> void:
 	if queue.size() > 0:
 		current_note = queue.pop_front()
 		current_note.get_parent().destroyed.connect(key_destroyed)
@@ -72,25 +72,25 @@ func _on_good_area_area_exited(area):
 	good = false
 	current_note = null
 
-func _on_great_area_area_entered(area):
+func _on_great_area_area_entered(_area: Area2D) -> void:
 	great = true
 
-func _on_great_area_area_exited(area):
+func _on_great_area_area_exited(_area: Area2D) -> void:
 	great = false
 
-func _on_perfect_area_area_entered(area):
+func _on_perfect_area_area_entered(_area: Area2D) -> void:
 	perfect = true
 
-func _on_perfect_area_area_exited(area):
+func _on_perfect_area_area_exited(_area: Area2D) -> void:
 	perfect = false
 
-func key_destroyed():
+func key_destroyed() -> void:
 	if queue.size() > 0:
 		current_note = queue.pop_front()
 		current_note.get_parent().destroyed.connect(key_destroyed)
 	elif current_note:
 		current_note = null
 
-func _on_animated_sprite_2d_animation_finished():
+func _on_animated_sprite_2d_animation_finished() -> void:
 	if %AnimatedSprite2D.animation == "Pressed":
 		%AnimatedSprite2D.play("Unpressed")

@@ -35,13 +35,13 @@ enum TimingJudgement {
 const COMBO_MULTIPLIERS = [1, 2, 3, 4, 5]
 const COMBO_THRESHOLDS = [0, 2, 6, 8, 15]
 
-func _ready():
+func _ready() -> void:
 	SignalBus.arrow_destroyed.connect(get_accuracy_points)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_displayed_points()
 
-func update_points(type: TimingJudgement):
+func update_points(type: TimingJudgement) -> void:
 	match type:
 		TimingJudgement.MISS:
 			SignalBus.note_hit.emit("Miss")
@@ -83,7 +83,7 @@ func update_points(type: TimingJudgement):
 			perfect_count += 1
 			update_combo_multipier()
 
-func update_hold_note_points(type: TimingJudgement):
+func update_hold_note_points(type: TimingJudgement) -> void:
 	match type:
 		TimingJudgement.PERFECT:
 			SignalBus.note_hit.emit("Perfect")
@@ -100,7 +100,7 @@ func update_hold_note_points(type: TimingJudgement):
 			full_combo = false
 			decrease_combo_multiplier()
 
-func update_combo_multipier():
+func update_combo_multipier() -> void:
 	hit_count += 1
 	max_combo = max(max_combo, combo)
 	if combo_multi == COMBO_MULTIPLIERS[-1]: # max combo reached
@@ -113,16 +113,16 @@ func update_combo_multipier():
 		combo_multi = COMBO_MULTIPLIERS[index + 1] # increase combo multiplier by one step
 	hit_ratio = float(hit_count) / hit_threshold * 100
 
-func decrease_combo_multiplier():
+func decrease_combo_multiplier() -> void:
 	if combo_multi == COMBO_MULTIPLIERS[0]: # already at minimum combo
 		return
 	hit_count = 0 # reset hits needed to reach next combo multiplier tier
 	var index = COMBO_MULTIPLIERS.find(combo_multi)
 	combo_multi = COMBO_MULTIPLIERS[index - 1] # decrease combo multiplier by one step
 
-func get_accuracy_points(points):
+func get_accuracy_points(_points: int) -> void:
 	max_accuracy_points += TimingJudgement.PERFECT
-	current_accuracy_points += points
+	current_accuracy_points += _points
 	get_accuracy()
 
 func get_accuracy() -> float:
@@ -165,11 +165,11 @@ func get_final_rank() -> String:
 	else:
 		return "L"
 
-func save_score(song_id: String):
+func save_score(song_id: String) -> void:
 	Save.save_score(song_id, points, accuracy, get_final_rank(), max_combo, full_combo, true)
 
 ## if the level is reloaded or in main menu
-func reset_score():
+func reset_score() -> void:
 	points = 0
 	displayed_points = 0
 	combo = 0

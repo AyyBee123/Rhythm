@@ -7,7 +7,7 @@ var direction: Vector2
 var key: String
 var button: Node2D
 var core: Node2D
-var points_earned := 0
+var points_earned: int = 0
 
 var hold_duration: float
 var is_hold_note: bool
@@ -15,7 +15,7 @@ var hold_line
 
 const HOLD_LINE = preload("uid://dxbeljxnd4150")
 
-func _ready():
+func _ready() -> void:
 	if is_hold_note:
 		var line = HOLD_LINE.instantiate()
 		hold_line = line
@@ -29,10 +29,10 @@ func _ready():
 		get_tree().current_scene.add_child(line)
 	SignalBus.defeat.connect(queue_free) # destroy all existing arrows if the player loses
 
-func _process(delta):
+func _process(delta: float) -> void:
 	position += direction * speed * delta
 
-func destroy():
+func destroy() -> void:
 	destroyed.emit()
 	SignalBus.arrow_destroyed.emit(points_earned)
 	if is_hold_note:
@@ -41,6 +41,6 @@ func destroy():
 			hold_line.hold()
 	queue_free()
 
-func _on_note_area_area_entered(area):
+func _on_note_area_area_entered(_area: Area2D) -> void:
 	Score.update_points(Score.TimingJudgement.MISS)
 	destroy()

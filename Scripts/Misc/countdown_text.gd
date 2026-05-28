@@ -1,9 +1,9 @@
 extends Node2D
 
-var lifetime := 0.0
+var lifetime: float = 0.0
 var tween
 
-func _ready():
+func _ready() -> void:
 	match %Text.text:
 		"3":
 			modulate = "b31919"
@@ -20,6 +20,6 @@ func _ready():
 	tween.tween_property(self, "scale", Vector2.ONE * 0.25, lifetime * 0.8)
 	tween.tween_callback(queue_free)
 
-func _exit_tree():
+func _exit_tree() -> void:
 	if tween:
 		tween.kill()

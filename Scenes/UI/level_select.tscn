@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsmraarf5bk6q"]
+[gd_scene format=3 uid="uid://bsmraarf5bk6q"]
 
 [ext_resource type="Script" uid="uid://dddevvqoitopv" path="res://Scripts/UI/level_select.gd" id="1_xqnso"]
 [ext_resource type="Theme" uid="uid://c2knc33q46gol" path="res://Themes/scroll_container.tres" id="2_2wnai"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bkn7gmgx1wxgx" path="res://Fonts/Name Font.ttf" id="4_2wnai"]
 [ext_resource type="PackedScene" uid="uid://ca6sqox7bs6ql" path="res://Scenes/UI/visualizer.tscn" id="5_1i34c"]
 
-[node name="Level Select" type="Control"]
+[node name="Level Select" type="Control" unique_id=1418875663]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xqnso")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1071661590]
 z_index = 1
 layout_mode = 0
 offset_left = 24.0
@@ -24,7 +24,7 @@ offset_right = 280.0
 offset_bottom = 336.0
 theme_override_constants/separation = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer" unique_id=1446206684]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
@@ -35,14 +35,14 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("3_2wnai")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer" unique_id=259492840]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/margin_right = 16
 
-[node name="Level List" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer"]
+[node name="Level List" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer" unique_id=577725]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -50,18 +50,18 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 16
 
-[node name="PreviewPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PreviewPlayer" type="AudioStreamPlayer" parent="." unique_id=1108817709]
 unique_name_in_owner = true
 bus = &"Music"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1476120210]
 layout_mode = 0
 offset_left = 341.0
 offset_right = 640.0
 offset_bottom = 224.0
 color = Color(0.118581, 0.118581, 0.118581, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1639263889]
 z_index = 1
 clip_contents = true
 layout_mode = 0
@@ -71,7 +71,7 @@ offset_right = 288.0
 offset_bottom = 80.0
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Name" type="Label" parent="ColorRect/VBoxContainer" unique_id=126881196]
 unique_name_in_owner = true
 z_index = 1
 clip_contents = true
@@ -86,12 +86,12 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 24
 text = "Name"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer" unique_id=604753768]
 z_index = 1
 layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="BPM" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer"]
+[node name="BPM" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer" unique_id=561467650]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
@@ -104,7 +104,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "120 BPM"
 
-[node name="Song Time" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer"]
+[node name="Song Time" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer" unique_id=1008793879]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
@@ -117,7 +117,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "2:00"
 
-[node name="Highest Combo" type="Label" parent="ColorRect"]
+[node name="Highest Combo" type="Label" parent="ColorRect" unique_id=689924456]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
@@ -134,7 +134,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "256"
 
-[node name="High Score Text" type="Label" parent="ColorRect"]
+[node name="High Score Text" type="Label" parent="ColorRect" unique_id=1551945457]
 z_index = 1
 layout_mode = 0
 offset_left = 8.0
@@ -150,7 +150,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "Best Score"
 
-[node name="High Score" type="Label" parent="ColorRect"]
+[node name="High Score" type="Label" parent="ColorRect" unique_id=1962901669]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
@@ -167,7 +167,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "100,000"
 
-[node name="Highest Combo Text" type="Label" parent="ColorRect"]
+[node name="Highest Combo Text" type="Label" parent="ColorRect" unique_id=1596684972]
 z_index = 1
 layout_mode = 0
 offset_left = 8.0
@@ -183,7 +183,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "Highest Combo"
 
-[node name="Rank" type="Label" parent="ColorRect"]
+[node name="Rank" type="Label" parent="ColorRect" unique_id=1124631628]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
@@ -201,7 +201,7 @@ theme_override_font_sizes/font_size = 48
 text = "S"
 horizontal_alignment = 1
 
-[node name="Accuracy" type="Label" parent="ColorRect"]
+[node name="Accuracy" type="Label" parent="ColorRect" unique_id=601671604]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 0
@@ -219,7 +219,7 @@ theme_override_font_sizes/font_size = 24
 text = "50%"
 horizontal_alignment = 1
 
-[node name="Difficulty Text" type="Label" parent="ColorRect"]
+[node name="Difficulty Text" type="Label" parent="ColorRect" unique_id=899488300]
 z_index = 1
 layout_mode = 0
 offset_left = 8.0
@@ -235,7 +235,7 @@ theme_override_fonts/font = ExtResource("4_2wnai")
 theme_override_font_sizes/font_size = 16
 text = "Difficulty"
 
-[node name="Difficulty Pips" type="Control" parent="ColorRect"]
+[node name="Difficulty Pips" type="Control" parent="ColorRect" unique_id=1996045727]
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = 0
@@ -244,7 +244,7 @@ offset_top = 192.0
 offset_right = 256.0
 offset_bottom = 216.0
 
-[node name="Visualizer" parent="ColorRect" node_paths=PackedStringArray("audio_player") instance=ExtResource("5_1i34c")]
+[node name="Visualizer" parent="ColorRect" unique_id=670454286 node_paths=PackedStringArray("audio_player") instance=ExtResource("5_1i34c")]
 modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 1
 anchors_preset = -1

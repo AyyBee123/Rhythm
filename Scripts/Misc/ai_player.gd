@@ -25,7 +25,7 @@ var right
 
 var hit_type
 
-func _ready():
+func _ready() -> void:
 	if not enabled:
 		return
 	randomize()
@@ -58,99 +58,99 @@ func _ready():
 	right.get_node("Good Area").area_exited.connect(right_exit)
 
 
-func up_perfect(area):
+func up_perfect(area: Area2D) -> void:
 	if hit_type != "Perfect":
 		return
 	hit(up, area)
 
-func up_great(area):
+func up_great(area: Area2D) -> void:
 	if hit_type != "Great":
 		return
 	hit(up, area)
 
-func up_good(area):
+func up_good(area: Area2D) -> void:
 	hit_type = get_judgment()
 	if hit_type != "Good":
 		return
 	hit(up, area)
 
 
-func down_perfect(area):
+func down_perfect(area: Area2D) -> void:
 	if hit_type != "Perfect":
 		return
 	hit(down, area)
 
-func down_great(area):
+func down_great(area: Area2D) -> void:
 	if hit_type != "Great":
 		return
 	hit(down, area)
 
-func down_good(area):
+func down_good(area: Area2D) -> void:
 	hit_type = get_judgment()
 	if hit_type != "Good":
 		return
 	hit(down, area)
 
 
-func left_perfect(area):
+func left_perfect(area: Area2D) -> void:
 	if hit_type != "Perfect":
 		return
 	hit(left, area)
 
-func left_great(area):
+func left_great(area: Area2D) -> void:
 	if hit_type != "Great":
 		return
 	hit(left, area)
 
-func left_good(area):
+func left_good(area: Area2D) -> void:
 	hit_type = get_judgment()
 	if hit_type != "Good":
 		return
 	hit(left, area)
 
 
-func right_perfect(area):
+func right_perfect(area: Area2D) -> void:
 	if hit_type != "Perfect":
 		return
 	hit(right, area)
 
-func right_great(area):
+func right_great(area: Area2D) -> void:
 	if hit_type != "Great":
 		return
 	hit(right, area)
 
-func right_good(area):
+func right_good(area: Area2D) -> void:
 	hit_type = get_judgment()
 	if hit_type != "Good":
 		return
 	hit(right, area)
 
 
-func up_exit(area):
+func up_exit(area: Area2D) -> void:
 	if randf() < bad_chance:
 		hit(up, area)
 
-func down_exit(area):
+func down_exit(area: Area2D) -> void:
 	if randf() < bad_chance:
 		hit(down, area)
 
-func left_exit(area):
+func left_exit(area: Area2D) -> void:
 	if randf() < bad_chance:
 		hit(left, area)
 
-func right_exit(area):
+func right_exit(area: Area2D) -> void:
 	if randf() < bad_chance:
 		hit(right, area)
 
 
-func hit(key, area):
+func hit(key: Node2D, area: Area2D) -> void:
 	await get_tree().process_frame
 	if is_instance_valid(area):
 		key.hit()
 
 func get_judgment() -> String:
-	var roll := randf()
-	var cumulative := 0.0
+	var roll: float = randf()
+	var cumulative: float = 0.0
 	for j in judgments:
 		cumulative += j.chance
 		if roll < cumulative:

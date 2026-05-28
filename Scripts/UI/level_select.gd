@@ -1,25 +1,25 @@
 extends Control
 
-@onready var preview_player := %PreviewPlayer
+@onready var preview_player: AudioStreamPlayer = %PreviewPlayer
 
 const LEVEL_BUTTON = preload("uid://bocn8w7iidy23")
 const HEART_PIP = preload("uid://ckr2thfbbm207")
 
 var file_path: String = "res://Scenes/Levels/"
 var levels: Array
-var idx := 0
+var idx: int = 0
 var song_tween: Tween
-var preview_start := 20.0 # in seconds
-var preview_length := 10.0 # also in seconds
+var preview_start: float = 20.0 # in seconds
+var preview_length: float = 10.0 # also in seconds
 
 var current_beat: float
 var last_beat: int
 var bpm: int
 var sec_per_beat: float
 var preview_time: float
-var should_pulse := true
+var should_pulse: bool = true
 
-func _ready():
+func _ready() -> void:
 	var files = Utils.get_files(file_path)
 	
 	for file in files:
@@ -34,7 +34,7 @@ func _ready():
 		level.bpm = level.notes[0]["tempo"]
 		level.song = scene.get_node("%AudioStreamPlayer").stream
 		level.song_duration = level.song.get_length()
-		level.song_duration_text = "%01d:%02d" % [level.song_duration as int / 60, level.song_duration as int % 60]
+		level.song_duration_text = "%01d:%02d" % [int(level.song_duration / 60), int(level.song_duration) % 60]
 		level.difficulty = scene.difficulty
 		level.preview_start = scene.preview_time
 		scene.queue_free()
@@ -59,7 +59,7 @@ func _ready():
 	levels[0].grab_focus()
 	levels[0].initial_focus = false
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if preview_player.playing:
 		if preview_player.get_playback_position() >= preview_start + preview_length:
 			_loop_with_fade(1)
@@ -74,7 +74,7 @@ func _process(_delta):
 			last_beat = int(current_beat)
 			SignalBus.pulse.emit(sec_per_beat)
 
-func _loop_with_fade(fade_time: float):
+func _loop_with_fade(fade_time: float) -> void:
 	# prevent multiple triggers
 	if song_tween and song_tween.is_running():
 		return
@@ -94,7 +94,7 @@ func _loop_with_fade(fade_time: float):
 	# fade back in
 	song_tween.tween_property(preview_player, "volume_db", 0, fade_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
-func _on_button_focus_entered(btn):
+func _on_button_focus_entered(btn: Button) -> void:
 	sec_per_beat = 60.0 / btn.bpm
 	%ScrollContainer._center_on(btn)
 	load_score(btn.level_id + "_" + btn.level_difficulty)
@@ -102,7 +102,7 @@ func _on_button_focus_entered(btn):
 	preview_start = btn.preview_start
 	preview_song(btn.song)
 
-func load_score(song_id: String):
+func load_score(song_id: String) -> void:
 	var score_data: ScoreData = Save.profile.scores.get(song_id, null)
 	if score_data != null:
 		%"High Score".text = Utils.format_number_with_commas(score_data.best_score)
@@ -115,10 +115,10 @@ func load_score(song_id: String):
 		%Rank.text = ""
 		%Accuracy.text = ""
 
-func _on_button_focus_exited(btn):
+func _on_button_focus_exited(btn: Button) -> void:
 	pass
 
-func preview_song(song):
+func preview_song(song: AudioStream) -> void:
 	if song_tween and song_tween.is_running():
 		song_tween.kill()
 	song_tween = create_tween()
@@ -140,7 +140,7 @@ func preview_song(song):
 	)
 	song_tween.tween_property(%PreviewPlayer, "volume_db", 0, 0.5).set_trans(Tween.TRANS_CUBIC)
 
-func set_preview_values(btn):
+func set_preview_values(btn: Button) -> void:
 	%Name.text = btn.text
 	%BPM.text = str(btn.bpm) + " BPM"
 	%"Song Time".text = btn.song_duration_text
@@ -155,9 +155,9 @@ func set_preview_values(btn):
 		%"Difficulty Pips".add_child(pip)
 
 func get_difficulty_color(difficulty: int, max: int = 16) -> Color:
-	var t := float(difficulty) / max  # Normalize 0.0 to 1.0
+	var t: float = float(difficulty) / max  # Normalize 0.0 to 1.0
 	
-	# Define key color stops
+	# define key color stops
 	var stops = [
 		{ "pos": 0.0, "col": Color("32e332") }, # green
 		{ "pos": 0.33, "col": Color("e4b719") }, # orange
@@ -174,7 +174,7 @@ func get_difficulty_color(difficulty: int, max: int = 16) -> Color:
 			return a.col.lerp(b.col, segment_t)
 	return stops.back().col
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			_move(1)

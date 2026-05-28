@@ -10,19 +10,19 @@ extends Control
 var spectrum_instance
 var bars = []
 
-@export var shuffle_frequeny := false
-@export var flip_y := false
+@export var shuffle_frequeny: bool = false
+@export var flip_y: bool = false
 
-var color_gradient := Gradient.new()
+var color_gradient: Gradient = Gradient.new()
 
-func _ready():
+func _ready() -> void:
 	color_gradient.add_point(0.0, Color("32e332"))
 	color_gradient.add_point(0.5, Color("61e978"))
 	color_gradient.add_point(1.0, Color("97f1b0"))
 	spectrum_instance = AudioServer.get_bus_effect_instance(AudioServer.get_bus_index("Music"), 0)
 	create_bars()
 
-func create_bars():
+func create_bars() -> void:
 	for i in range(NUMBER_OF_BARS):
 		var bar = ColorRect.new()
 		bar.color = Color("32e332")
@@ -31,7 +31,7 @@ func create_bars():
 		add_child(bar)
 		bars.append(bar)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if not spectrum_instance:
 		return
 	

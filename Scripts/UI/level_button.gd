@@ -24,11 +24,11 @@ func _ready() -> void:
 	normal_size = size
 	focused_size = Vector2(normal_size.x * 1.1, normal_size.y)
 
-func _on_pressed():
+func _on_pressed() -> void:
 	if focused_once:
 		get_tree().change_scene_to_packed(level) # second click → start level
 
-func _on_focus_entered():
+func _on_focus_entered() -> void:
 	if not focused_once:
 		if not initial_focus:
 			Game.audio_manager.scroll.play()
@@ -39,7 +39,7 @@ func _on_focus_entered():
 	tween = create_tween()
 	tween.tween_property(self, "size", focused_size, 0.15).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-func _on_focus_exited():
+func _on_focus_exited() -> void:
 	focused_once = false # reset when losing focus
 	if tween and tween.is_running():
 		tween.kill()

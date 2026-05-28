@@ -14,7 +14,7 @@ var rank_order = {
 	"P": 7,
 }
 
-func _ready():
+func _ready() -> void:
 	profile = load_profile()  # load profile at start
 
 func save_score(song_id: String, score: int, accuracy: float, rank: String, combo: int, full_combo: bool, cleared: bool) -> void:

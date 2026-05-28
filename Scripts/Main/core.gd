@@ -1,20 +1,20 @@
 extends AnimatedSprite2D
 
-@export var on_beat_frame := 1 # the frame that syncs with the music's beat
+@export var on_beat_frame: int = 1 # the frame that syncs with the music's beat
 
 @onready var camera = %Camera
 @onready var level = get_tree().current_scene
 
 const HIT_TEXT = preload("uid://b8ldvl62w53uf")
 
-const MAX_HEALTH := 100
+const MAX_HEALTH: int = 100
 
-var health := MAX_HEALTH
-var displayed_health := MAX_HEALTH
+var health: int = MAX_HEALTH
+var displayed_health: int = MAX_HEALTH
 var tween: Tween
-var dead := false
+var dead: bool = false
 
-func _ready():
+func _ready() -> void:
 	material.set("shader_parameter/tint_factor", 0.0)
 	
 	%Up.position = Vector2.UP * level.KEY_OFFSET
@@ -26,7 +26,7 @@ func _ready():
 	SignalBus.health_changed.connect(change_health)
 	SignalBus.defeat.connect(on_defeat)
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if dead:
 		return
 	var frames = sprite_frames.get_frame_count("Idle")
@@ -35,7 +35,7 @@ func _process(delta):
 	update_displayed_health()
 	%Health.text = str(displayed_health)
 
-func change_health(amount):
+func change_health(amount: int) -> void:
 	health += amount
 	health = clamp(health, 0, MAX_HEALTH)
 	if amount < 0: # took damage
@@ -43,13 +43,13 @@ func change_health(amount):
 	if health == 0:
 		SignalBus.defeat.emit()
 
-func spawn_text(text: String):
+func spawn_text(text: String) -> void:
 	var hit = HIT_TEXT.instantiate()
 	hit.get_node("%Text").text = text
 	get_tree().current_scene.add_child.call_deferred(hit)
 
 ## set the core's color to red for a brief time when taking damage (bad/miss notes)
-func change_color():
+func change_color() -> void:
 	material.set("shader_parameter/tint_factor", 0.85)
 	await get_tree().create_timer(0.05, false).timeout
 	material.set("shader_parameter/tint_factor", 0.0)
@@ -65,7 +65,7 @@ func update_displayed_health() -> void:
 		displayed_health = max(displayed_health - step,health)
 	displayed_health = int(displayed_health)
 
-func on_defeat():
+func on_defeat() -> void:
 	dead = true
 	Game.audio_manager.death.play()
 	play("Death")
