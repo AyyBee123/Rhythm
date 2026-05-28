@@ -19,7 +19,7 @@ func _ready():
 func _unhandled_input(event):
 	if not level.can_press or level.song_ended or level.lost:
 		return
-	if Input.is_action_just_pressed(input_value):
+	if event.is_action_pressed(input_value):
 		hit()
 
 func hit():

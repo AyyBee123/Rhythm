@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c2knc33q46gol"]
+[gd_resource type="Theme" format=3 uid="uid://c2knc33q46gol"]
 
 [ext_resource type="Texture2D" uid="uid://by4l5tyci8ulx" path="res://Sprites/UI/Grabber.png" id="1_lp6f4"]
 [ext_resource type="Texture2D" uid="uid://chj28ogyoynia" path="res://Sprites/UI/Grabber Grabbed.png" id="2_6rkpp"]

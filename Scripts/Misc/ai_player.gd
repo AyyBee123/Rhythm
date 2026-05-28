@@ -1,12 +1,12 @@
 extends Node
 
-@export var enabled := false
+@export var enabled: bool = false
 
-@export_range(0, 1) var perfect_chance := 0.92
-@export_range(0, 1) var great_chance := 0.05
-@export_range(0, 1) var good_chance := 0.03
-@export_range(0, 1) var miss_chance := 0.0
-@export_range(0, 1) var bad_chance := 0.75
+@export_range(0, 1) var perfect_chance: float = 0.92
+@export_range(0, 1) var great_chance: float = 0.05
+@export_range(0, 1) var good_chance: float = 0.03
+@export_range(0, 1) var miss_chance: float = 0.0
+@export_range(0, 1) var bad_chance: float = 0.75
 
 var level
 var core
@@ -16,11 +16,11 @@ var down
 var left
 var right
 
-@onready var judgments := [
+@onready var judgments: Array = [
 	{"label": "Perfect", "chance": perfect_chance},
-	{"label": "Great",   "chance": great_chance},
-	{"label": "Good",    "chance": good_chance},
-	{"label": "Miss",    "chance": miss_chance},
+	{"label": "Great", "chance": great_chance},
+	{"label": "Good", "chance": good_chance},
+	{"label": "Miss", "chance": miss_chance},
 ]
 
 var hit_type

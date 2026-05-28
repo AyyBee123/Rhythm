@@ -139,7 +139,7 @@ func _process(delta) -> void:
 	%"Song Progress Bar".value = conductor_time / song_duration * %"Song Progress Bar".max_value
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("quick_restart"):
+	if event.is_action_pressed("quick_restart"):
 		Score.reset_score()
 		get_tree().reload_current_scene()
 
