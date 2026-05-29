@@ -15,10 +15,6 @@
 script = ExtResource("1_f0afu")
 id = "0"
 level_difficulty = 2
-up_value = 43
-down_value = 46
-left_value = 48
-right_value = 50
 notes_file = "res://Audio/Notes Data/heartbeat_notes.json"
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=1575786643]

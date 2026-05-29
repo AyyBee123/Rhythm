@@ -5,9 +5,6 @@
 
 [node name="Garden - Seedovia" unique_id=1650803597 instance=ExtResource("1_plx86")]
 id = "3"
-up_value = 60
-down_value = 62
-left_value = 64
 difficulty = 12
 notes_file = "res://Audio/Notes Data/garden_theme_notes.json"
 

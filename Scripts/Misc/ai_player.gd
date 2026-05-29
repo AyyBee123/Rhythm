@@ -29,6 +29,13 @@ func _ready() -> void:
 	if not enabled:
 		return
 	randomize()
+	
+	var total = perfect_chance + great_chance + good_chance + miss_chance
+	perfect_chance /= total
+	great_chance /= total
+	good_chance /= total
+	miss_chance /= total
+	
 	level = get_tree().current_scene
 	core = level.get_node("%Core")
 	
