@@ -3,12 +3,6 @@ extends Node2D
 @export var id: String # id to access stats from the level select and save file
 @export_enum("Easy", "Normal", "Hard") var level_difficulty = 0
 
-# values from the midi file
-@export var up_value: int
-@export var down_value: int
-@export var left_value: int
-@export var right_value: int
-
 @export var FALLING_SPEED_SCALE: float = 1.0
 
 @export_range(1, 16) var difficulty: int = 1
@@ -16,22 +10,22 @@ extends Node2D
 @export var preview_time: float = 20.0
 
 @onready var arrows: Dictionary = {
-	up_value: {
+	"up": {
 		"key": "up", # key matches the key name in the project settings
 		"rotation": 0, # default rotation of the arrow is pointing up
 		"position": Vector2(0, -1) # the normalized position the arrow spawns in
 	},
-	down_value: {
+	"down": {
 		"key": "down",
 		"rotation": PI,
 		"position": Vector2(0, 1)
 	},
-	left_value: {
+	"left": {
 		"key": "left",
 		"rotation": 3 * PI/2,
 		"position": Vector2(-1, 0)
 	},
-	right_value: {
+	"right": {
 		"key": "right",
 		"rotation": PI/2,
 		"position": Vector2(1, 0)
@@ -144,14 +138,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 func spawn_arrow(arrow: Dictionary) -> void:
-	if not arrows.has(int(arrow["key"])):
+	if not arrows.has((arrow["key"])):
 		note_index += 1
 		if note_index < notes.size():
 			next_note_spawn_time = notes[note_index]["start_time"]
 			bpm = notes[note_index]["tempo"]
 			sec_per_beat = 60.0 / bpm
 		return
-	var note_data = arrows[int(arrow["key"])]
+	var note_data = arrows[(arrow["key"])]
 	var note = ARROW.instantiate()
 	note.global_position = note_data["position"] * (NOTE_OFFSET + KEY_OFFSET)
 	note.direction = -note_data["position"]

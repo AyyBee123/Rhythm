@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dul4oc5hrglvf"]
+[gd_scene format=3 uid="uid://dul4oc5hrglvf"]
 
 [ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_plx86"]
 [ext_resource type="AudioStream" uid="uid://uqqrlkbo5u1e" path="res://Audio/Music/Garden Theme.ogg" id="2_xis1u"]
 
-[node name="Garden - Seedovia" instance=ExtResource("1_plx86")]
+[node name="Garden - Seedovia" unique_id=1650803597 instance=ExtResource("1_plx86")]
 id = "3"
 up_value = 60
 down_value = 62
@@ -11,5 +11,5 @@ left_value = 64
 difficulty = 12
 notes_file = "res://Audio/Notes Data/garden_theme_notes.json"
 
-[node name="AudioStreamPlayer" parent="." index="2"]
+[node name="AudioStreamPlayer" parent="." index="2" unique_id=1030262934]
 stream = ExtResource("2_xis1u")

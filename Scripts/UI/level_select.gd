@@ -89,7 +89,7 @@ func _loop_with_fade(fade_time: float) -> void:
 				+ AudioServer.get_time_since_last_mix() \
 				- AudioServer.get_output_latency()
 		current_beat = playback_time / sec_per_beat
-		last_beat = current_beat
+		last_beat = int(current_beat)
 	)
 	# fade back in
 	song_tween.tween_property(preview_player, "volume_db", 0, fade_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -135,7 +135,7 @@ func preview_song(song: AudioStream) -> void:
 					+ AudioServer.get_time_since_last_mix() \
 					- AudioServer.get_output_latency()
 			current_beat = playback_time / sec_per_beat
-			last_beat = current_beat
+			last_beat = int(current_beat)
 			should_pulse = true
 	)
 	song_tween.tween_property(%PreviewPlayer, "volume_db", 0, 0.5).set_trans(Tween.TRANS_CUBIC)
@@ -154,15 +154,15 @@ func set_preview_values(btn: Button) -> void:
 		pip.position = Vector2((pip.texture.get_width() - 2) * i, pip.texture.get_height() / 2)
 		%"Difficulty Pips".add_child(pip)
 
-func get_difficulty_color(difficulty: int, max: int = 16) -> Color:
-	var t: float = float(difficulty) / max  # Normalize 0.0 to 1.0
+func get_difficulty_color(difficulty: int, _max: int = 16) -> Color:
+	var t: float = float(difficulty) / _max  # Normalize 0.0 to 1.0
 	
 	# define key color stops
 	var stops = [
 		{ "pos": 0.0, "col": Color("32e332") }, # green
 		{ "pos": 0.33, "col": Color("e4b719") }, # orange
 		{ "pos": 0.75, "col": Color("b81414") }, # red
-		{ "pos": 1.0, "col": Color("6f246f") }  # purple
+		{ "pos": 1.0, "col": Color("6f246f") } # purple
 	]
 	
 	# find which two stops we're between

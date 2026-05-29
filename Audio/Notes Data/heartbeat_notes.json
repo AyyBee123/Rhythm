@@ -1,7 +1,7 @@
 [
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 1.875,
 		"end_time": 2.2265625,
 		"duration": 0.3515625,
@@ -14,7 +14,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 2.2265625,
 		"end_time": 2.578125,
 		"duration": 0.3515625,
@@ -27,7 +27,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 2.578125,
 		"end_time": 3.28125,
 		"duration": 0.703125,
@@ -40,7 +40,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 3.28125,
 		"end_time": 3.515625,
 		"duration": 0.234375,
@@ -53,7 +53,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 3.75,
 		"end_time": 4.1015625,
 		"duration": 0.3515625,
@@ -66,7 +66,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 4.1015625,
 		"end_time": 4.453125,
 		"duration": 0.3515625,
@@ -79,7 +79,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 4.453125,
 		"end_time": 5.15625,
 		"duration": 0.703125,
@@ -92,7 +92,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 5.15625,
 		"end_time": 5.390625,
 		"duration": 0.234375,
@@ -105,7 +105,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 5.390625,
 		"end_time": 5.625,
 		"duration": 0.234375,
@@ -118,7 +118,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 5.625,
 		"end_time": 5.9765625,
 		"duration": 0.3515625,
@@ -131,7 +131,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 5.9765625,
 		"end_time": 6.328125,
 		"duration": 0.3515625,
@@ -144,7 +144,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 6.328125,
 		"end_time": 7.03125,
 		"duration": 0.703125,
@@ -157,7 +157,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 7.03125,
 		"end_time": 7.265625,
 		"duration": 0.234375,
@@ -170,7 +170,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 7.5,
 		"end_time": 7.8515625,
 		"duration": 0.3515625,
@@ -183,7 +183,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 7.8515625,
 		"end_time": 8.203125,
 		"duration": 0.3515625,
@@ -196,7 +196,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 8.203125,
 		"end_time": 8.4375,
 		"duration": 0.234375,
@@ -209,7 +209,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 8.4375,
 		"end_time": 8.90625,
 		"duration": 0.46875,
@@ -222,7 +222,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 8.90625,
 		"end_time": 9.140625,
 		"duration": 0.234375,
@@ -235,7 +235,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 9.140625,
 		"end_time": 9.375,
 		"duration": 0.234375,
@@ -248,7 +248,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 9.375,
 		"end_time": 9.7265625,
 		"duration": 0.3515625,
@@ -261,7 +261,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 9.7265625,
 		"end_time": 10.078125,
 		"duration": 0.3515625,
@@ -274,7 +274,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 10.078125,
 		"end_time": 10.78125,
 		"duration": 0.703125,
@@ -287,7 +287,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 10.78125,
 		"end_time": 11.25,
 		"duration": 0.46875,
@@ -300,7 +300,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 11.25,
 		"end_time": 11.6015625,
 		"duration": 0.3515625,
@@ -313,7 +313,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 11.6015625,
 		"end_time": 11.953125,
 		"duration": 0.3515625,
@@ -326,7 +326,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 11.953125,
 		"end_time": 12.65625,
 		"duration": 0.703125,
@@ -339,7 +339,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 12.65625,
 		"end_time": 12.890625,
 		"duration": 0.234375,
@@ -352,7 +352,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 12.890625,
 		"end_time": 13.125,
 		"duration": 0.234375,
@@ -365,7 +365,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 13.125,
 		"end_time": 13.4765625,
 		"duration": 0.3515625,
@@ -378,7 +378,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 13.4765625,
 		"end_time": 13.828125,
 		"duration": 0.3515625,
@@ -391,7 +391,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 13.828125,
 		"end_time": 14.53125,
 		"duration": 0.703125,
@@ -404,7 +404,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 14.53125,
 		"end_time": 15.0,
 		"duration": 0.46875,
@@ -417,7 +417,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 15.0,
 		"end_time": 15.3515625,
 		"duration": 0.3515625,
@@ -430,7 +430,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 15.3515625,
 		"end_time": 15.703125,
 		"duration": 0.3515625,
@@ -443,7 +443,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 15.703125,
 		"end_time": 16.2890625,
 		"duration": 0.5859375,
@@ -456,7 +456,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 16.40625,
 		"end_time": 16.640625,
 		"duration": 0.234375,
@@ -469,7 +469,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 16.640625,
 		"end_time": 16.875,
 		"duration": 0.234375,
@@ -482,7 +482,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 17.34375,
 		"end_time": 17.578125,
 		"duration": 0.234375,
@@ -495,7 +495,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 17.6953125,
 		"end_time": 17.9296875,
 		"duration": 0.234375,
@@ -508,7 +508,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 18.046875,
 		"end_time": 18.28125,
 		"duration": 0.234375,
@@ -521,7 +521,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 18.3984375,
 		"end_time": 18.6328125,
 		"duration": 0.234375,
@@ -534,7 +534,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 19.21875,
 		"end_time": 19.453125,
 		"duration": 0.234375,
@@ -547,7 +547,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 19.5703125,
 		"end_time": 19.8046875,
 		"duration": 0.234375,
@@ -560,7 +560,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 19.921875,
 		"end_time": 20.15625,
 		"duration": 0.234375,
@@ -573,7 +573,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 20.15625,
 		"end_time": 20.5078125,
 		"duration": 0.3515625,
@@ -586,7 +586,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 21.09375,
 		"end_time": 21.328125,
 		"duration": 0.234375,
@@ -599,7 +599,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 21.328125,
 		"end_time": 21.4453125,
 		"duration": 0.1171875,
@@ -612,7 +612,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 21.4453125,
 		"end_time": 21.796875,
 		"duration": 0.3515625,
@@ -625,7 +625,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 21.796875,
 		"end_time": 22.1484375,
 		"duration": 0.3515625,
@@ -638,7 +638,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 22.1484375,
 		"end_time": 22.3828125,
 		"duration": 0.234375,
@@ -651,7 +651,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 22.3828125,
 		"end_time": 22.5,
 		"duration": 0.1171875,
@@ -664,7 +664,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 22.96875,
 		"end_time": 23.203125,
 		"duration": 0.234375,
@@ -677,7 +677,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 23.3203125,
 		"end_time": 23.671875,
 		"duration": 0.3515625,
@@ -690,7 +690,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 23.671875,
 		"end_time": 23.90625,
 		"duration": 0.234375,
@@ -703,7 +703,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 23.90625,
 		"end_time": 24.2578125,
 		"duration": 0.3515625,
@@ -716,7 +716,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 24.2578125,
 		"end_time": 24.375,
 		"duration": 0.1171875,
@@ -729,7 +729,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 24.84375,
 		"end_time": 25.078125,
 		"duration": 0.234375,
@@ -742,7 +742,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 25.1953125,
 		"end_time": 25.4296875,
 		"duration": 0.234375,
@@ -755,7 +755,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 25.546875,
 		"end_time": 25.78125,
 		"duration": 0.234375,
@@ -768,7 +768,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 25.8984375,
 		"end_time": 26.1328125,
 		"duration": 0.234375,
@@ -781,7 +781,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 26.71875,
 		"end_time": 26.953125,
 		"duration": 0.234375,
@@ -794,7 +794,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 27.0703125,
 		"end_time": 27.3046875,
 		"duration": 0.234375,
@@ -807,7 +807,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 27.421875,
 		"end_time": 27.65625,
 		"duration": 0.234375,
@@ -820,7 +820,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 27.65625,
 		"end_time": 27.890625,
 		"duration": 0.234375,
@@ -833,7 +833,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 27.890625,
 		"end_time": 28.0078125,
 		"duration": 0.1171875,
@@ -846,7 +846,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 28.0078125,
 		"end_time": 28.125,
 		"duration": 0.1171875,
@@ -859,7 +859,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 28.59375,
 		"end_time": 28.828125,
 		"duration": 0.234375,
@@ -872,7 +872,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 28.828125,
 		"end_time": 28.9453125,
 		"duration": 0.1171875,
@@ -885,7 +885,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 28.9453125,
 		"end_time": 29.296875,
 		"duration": 0.3515625,
@@ -898,7 +898,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 29.296875,
 		"end_time": 29.6484375,
 		"duration": 0.3515625,
@@ -911,7 +911,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 29.6484375,
 		"end_time": 29.8828125,
 		"duration": 0.234375,
@@ -924,7 +924,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 29.8828125,
 		"end_time": 30.0,
 		"duration": 0.1171875,
@@ -937,7 +937,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 30.46875,
 		"end_time": 30.703125,
 		"duration": 0.234375,
@@ -950,7 +950,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 30.8203125,
 		"end_time": 31.171875,
 		"duration": 0.3515625,
@@ -963,7 +963,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 31.171875,
 		"end_time": 31.40625,
 		"duration": 0.234375,
@@ -976,7 +976,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 31.40625,
 		"end_time": 31.7578125,
 		"duration": 0.3515625,
@@ -989,7 +989,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 31.7578125,
 		"end_time": 31.875,
 		"duration": 0.1171875,
@@ -1002,7 +1002,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 32.34375,
 		"end_time": 32.578125,
 		"duration": 0.234375,
@@ -1015,7 +1015,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 32.6953125,
 		"end_time": 32.9296875,
 		"duration": 0.234375,
@@ -1028,7 +1028,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 33.046875,
 		"end_time": 33.28125,
 		"duration": 0.234375,
@@ -1041,7 +1041,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 33.3984375,
 		"end_time": 33.6328125,
 		"duration": 0.234375,
@@ -1054,7 +1054,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 34.21875,
 		"end_time": 34.453125,
 		"duration": 0.234375,
@@ -1067,7 +1067,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 34.5703125,
 		"end_time": 34.8046875,
 		"duration": 0.234375,
@@ -1080,7 +1080,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 34.921875,
 		"end_time": 35.15625,
 		"duration": 0.234375,
@@ -1093,7 +1093,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 35.15625,
 		"end_time": 35.390625,
 		"duration": 0.234375,
@@ -1106,7 +1106,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 35.390625,
 		"end_time": 35.5078125,
 		"duration": 0.1171875,
@@ -1119,7 +1119,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 35.5078125,
 		"end_time": 35.625,
 		"duration": 0.1171875,
@@ -1132,7 +1132,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 36.09375,
 		"end_time": 36.328125,
 		"duration": 0.234375,
@@ -1145,7 +1145,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 36.328125,
 		"end_time": 36.4453125,
 		"duration": 0.1171875,
@@ -1158,7 +1158,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 36.4453125,
 		"end_time": 36.796875,
 		"duration": 0.3515625,
@@ -1171,7 +1171,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 36.796875,
 		"end_time": 37.03125,
 		"duration": 0.234375,
@@ -1184,7 +1184,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 37.03125,
 		"end_time": 37.1484375,
 		"duration": 0.1171875,
@@ -1197,7 +1197,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 37.1484375,
 		"end_time": 37.3828125,
 		"duration": 0.234375,
@@ -1210,7 +1210,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 37.3828125,
 		"end_time": 37.5,
 		"duration": 0.1171875,
@@ -1223,7 +1223,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 37.96875,
 		"end_time": 38.203125,
 		"duration": 0.234375,
@@ -1236,7 +1236,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 38.203125,
 		"end_time": 38.3203125,
 		"duration": 0.1171875,
@@ -1249,7 +1249,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 38.3203125,
 		"end_time": 38.671875,
 		"duration": 0.3515625,
@@ -1262,7 +1262,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 38.671875,
 		"end_time": 38.90625,
 		"duration": 0.234375,
@@ -1275,7 +1275,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 38.90625,
 		"end_time": 39.2578125,
 		"duration": 0.3515625,
@@ -1288,7 +1288,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 39.2578125,
 		"end_time": 39.375,
 		"duration": 0.1171875,
@@ -1301,7 +1301,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 39.84375,
 		"end_time": 40.078125,
 		"duration": 0.234375,
@@ -1314,7 +1314,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 40.1953125,
 		"end_time": 40.4296875,
 		"duration": 0.234375,
@@ -1327,7 +1327,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 40.546875,
 		"end_time": 40.78125,
 		"duration": 0.234375,
@@ -1340,7 +1340,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 40.8984375,
 		"end_time": 41.1328125,
 		"duration": 0.234375,
@@ -1353,7 +1353,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 41.71875,
 		"end_time": 41.953125,
 		"duration": 0.234375,
@@ -1366,7 +1366,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 42.0703125,
 		"end_time": 42.3046875,
 		"duration": 0.234375,
@@ -1379,7 +1379,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 42.421875,
 		"end_time": 42.65625,
 		"duration": 0.234375,
@@ -1392,7 +1392,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 42.65625,
 		"end_time": 42.890625,
 		"duration": 0.234375,
@@ -1405,7 +1405,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 42.890625,
 		"end_time": 43.0078125,
 		"duration": 0.1171875,
@@ -1418,7 +1418,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 43.0078125,
 		"end_time": 43.125,
 		"duration": 0.1171875,
@@ -1431,7 +1431,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 43.59375,
 		"end_time": 43.828125,
 		"duration": 0.234375,
@@ -1444,7 +1444,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 43.828125,
 		"end_time": 43.9453125,
 		"duration": 0.1171875,
@@ -1457,7 +1457,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 43.9453125,
 		"end_time": 44.296875,
 		"duration": 0.3515625,
@@ -1470,7 +1470,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 44.296875,
 		"end_time": 44.53125,
 		"duration": 0.234375,
@@ -1483,7 +1483,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 44.53125,
 		"end_time": 44.6484375,
 		"duration": 0.1171875,
@@ -1496,7 +1496,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 44.6484375,
 		"end_time": 44.8828125,
 		"duration": 0.234375,
@@ -1509,7 +1509,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 44.8828125,
 		"end_time": 45.0,
 		"duration": 0.1171875,
@@ -1522,7 +1522,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 45.46875,
 		"end_time": 45.703125,
 		"duration": 0.234375,
@@ -1535,7 +1535,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 45.703125,
 		"end_time": 45.8203125,
 		"duration": 0.1171875,
@@ -1548,7 +1548,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 45.8203125,
 		"end_time": 46.171875,
 		"duration": 0.3515625,
@@ -1561,7 +1561,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 46.171875,
 		"end_time": 46.40625,
 		"duration": 0.234375,
@@ -1574,7 +1574,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 46.40625,
 		"end_time": 46.7578125,
 		"duration": 0.3515625,
@@ -1587,7 +1587,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 46.7578125,
 		"end_time": 46.875,
 		"duration": 0.1171875,
@@ -1600,7 +1600,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 46.875,
 		"end_time": 47.2265625,
 		"duration": 0.3515625,
@@ -1613,7 +1613,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 47.2265625,
 		"end_time": 47.578125,
 		"duration": 0.3515625,
@@ -1626,7 +1626,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 47.578125,
 		"end_time": 47.8125,
 		"duration": 0.234375,
@@ -1639,7 +1639,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 47.8125,
 		"end_time": 48.75,
 		"duration": 0.9375,
@@ -1652,7 +1652,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 48.75,
 		"end_time": 49.1015625,
 		"duration": 0.3515625,
@@ -1665,7 +1665,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 49.1015625,
 		"end_time": 49.453125,
 		"duration": 0.3515625,
@@ -1678,7 +1678,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 49.453125,
 		"end_time": 49.6875,
 		"duration": 0.234375,
@@ -1691,7 +1691,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 49.6875,
 		"end_time": 49.921875,
 		"duration": 0.234375,
@@ -1704,7 +1704,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 49.921875,
 		"end_time": 50.15625,
 		"duration": 0.234375,
@@ -1717,7 +1717,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 50.15625,
 		"end_time": 50.390625,
 		"duration": 0.234375,
@@ -1730,7 +1730,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 50.390625,
 		"end_time": 50.625,
 		"duration": 0.234375,
@@ -1743,7 +1743,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 50.625,
 		"end_time": 50.9765625,
 		"duration": 0.3515625,
@@ -1756,7 +1756,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 50.9765625,
 		"end_time": 51.328125,
 		"duration": 0.3515625,
@@ -1769,7 +1769,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 51.328125,
 		"end_time": 51.5625,
 		"duration": 0.234375,
@@ -1782,7 +1782,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 51.5625,
 		"end_time": 52.5,
 		"duration": 0.9375,
@@ -1795,7 +1795,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 52.03125,
 		"end_time": 52.1484375,
 		"duration": 0.1171875,
@@ -1808,7 +1808,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 52.1484375,
 		"end_time": 52.265625,
 		"duration": 0.1171875,
@@ -1821,7 +1821,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 52.5,
 		"end_time": 52.8515625,
 		"duration": 0.3515625,
@@ -1834,7 +1834,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 52.8515625,
 		"end_time": 53.203125,
 		"duration": 0.3515625,
@@ -1847,7 +1847,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 53.203125,
 		"end_time": 53.4375,
 		"duration": 0.234375,
@@ -1860,7 +1860,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 53.4375,
 		"end_time": 53.7890625,
 		"duration": 0.3515625,
@@ -1873,7 +1873,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 53.7890625,
 		"end_time": 54.140625,
 		"duration": 0.3515625,
@@ -1886,7 +1886,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 54.140625,
 		"end_time": 54.375,
 		"duration": 0.234375,
@@ -1899,7 +1899,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 54.375,
 		"end_time": 54.7265625,
 		"duration": 0.3515625,
@@ -1912,7 +1912,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 54.7265625,
 		"end_time": 55.078125,
 		"duration": 0.3515625,
@@ -1925,7 +1925,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 55.078125,
 		"end_time": 55.3125,
 		"duration": 0.234375,
@@ -1938,7 +1938,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 55.3125,
 		"end_time": 56.25,
 		"duration": 0.9375,
@@ -1951,7 +1951,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 55.78125,
 		"end_time": 56.015625,
 		"duration": 0.234375,
@@ -1964,7 +1964,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 56.015625,
 		"end_time": 56.25,
 		"duration": 0.234375,
@@ -1977,7 +1977,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 56.25,
 		"end_time": 56.6015625,
 		"duration": 0.3515625,
@@ -1990,7 +1990,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 56.6015625,
 		"end_time": 56.953125,
 		"duration": 0.3515625,
@@ -2003,7 +2003,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 56.953125,
 		"end_time": 57.1875,
 		"duration": 0.234375,
@@ -2016,7 +2016,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 57.1875,
 		"end_time": 57.421875,
 		"duration": 0.234375,
@@ -2029,7 +2029,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 57.421875,
 		"end_time": 57.65625,
 		"duration": 0.234375,
@@ -2042,7 +2042,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 57.65625,
 		"end_time": 57.890625,
 		"duration": 0.234375,
@@ -2055,7 +2055,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 57.890625,
 		"end_time": 58.125,
 		"duration": 0.234375,
@@ -2068,7 +2068,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 58.125,
 		"end_time": 58.4765625,
 		"duration": 0.3515625,
@@ -2081,7 +2081,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 58.4765625,
 		"end_time": 58.828125,
 		"duration": 0.3515625,
@@ -2094,7 +2094,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 58.828125,
 		"end_time": 59.0625,
 		"duration": 0.234375,
@@ -2107,7 +2107,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 59.0625,
 		"end_time": 60.0,
 		"duration": 0.9375,
@@ -2120,7 +2120,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 59.53125,
 		"end_time": 59.6484375,
 		"duration": 0.1171875,
@@ -2133,7 +2133,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 59.6484375,
 		"end_time": 59.765625,
 		"duration": 0.1171875,
@@ -2146,7 +2146,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 60.0,
 		"end_time": 60.234375,
 		"duration": 0.234375,
@@ -2159,7 +2159,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 60.3515625,
 		"end_time": 60.703125,
 		"duration": 0.3515625,
@@ -2172,7 +2172,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 60.703125,
 		"end_time": 60.9375,
 		"duration": 0.234375,
@@ -2185,7 +2185,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 60.9375,
 		"end_time": 61.2890625,
 		"duration": 0.3515625,
@@ -2198,7 +2198,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 61.2890625,
 		"end_time": 61.640625,
 		"duration": 0.3515625,
@@ -2211,7 +2211,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 61.640625,
 		"end_time": 61.875,
 		"duration": 0.234375,
@@ -2224,7 +2224,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 63.28125,
 		"end_time": 63.3984375,
 		"duration": 0.1171875,
@@ -2237,7 +2237,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 63.75,
 		"end_time": 64.1015625,
 		"duration": 0.3515625,
@@ -2250,7 +2250,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 64.1015625,
 		"end_time": 64.453125,
 		"duration": 0.3515625,
@@ -2263,7 +2263,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 64.453125,
 		"end_time": 65.15625,
 		"duration": 0.703125,
@@ -2276,7 +2276,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 65.15625,
 		"end_time": 65.625,
 		"duration": 0.46875,
@@ -2289,7 +2289,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 65.625,
 		"end_time": 65.9765625,
 		"duration": 0.3515625,
@@ -2302,7 +2302,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 65.9765625,
 		"end_time": 66.328125,
 		"duration": 0.3515625,
@@ -2315,7 +2315,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 66.328125,
 		"end_time": 67.03125,
 		"duration": 0.703125,
@@ -2328,7 +2328,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 67.03125,
 		"end_time": 67.5,
 		"duration": 0.46875,
@@ -2341,7 +2341,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 67.265625,
 		"end_time": 67.5,
 		"duration": 0.234375,
@@ -2354,7 +2354,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 67.5,
 		"end_time": 67.8515625,
 		"duration": 0.3515625,
@@ -2367,7 +2367,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 67.8515625,
 		"end_time": 68.203125,
 		"duration": 0.3515625,
@@ -2380,7 +2380,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 68.203125,
 		"end_time": 68.90625,
 		"duration": 0.703125,
@@ -2393,7 +2393,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 68.90625,
 		"end_time": 69.375,
 		"duration": 0.46875,
@@ -2406,7 +2406,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 69.375,
 		"end_time": 69.7265625,
 		"duration": 0.3515625,
@@ -2419,7 +2419,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 69.7265625,
 		"end_time": 70.078125,
 		"duration": 0.3515625,
@@ -2432,7 +2432,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 70.078125,
 		"end_time": 70.3125,
 		"duration": 0.234375,
@@ -2445,7 +2445,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 70.3125,
 		"end_time": 70.78125,
 		"duration": 0.46875,
@@ -2458,7 +2458,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 70.78125,
 		"end_time": 71.015625,
 		"duration": 0.234375,
@@ -2471,7 +2471,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 71.015625,
 		"end_time": 71.25,
 		"duration": 0.234375,
@@ -2484,7 +2484,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 71.25,
 		"end_time": 71.6015625,
 		"duration": 0.3515625,
@@ -2497,7 +2497,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 71.6015625,
 		"end_time": 71.953125,
 		"duration": 0.3515625,
@@ -2510,7 +2510,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 71.953125,
 		"end_time": 72.65625,
 		"duration": 0.703125,
@@ -2523,7 +2523,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 72.65625,
 		"end_time": 72.94921875,
 		"duration": 0.29296875,
@@ -2536,7 +2536,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 73.125,
 		"end_time": 73.4765625,
 		"duration": 0.3515625,
@@ -2549,7 +2549,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 73.4765625,
 		"end_time": 73.828125,
 		"duration": 0.3515625,
@@ -2562,7 +2562,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 73.828125,
 		"end_time": 74.53125,
 		"duration": 0.703125,
@@ -2575,7 +2575,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 50,
+		"key": "right",
 		"start_time": 74.53125,
 		"end_time": 74.765625,
 		"duration": 0.234375,
@@ -2588,7 +2588,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 74.765625,
 		"end_time": 75.0,
 		"duration": 0.234375,
@@ -2601,7 +2601,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 75.0,
 		"end_time": 75.3515625,
 		"duration": 0.3515625,
@@ -2614,7 +2614,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 75.3515625,
 		"end_time": 75.703125,
 		"duration": 0.3515625,
@@ -2627,7 +2627,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 75.703125,
 		"end_time": 76.40625,
 		"duration": 0.703125,
@@ -2640,7 +2640,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 76.40625,
 		"end_time": 76.875,
 		"duration": 0.46875,
@@ -2653,7 +2653,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 76.875,
 		"end_time": 77.109375,
 		"duration": 0.234375,
@@ -2666,7 +2666,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 77.2265625,
 		"end_time": 77.4609375,
 		"duration": 0.234375,
@@ -2679,7 +2679,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 43,
+		"key": "up",
 		"start_time": 77.578125,
 		"end_time": 78.046875,
 		"duration": 0.46875,
@@ -2692,7 +2692,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 46,
+		"key": "down",
 		"start_time": 78.28125,
 		"end_time": 78.515625,
 		"duration": 0.234375,
@@ -2705,7 +2705,7 @@
 	},
 	{
 		"channel": 1,
-		"key": 48,
+		"key": "left",
 		"start_time": 78.515625,
 		"end_time": 78.7451171875,
 		"duration": 0.2294921875,

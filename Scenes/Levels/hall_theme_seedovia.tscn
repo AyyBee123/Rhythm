@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfpyg3fkyu0q5"]
+[gd_scene format=3 uid="uid://bfpyg3fkyu0q5"]
 
 [ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_igo84"]
 [ext_resource type="AudioStream" uid="uid://dwlhxlf4vnop6" path="res://Audio/Music/Hall Theme.ogg" id="2_a03e5"]
 
-[node name="Hall - Seedovia" instance=ExtResource("1_igo84")]
+[node name="Hall - Seedovia" unique_id=1833304925 instance=ExtResource("1_igo84")]
 id = "2"
 up_value = 57
 down_value = 60
@@ -12,5 +12,5 @@ right_value = 67
 difficulty = 3
 notes_file = "res://Audio/Notes Data/hall_theme_notes.json"
 
-[node name="AudioStreamPlayer" parent="." index="2"]
+[node name="AudioStreamPlayer" parent="." index="2" unique_id=1030262934]
 stream = ExtResource("2_a03e5")

@@ -254,5 +254,3 @@ offset_left = -0.0930002
 offset_right = -0.0930002
 audio_player = NodePath("../../PreviewPlayer")
 NUMBER_OF_BARS = 33
-MAX_FREQUENCY = 1500
-bar_width = 7
