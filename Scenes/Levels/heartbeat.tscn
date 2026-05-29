@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1h4detlnreky"]
+[gd_scene format=3 uid="uid://c1h4detlnreky"]
 
 [ext_resource type="PackedScene" uid="uid://dwg5k2cqva6wn" path="res://Scenes/Levels/Base/level.tscn" id="1_xumb2"]
 
-[node name="Heartbeat" instance=ExtResource("1_xumb2")]
+[node name="Heartbeat" unique_id=432442201 instance=ExtResource("1_xumb2")]
 id = "1"
 difficulty = 5
 preview_time = 2.0

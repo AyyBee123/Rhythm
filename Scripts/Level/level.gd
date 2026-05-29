@@ -2,9 +2,7 @@ extends Node2D
 
 @export var id: String # id to access stats from the level select and save file
 @export_enum("Easy", "Normal", "Hard") var level_difficulty = 0
-
 @export var FALLING_SPEED_SCALE: float = 1.0
-
 @export_range(1, 16) var difficulty: int = 1
 @export_file("*.json") var notes_file: String = "" # json notes file path
 @export var preview_time: float = 20.0

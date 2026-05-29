@@ -85,6 +85,11 @@ for midi_filename in midi_files:
     # Save JSON
     base_name = os.path.splitext(midi_filename)[0]
     output_path = os.path.join(output_folder, f"{base_name}_notes.json")
+
+    if os.path.exists(output_path):
+        print(f"Skipped '{midi_filename}' → file already exists: {output_path}")
+        continue
+
     with open(output_path, "w") as f:
         json.dump(notes, f, indent=4)
 
