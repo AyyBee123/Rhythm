@@ -83,7 +83,7 @@ var song_duration_seconds: int:
 
 func _ready() -> void:
 	Score.reset_score()
-	notes = NotesData.load_json(notes_file) # Array of note dictionaries
+	notes = NotesData.load_json(notes_file) # array of note dictionaries
 	song_duration = %AudioStreamPlayer.stream.get_length()
 	bpm = notes[0]["tempo"]
 	next_note_spawn_time = notes[0]["start_time"]
@@ -101,7 +101,7 @@ func _process(delta: float) -> void:
 		# countdown time (negative song time)
 		conductor_time += delta
 	elif song_started and not song_ended:
-		# Actual music time, synced with AudioStreamPlayer
+		# actual music time, synced with AudioStreamPlayer
 		var playback_time = %AudioStreamPlayer.get_playback_position() \
 				+ AudioServer.get_time_since_last_mix() \
 				- AudioServer.get_output_latency()
